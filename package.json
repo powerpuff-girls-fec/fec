@@ -1,0 +1,30 @@
+{
+  "name": "ppg-atelier",
+  "version": "1.0.0",
+  "description": "Front end capstone rfp2202",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/powerpuff-girls-fec/fec.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/powerpuff-girls-fec/fec/issues"
+  },
+  "homepage": "https://github.com/powerpuff-girls-fec/fec#readme",
+  "dependencies": {
+    "axios": "^0.26.1",
+    "babel-loader": "^8.2.4",
+    "express": "^4.17.3",
+    "react": "^18.0.0",
+    "styled-components": "^5.3.5",
+    "webpack": "^5.70.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
