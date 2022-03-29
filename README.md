@@ -6,7 +6,7 @@
  - `npm run build`
  - `npm start`
 
-####
+#### Authors
 
  - Benjamin Cope
  - Sean Trinh
