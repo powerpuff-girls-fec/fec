@@ -4,7 +4,7 @@
   "description": "Front end capstone rfp2202",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "client-dev": "npx webpack --watch",
     "server-dev": "npx nodemon --watch server server/index.js",
     "start": "node server/index.js",
