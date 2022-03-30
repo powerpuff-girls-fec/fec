@@ -1,0 +1,10 @@
+# Node modules folder
+node_modules/
+
+# Package folders
+package.json
+package-lock.json
+
+# Dist generated files
+*bundle.js
+*.map
