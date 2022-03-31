@@ -38,8 +38,6 @@ export default function Stars({ stars }) {
     starsRemaining -= 1;
   }
 
-  console.log(starsArray);
-
   return (
     <StarContainer>
       {starsArray.map((fill) => <Star fill={fill} />)}
