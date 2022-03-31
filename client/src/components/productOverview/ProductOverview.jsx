@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 import styled from 'styled-components';
 import ImageGallery from './imageGallery.jsx';
 import ProductInformation from './productInformation.jsx';
@@ -13,7 +14,28 @@ const Container = styled.div`
   grid-template-columns: 4fr 3fr;
 `
 
+// this is jsut ripped from what sean did, consider altering:
+  // different url/endpoints for different request types
+  // separating into separate module
+  // making generic get function, just alter url put in
+const getProductList = (url) => {
+  const [productData, setProductData] = useState(productData);
+
+  useEffect(() => {
+    axios.get(url)
+    .then((result) => {
+      setProductData(result);
+    })
+    .catch((err) => {
+      console.log('err at getProductList ', err);
+    })
+  }, [url])
+
+  return productData;
+}
+
 export default function ProductOverview() {
+  // let productList = getProductList('/product');
 
   console.log('product list: ', dummyPL);
   console.log('product info: ', dummyPI);
@@ -21,7 +43,7 @@ export default function ProductOverview() {
 
   return (
     <Container>
-      <ImageGallery images={dummyPS}/>
+      <ImageGallery styles={dummyPS}/>
       <ProductInformation product={dummyPI}/>
     </Container>
   )

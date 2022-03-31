@@ -1,5 +1,8 @@
 import { useState } from 'react';
 import styled from 'styled-components';
+import Facebook from './shareButtons/facebookShare.jsx';
+import Twitter from './shareButtons/twitterShare.jsx';
+import Pinterest from './shareButtons/pinterestShare.jsx';
 
 const Container = styled.div`
 display: grid;
@@ -26,9 +29,9 @@ export default function ProductInformation(props) {
       <div>{props.product.default_price}</div>
       <div>{props.product.description}</div>
       <ShareButtons>
-        <div>Facebook</div>
-        <div>Twitter</div>
-        <div>Pinterest</div>
+        <Facebook />
+        <Twitter />
+        <Pinterest />
       </ShareButtons>
     </Container>
   )

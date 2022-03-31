@@ -7,11 +7,11 @@ const mainImage = styled.img`
 `
 
 export default function ImageGallery(props) {
-  // console.log(props.images.results[0].photos[0].thumbnail_url)
+  // console.log(props.styles.results[0].photos[0].thumbnail_url)
 
   return(
   //   <mainImage>
-  //     <img src={props.images.results[0].photos[0].thumbnail_url} />
+  //     <img src={props.styles.results[0].photos[0].thumbnail_url} />
   //   <mainImage/>
   <div>images go here</div>
   )
