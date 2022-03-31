@@ -21,6 +21,7 @@ module.exports = {
   },
   plugins: [
     'react',
+    'better-styled-components',
   ],
   rules: {
     'no-console': 0,

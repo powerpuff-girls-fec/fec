@@ -2,17 +2,19 @@ import React from 'react';
 
 import styled from 'styled-components';
 
+import BreakdownOverview from './BreakdownOverview';
+import FactorList from './factor-list/FactorList';
+
 const Container = styled.div`
-  width: 100%;
-  height: 10em;
-  display: grid;
-  grid-template-columns: 1fr 3fr;
+  display: flex;
+  flex-direction: column;
 `;
 
-export default function Reviews() {
+export default function RatingBreakdown() {
   return (
     <Container>
-      Reviews div!
+      <BreakdownOverview />
+      <FactorList />
     </Container>
   );
 }

@@ -2,7 +2,7 @@ import React from 'react';
 
 import styled from 'styled-components';
 
-import RatingBreakdown from './rating-breakdown/RatingBreakdown'
+import RatingBreakdown from './rating-breakdown/RatingBreakdown';
 
 const Container = styled.div`
   width: 100%;
