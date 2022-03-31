@@ -1,20 +1,29 @@
 import { useState } from 'react';
 import styled from 'styled-components';
 
-const Title = styled.div`
-  // font-size: 15em;
+const Container = styled.div`
+display: grid;
+width: 100%;
+height: 10em;
+grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
 `
 
-export default function ProductInformation() {
+// const Title = styled.div`
+//   // font-size: 15em;
+// `
+
+export default function ProductInformation(props) {
+
+  // console.log(props)
+
   return(
-    <div>
-      General Product Info goes here
+    <Container>
       <div>Star Rating</div>
-      <div>Product Category</div>
-      <Title>product title</Title>
-      <div>Price</div>
-      <div>product overview</div>
+      <div>{props.product.category}</div>
+      <div>{props.product.name}</div>
+      <div>{props.product.default_price}</div>
+      <div>{props.product.description}</div>
       <div>share</div>
-    </div>
+    </Container>
   )
 }
