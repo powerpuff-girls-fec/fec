@@ -30,7 +30,7 @@ const PercentageBar = styled(Bar)`
 export default function Factor({ stars, percentage }) {
   return (
     <FactorContainer>
-      {`${stars} star${(stars === 1) ? '' : 's'}`}
+      {`${stars} star${(stars !== 1) ? 's' : ''}`}
       <BarContainer>
         <Bar />
         <PercentageBar percentage={percentage} />
