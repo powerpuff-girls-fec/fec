@@ -1,8 +1,5 @@
 import React from 'react';
-// import { useGetData } from './useGetData.jsx';
 import ViewQuestionsAndAnswers from './questionsAndAnswers/ViewQuestionsAndAnswers';
-
-// let currentUrl = window.location.href;
 
 export default function App() {
   return (
