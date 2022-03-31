@@ -1,18 +1,16 @@
 import { useState } from 'react';
 import styled from 'styled-components';
 
-const mainImage = styled.img`
-  width: 10px;
-  height: 10px;
+const MainImage = styled.img`
+  width: 75%;
+  height: auto;
+  background-color: grey;
 `
 
 export default function ImageGallery(props) {
   // console.log(props.styles.results[0].photos[0].thumbnail_url)
 
   return(
-  //   <mainImage>
-  //     <img src={props.styles.results[0].photos[0].thumbnail_url} />
-  //   <mainImage/>
-  <div>images go here</div>
+  <MainImage src="https://cdn.nba.com/manage/2022/01/image1-1-e1643120983945.png"></MainImage>
   )
 }

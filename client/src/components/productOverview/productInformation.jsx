@@ -18,6 +18,7 @@ const Title = styled.div``
 const ShareButtons = styled.div`
   display: flex;
   flex-direction: row;
+  padding-top: 5px;
 `
 
 const onFacebookClick = () => {
@@ -35,7 +36,7 @@ const onPinterestClick = () => {
 export default function ProductInformation(props) {
   return(
     <Container>
-      <div>Star Rating</div>
+      <div>Rating info goes here</div>
       <Category>{props.product.category}</Category>
       <Title>{props.product.name}</Title>
       <div>{props.product.default_price}</div>
