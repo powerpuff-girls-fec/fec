@@ -6,11 +6,9 @@ import styled from 'styled-components';
 const StarContainer = styled.div`
   font-size: 2rem;
   display: flex;
-  width: 4.5em;
 `;
 
 const EmptyStar = styled.div`
-  position: relative;
   line-height: 1em;
 `;
 

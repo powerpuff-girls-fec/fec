@@ -29,13 +29,19 @@ const PercentRecommendations = styled.div`
   align-self: center;
 `;
 
+const StarWrapper = styled.div`
+  padding-left: 0.25em;
+`;
+
 export default function BreakdownOverview({ stars, percentage }) {
   return (
     <Container className="Breakdown Overview">
       <ContainerText>RATINGS & REVIEWS</ContainerText>
       <OverallRatings>
         {stars.toFixed(1)}
-        <Stars stars={stars} />
+        <StarWrapper>
+          <Stars stars={stars} />
+        </StarWrapper>
       </OverallRatings>
       <PercentRecommendations>{`${percentage}% of reviews recommend this product`}</PercentRecommendations>
     </Container>
