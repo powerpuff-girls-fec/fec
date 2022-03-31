@@ -13,8 +13,6 @@ const Container = styled.div`
 
 export default function ProductOverview() {
 
-  // console.log(dummyPI[0])
-
   return (
     <Container>
       <ImageGallery/>

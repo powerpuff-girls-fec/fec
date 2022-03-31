@@ -8,13 +8,15 @@ height: 10em;
 grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
 `
 
-// const Title = styled.div`
-//   // font-size: 15em;
-// `
+const Category = styled.div`
+
+`
+
+const Title = styled.div`
+
+`
 
 export default function ProductInformation(props) {
-
-  // console.log(props)
 
   return(
     <Container>
