@@ -9,6 +9,8 @@ const Container = styled.div`
   height: 10em;
   display: grid;
   grid-template-columns: 1fr 3fr;
+  border-top: 1px solid grey;
+  padding-top: 1em;
   margin: auto;
 `;
 

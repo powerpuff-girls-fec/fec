@@ -34,7 +34,7 @@ export default function BreakdownOverview({ stars, percentage }) {
     <Container className="Breakdown Overview">
       <ContainerText>RATINGS & REVIEWS</ContainerText>
       <OverallRatings>
-        {stars}
+        {stars.toFixed(1)}
         <Stars stars={stars} />
       </OverallRatings>
       <PercentRecommendations>{`${percentage}% of reviews recommend this product`}</PercentRecommendations>

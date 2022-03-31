@@ -14,7 +14,7 @@ const Container = styled.div`
 export default function RatingBreakdown() {
   return (
     <Container>
-      <BreakdownOverview stars={(Math.random() * 5).toFixed(1)} percentage={87} />
+      <BreakdownOverview stars={Math.random() * 5} percentage={87} />
       <BreakdownList />
     </Container>
   );
