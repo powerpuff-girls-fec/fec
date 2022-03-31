@@ -1,8 +1,18 @@
 import { useState } from 'react';
 import styled from 'styled-components';
 
-export default function ImageGallery() {
+const mainImage = styled.img`
+  width: 10px;
+  height: 10px;
+`
+
+export default function ImageGallery(props) {
+  // console.log(props.images.results[0].photos[0].thumbnail_url)
+
   return(
-    <div>Big Image goes here</div>
+  //   <mainImage>
+  //     <img src={props.images.results[0].photos[0].thumbnail_url} />
+  //   <mainImage/>
+  <div>images go here</div>
   )
 }

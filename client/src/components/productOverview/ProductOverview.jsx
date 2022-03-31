@@ -2,7 +2,9 @@ import { useState } from 'react';
 import styled from 'styled-components';
 import ImageGallery from './imageGallery.jsx';
 import ProductInformation from './productInformation.jsx';
-import dummyPI from './dummyPI.js';
+import dummyPL from './tempData/dummyProductList.js';
+import dummyPI from './tempData/dummyProductInfo.js';
+import dummyPS from './tempData/dummyProductStyles.js';
 
 const Container = styled.div`
   display: grid;
@@ -13,10 +15,14 @@ const Container = styled.div`
 
 export default function ProductOverview() {
 
+  console.log('product list: ', dummyPL);
+  console.log('product info: ', dummyPI);
+  console.log('product styles: ', dummyPS);
+
   return (
     <Container>
-      <ImageGallery/>
-      <ProductInformation product={dummyPI[0]}/>
+      <ImageGallery images={dummyPS}/>
+      <ProductInformation product={dummyPI}/>
     </Container>
   )
 }

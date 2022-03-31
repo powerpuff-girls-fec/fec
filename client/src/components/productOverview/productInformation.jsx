@@ -8,24 +8,28 @@ height: 10em;
 grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
 `
 
-const Category = styled.div`
+const Category = styled.div``
 
-`
+const Title = styled.div``
 
-const Title = styled.div`
-
+const ShareButtons = styled.div`
+  display: flex;
+  flex-direction: row;
 `
 
 export default function ProductInformation(props) {
-
   return(
     <Container>
       <div>Star Rating</div>
-      <div>{props.product.category}</div>
-      <div>{props.product.name}</div>
+      <Category>{props.product.category}</Category>
+      <Title>{props.product.name}</Title>
       <div>{props.product.default_price}</div>
       <div>{props.product.description}</div>
-      <div>share</div>
+      <ShareButtons>
+        <div>Facebook</div>
+        <div>Twitter</div>
+        <div>Pinterest</div>
+      </ShareButtons>
     </Container>
   )
 }

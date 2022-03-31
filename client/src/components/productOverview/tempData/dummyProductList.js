@@ -1,4 +1,4 @@
-const sampleProductInfo = [
+const sampleProductList = [
   {
         "id": 1,
         "name": "Camo Onesie",
@@ -25,4 +25,4 @@ const sampleProductInfo = [
     }
 ];
 
-export default sampleProductInfo;
+export default sampleProductList;
