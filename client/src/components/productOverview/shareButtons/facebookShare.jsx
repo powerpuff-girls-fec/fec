@@ -1,11 +1,9 @@
 import { useState } from 'react';
 import styled from 'styled-components';
 
-export default function Facebook() {
-
+export default function Facebook(props) {
+  const clickHandler = props.clickHandler;
   return(
-    <div>
-      Facebook
-    </div>
+    <img src="https://favpng.com/img/share_facebook.png" onClick={() => {clickHandler()}}></img>
   )
 }
