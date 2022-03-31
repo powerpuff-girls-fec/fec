@@ -44,19 +44,23 @@ const getProductList = (url) => {
 }
 
 export default function ProductOverview() {
-  // let productList = getProductList('/product');
+  // var productList = getProductList('/product');
+  // var productStylesList = getProductList('/products/:product_id');
+  // var productRatings = getProductList('/review/meta');
 
   // to refactor with server access, need to access product info, product styles, and product ratings
+  var productInfo = dummyPI;
+  var productStylesList = dummyPS.results;
 
-  console.log('product list: ', dummyPL);
-  console.log('product info: ', dummyPI);
-  console.log('product styles: ', dummyPS);
+  // console.log('product list: ', dummyPL);
+  console.log('product info: ', productInfo);
+  console.log('product styles: ', productStylesList);
 
   return (
     <Container>
-      <ImageGallery styles={dummyPS}/>
+      <ImageGallery styles={productStylesList}/>
       <RightColumn>
-        <ProductInformation product={dummyPI}/>
+        <ProductInformation product={productInfo}/>
         <StyleSelector />
         <AddToCart />
       </RightColumn>
