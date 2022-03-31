@@ -5,7 +5,7 @@ import QuestionSearch from './QuestionSearch';
 import QuestionsList from './QuestionsList/QuestionsList';
 
 const Box = styled.div`
-  height: 500px;
+  height: 100%;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
@@ -173,7 +173,7 @@ export default function ViewQuestionsAndAnswers() {
     <Box>
       <h1>QUESTIONS & ANSWERS</h1>
       <QuestionSearch />
-      <QuestionsList questionsData={questionsData} />
+      <QuestionsList results={questionsData.results} />
     </Box>
   );
 }
