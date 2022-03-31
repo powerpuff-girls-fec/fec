@@ -33,6 +33,7 @@ function Star({ fill }) {
 export default function Stars({ stars }) {
   const starsArray = Array(5).fill(0);
   let starsRemaining = stars;
+
   for (let i = 0; starsRemaining > 0; i += 1) {
     starsArray[i] = Math.min(starsRemaining, 1);
     starsRemaining -= 1;
