@@ -32,10 +32,6 @@ const CarouselContent = styled.div`
   }
 `
 
-const next = () => {
-
-}
-
 const Carousel = (props) => {
   const { children } = props;
 
