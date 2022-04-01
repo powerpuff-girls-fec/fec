@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const StarContainer = styled.div`
-  font-size: 2rem;
+  font-size: 1.5rem;
   display: flex;
 `;
 
