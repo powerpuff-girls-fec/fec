@@ -2,16 +2,16 @@ import { useState } from 'react';
 import styled from 'styled-components';
 import Carousel from './carousel.jsx';
 
-const compileImageList = () => {}
+const compileImageList = (photos) => {
+  var listOfPhotos = [];
+  for (let i = 0; i < photos.length; i++) {
+    listOfPhotos.push(photos[i].url);
+  }
+  return listOfPhotos;
+}
 
 export default function ImageGallery(props) {
-  // console.log(props.styles[0].photos);
-
-  // var compiledImageList = compileImageList(props.styles[0].photos);
-  var image = props.styles[0].photos[0].url;
-  var image2 = props.styles[0].photos[1].url;
-
-  var compiledImageList = [image, image2]
+  var compiledImageList = compileImageList(props.styles[0].photos);
 
   return(
     <div>
