@@ -39,7 +39,7 @@ export default function Stars({ stars }) {
 
   return (
     <StarContainer>
-      {starsArray.map((fill) => <Star fill={fill} />)}
+      {starsArray.map((fill, key) => <Star key={`star ${key}`} fill={fill} />)}
     </StarContainer>
   );
 }

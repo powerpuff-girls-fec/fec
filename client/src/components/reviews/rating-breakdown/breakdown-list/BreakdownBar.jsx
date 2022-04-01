@@ -25,13 +25,13 @@ const BarContainer = styled.div`
 
 const Bar = styled.div`
   position: absolute;
-  background-color: grey;
+  background-color: #EBEBEB;
   width: 100%;
   height: 100%;
 `;
 
 const PercentageBar = styled(Bar)`
-  background-color: green;
+  background-color: hsl(141, 100%, 32%);
   width: ${({ percentage }) => percentage}%;
 `;
 

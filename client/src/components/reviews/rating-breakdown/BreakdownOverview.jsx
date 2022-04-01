@@ -43,7 +43,9 @@ export default function BreakdownOverview({ stars, percentage }) {
           <Stars stars={stars} />
         </StarWrapper>
       </OverallRatings>
-      <PercentRecommendations>{`${percentage}% of reviews recommend this product`}</PercentRecommendations>
+      <PercentRecommendations>
+        {`${percentage.toFixed(0)}% of reviews recommend this product`}
+      </PercentRecommendations>
     </Container>
   );
 }
