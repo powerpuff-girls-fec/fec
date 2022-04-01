@@ -39,7 +39,7 @@ export default function ProductInformation(props) {
       <div>Rating info goes here</div>
       <Category>{props.product.category}</Category>
       <Title>{props.product.name}</Title>
-      {/* price will need to deal with sales */}
+      {/* price will need to deal with sales, need to see what that looks like */}
       <div>{props.product.default_price}</div>
       <div>{props.product.description}</div>
       <ShareButtons>
