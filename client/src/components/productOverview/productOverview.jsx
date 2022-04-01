@@ -10,6 +10,7 @@ import AddToCart from './addToCart.jsx';
 import dummyPL from './tempData/dummyProductList.js';
 import dummyPI from './tempData/dummyProductInfo.js';
 import dummyPS from './tempData/dummyProductStyles.js';
+import dummyRD from './tempData/dummyReviewMetadata.js'
 
 const Container = styled.div`
   display: grid;
@@ -44,23 +45,21 @@ const getProductList = (url) => {
 }
 
 export default function ProductOverview() {
-  // var productList = getProductList('/product');
-  // var productStylesList = getProductList('/products/:product_id');
-  // var productRatings = getProductList('/review/meta');
-
   // to refactor with server access, need to access product info, product styles, and product ratings
   var productInfo = dummyPI;
   var productStylesList = dummyPS.results;
+  var productReviews = dummyRD;
 
   // console.log('product list: ', dummyPL);
   console.log('product info: ', productInfo);
   console.log('product styles: ', productStylesList);
+  console.log('product reviews: ', productReviews)
 
   return (
     <Container>
       <ImageGallery styles={productStylesList}/>
       <RightColumn>
-        <ProductInformation product={productInfo}/>
+        <ProductInformation product={productInfo} review={productReviews}/>
         <StyleSelector />
         <AddToCart />
       </RightColumn>
