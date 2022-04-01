@@ -9,12 +9,12 @@ const sampleProductStyles = {
               "default?": true,
               "photos": [
                       {
-                      "thumbnail_url": "https://images.pexels.com/photos/2253275/pexels-photo-2253275.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-                      "url": "urlplaceholder/style_1_photo_number.jpg"
+                      "thumbnail_url": "https://cdn.nba.com/manage/2022/01/image1-1-e1643120983945.png",
+                      "url": "https://cdn.nba.com/manage/2022/01/image1-1-e1643120983945.png"
                   },
                       {
-                      "thumbnail_url": "urlplaceholder/style_1_photo_number_thumbnail.jpg",
-                      "url": "urlplaceholder/style_1_photo_number.jpg"
+                      "thumbnail_url": "https://cdn.nba.com/manage/2021/10/image4-e1634563569249-784x497.png",
+                      "url": "https://cdn.nba.com/manage/2021/10/image4-e1634563569249-784x497.png"
                   }
                       // ...
               ],
