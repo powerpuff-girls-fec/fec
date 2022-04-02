@@ -1,18 +1,39 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 
 import HelpfulQuestionButton from './HelpfulQuestionButton';
 import AddAnswer from './AddAnswer';
 import AnswersList from './AnswersList';
 
+const Container = styled.div`
+  height: 100%;
+  display: flex;
+`;
+
+const Question = styled.div`
+  min-height: 10px;
+  flex-grow: 1;
+`;
+
+const QuestionLevelButtons = styled.div`
+  min-height: 10px;
+`;
+
 export default function QuestionsCard({ questionObj }) {
   return (
     <div>
-      Q:
-      {questionObj.question_body}
-      <HelpfulQuestionButton questionHelpfulness={questionObj.question_helpfulness} />
-      <AddAnswer />
-      <AnswersList />
+      <Container>
+        <Question>
+          Q:
+          {questionObj.question_body}
+        </Question>
+        <QuestionLevelButtons>
+          <HelpfulQuestionButton questionHelpfulness={questionObj.question_helpfulness} />
+          <AddAnswer />
+        </QuestionLevelButtons>
+      </Container>
+      <AnswersList answers={questionObj.answers} />
     </div>
   );
 }

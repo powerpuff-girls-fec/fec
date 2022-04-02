@@ -1,26 +1,43 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 
 import QuestionCard from './QuestionCard/QuestionCard';
 import AddAQuestionButton from './AddAQuestionButton';
 import MoreAnsweredQuestionsButton from './MoreAnsweredQuestionsButton';
 
+const QuestionsListContainer = styled.div`
+  max-height: 500px;
+  overflow-y: scroll;
+`;
+
 export default function QuestionsList({ results }) {
-  console.log(results);
+  const questionsAsked = results.length;
+  console.log(questionsAsked);
+  /*
+  to achieve two at a time:
+  - instead of results.map I'll use state to determine how much of results to render
+  - that way, once state updates, we'll trigger a re-render
+  - moreAnsweredQuestionsButton will have a click handler that increments state
+  (pass the setState into the button)
+  */
   return (
-    <div>
+    <>
+      <QuestionsListContainer>
+        <div>
+          {results.map((questionObj) => (
+            <QuestionCard
+              key={questionObj.question_id}
+              questionObj={questionObj}
+            />
+          ))}
+        </div>
+      </QuestionsListContainer>
       <div>
-        Questions List Below
-        {results.map((questionObj) => (
-          <QuestionCard
-            key={questionObj.question_id}
-            questionObj={questionObj}
-          />
-        ))}
+        <AddAQuestionButton />
+        {questionsAsked > 2 ? <MoreAnsweredQuestionsButton /> : null}
       </div>
-      <AddAQuestionButton />
-      <MoreAnsweredQuestionsButton />
-    </div>
+    </>
   );
 }
 

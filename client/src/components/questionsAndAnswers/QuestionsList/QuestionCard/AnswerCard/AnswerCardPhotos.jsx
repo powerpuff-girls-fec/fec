@@ -1,11 +1,14 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-export default function AnswerCardPhotos() {
+export default function AnswerCardPhotos({ photos }) {
   return (
     <div>
-      <span>photo1</span>
-      <span>photo2</span>
-      <span>photo3</span>
+      {photos.map((image) => (<span key={image}>image</span>))}
     </div>
   );
 }
+
+AnswerCardPhotos.propTypes = {
+  photos: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+};

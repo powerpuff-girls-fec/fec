@@ -4,11 +4,10 @@ import styled from 'styled-components';
 import QuestionSearch from './QuestionSearch';
 import QuestionsList from './QuestionsList/QuestionsList';
 
-const Box = styled.div`
+const Container = styled.div`
   height: 100%;
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
 `;
 
 const questionsData = {
@@ -170,10 +169,10 @@ const questionsData = {
 
 export default function ViewQuestionsAndAnswers() {
   return (
-    <Box>
+    <Container>
       <h1>QUESTIONS & ANSWERS</h1>
       <QuestionSearch />
       <QuestionsList results={questionsData.results} />
-    </Box>
+    </Container>
   );
 }
