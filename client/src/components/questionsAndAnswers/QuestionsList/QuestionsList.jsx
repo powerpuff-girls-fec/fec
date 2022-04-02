@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
@@ -13,19 +13,13 @@ const QuestionsListContainer = styled.div`
 
 export default function QuestionsList({ results }) {
   const questionsAsked = results.length;
-  console.log(questionsAsked);
-  /*
-  to achieve two at a time:
-  - instead of results.map I'll use state to determine how much of results to render
-  - that way, once state updates, we'll trigger a re-render
-  - moreAnsweredQuestionsButton will have a click handler that increments state
-  (pass the setState into the button)
-  */
+  const [renderLength, setRenderLength] = useState(2);
+
   return (
     <>
       <QuestionsListContainer>
         <div>
-          {results.map((questionObj) => (
+          {results.slice(0, renderLength).map((questionObj) => (
             <QuestionCard
               key={questionObj.question_id}
               questionObj={questionObj}
@@ -35,7 +29,11 @@ export default function QuestionsList({ results }) {
       </QuestionsListContainer>
       <div>
         <AddAQuestionButton />
-        {questionsAsked > 2 ? <MoreAnsweredQuestionsButton /> : null}
+        {questionsAsked <= 2 || questionsAsked <= renderLength ? null : (
+          <MoreAnsweredQuestionsButton
+            setRenderLength={setRenderLength}
+          />
+        )}
       </div>
     </>
   );
