@@ -34,7 +34,6 @@ const CarouselContent = styled.div`
 
 const Carousel = (props) => {
   const { children } = props;
-
   const [currentIndex, setCurrentIndex] = useState(0);
   const [length, setLength] = useState(children.length);
 

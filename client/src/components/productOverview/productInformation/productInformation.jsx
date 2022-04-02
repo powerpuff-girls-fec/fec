@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import Facebook from './shareButtons/facebookShare.jsx';
 import Twitter from './shareButtons/twitterShare.jsx';
 import Pinterest from './shareButtons/pinterestShare.jsx';
-import Stars from '../common/Stars.jsx';
+import Stars from './Stars.jsx';
 
 const Container = styled.div`
 display: grid;

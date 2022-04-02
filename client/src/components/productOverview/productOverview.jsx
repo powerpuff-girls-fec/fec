@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
-import ImageGallery from './imageGallery.jsx';
-import ProductInformation from './productInformation.jsx';
-import StyleSelector from './styleSelector.jsx';
-import AddToCart from './addToCart.jsx';
+import ImageGallery from './imageGallery/imageGallery.jsx';
+import ProductInformation from './productInformation/productInformation.jsx';
+import StyleSelector from './styleSelector/styleSelector.jsx';
+import AddToCart from './cart/addToCart.jsx';
 
 // this sample data needs to be removed once client is connected to server
 import dummyPL from './tempData/dummyProductList.js';
@@ -51,16 +51,16 @@ export default function ProductOverview() {
   var productReviews = dummyRD;
 
   // console.log('product list: ', dummyPL);
-  console.log('product info: ', productInfo);
-  console.log('product styles: ', productStylesList);
-  console.log('product reviews: ', productReviews)
+  // console.log('product info: ', productInfo);
+  // console.log('product styles: ', productStylesList);
+  // console.log('product reviews: ', productReviews)
 
   return (
     <Container>
-      <ImageGallery styles={productStylesList}/>
+      <ImageGallery styles={productStylesList} />
       <RightColumn>
-        <ProductInformation product={productInfo} review={productReviews}/>
-        <StyleSelector />
+        <ProductInformation product={productInfo} review={productReviews} />
+        <StyleSelector styles={productStylesList} />
         <AddToCart />
       </RightColumn>
     </Container>
