@@ -4,6 +4,14 @@ import Thumbnail from './thumbnailDisplay.jsx';
 
 const Container = styled.div``
 
+const StyleName = styled.div``
+
+const ThumbnailWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  padding-top: 5px;
+`
+
 const compileStyles = (styles) => {
   let styleUrls = [];
   let styleNames = [];
@@ -14,21 +22,47 @@ const compileStyles = (styles) => {
   return [styleUrls, styleNames]
 }
 
+
 export default function StyleSelector(props) {
-  var styles = compileStyles(props.styles);
+  const styles = compileStyles(props.styles);
 
-  var stylesUrls = styles[0];
-  var stylesName = styles[1];
+  const [stylesList, setStylesList] = useState(styles[0]);
+  const [stylesNames, setStylesNames] = useState(styles[1]);
+  const [currentStyle, setCurrentStyle] = useState(stylesList[0]);
+  const [currentName, setCurrentName] = useState(stylesNames[0]);
 
-  console.log('stylesUrls: ', stylesUrls);
-  console.log('stylesName: ', stylesName)
+  const styleChangeHandler = (url) => {
+    for (let i = 0; i < stylesList.length; i++) {
+      if (stylesList[i] === url) {
+        if (stylesList[i] !== currentStyle) {
+          setCurrentStyle(stylesList[i]);
+          setCurrentName(stylesNames[i]);
+
+        }
+      }
+    }
+  }
+
+  // var stylesUrls = styles[0];
+  // var stylesName = styles[1];
+
+  console.log('general styles info: ', styles)
+  console.log('stylesUrls: ', stylesList);
+  console.log('stylesName: ', stylesNames);
+
 
   return(
     <Container>
-      <div>styles</div>
-      <Thumbnail>
-        {stylesUrls.map((url, key) => <img src={url} key={key} alt="placeholder"></img>)}
-      </Thumbnail>
+      <StyleName>
+        {currentName}
+      </StyleName>
+      <ThumbnailWrapper>
+        {stylesList.map((url, key) => {
+          return (
+            <Thumbnail url={url} key={key} clickHandler={styleChangeHandler} />
+          )
+        })}
+      </ThumbnailWrapper>
     </Container>
   )
 }

@@ -10,7 +10,7 @@ import AddToCart from './cart/addToCart.jsx';
 import dummyPL from './tempData/dummyProductList.js';
 import dummyPI from './tempData/dummyProductInfo.js';
 import dummyPS from './tempData/dummyProductStyles.js';
-import dummyRD from './tempData/dummyReviewMetadata.js'
+import dummyRD from './tempData/dummyReviewMetadata.js';
 
 const Container = styled.div`
   display: grid;
@@ -52,7 +52,7 @@ export default function ProductOverview() {
 
   // console.log('product list: ', dummyPL);
   // console.log('product info: ', productInfo);
-  // console.log('product styles: ', productStylesList);
+  console.log('product styles: ', productStylesList);
   // console.log('product reviews: ', productReviews)
 
   return (

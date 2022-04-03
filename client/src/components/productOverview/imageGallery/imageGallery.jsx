@@ -16,8 +16,6 @@ export default function ImageGallery(props) {
   return(
     <div>
       <Carousel>
-        {/* <img src={image} alt="placeholder"></img> */}
-        {/* <img src={image2} alt="placeholder"></img> */}
         {compiledImageList.map((url, key) => <img src={url} key={key} alt="placeholder"></img>)}
       </Carousel>
     </div>

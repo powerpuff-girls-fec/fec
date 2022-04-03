@@ -8,6 +8,6 @@ const Image = styled.img`
 export default function Pinterest(props) {
   const clickHandler = props.clickHandler;
   return(
-    <Image src="https://favpng.com/img/share_pinterest.png"onClick={() => {clickHandler()}} />
+    <Image src="https://favpng.com/img/share_pinterest.png" onClick={() => {clickHandler()}} />
   )
 }

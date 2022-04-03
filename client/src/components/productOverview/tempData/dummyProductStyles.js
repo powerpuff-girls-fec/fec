@@ -9,12 +9,12 @@ const sampleProductStyles = {
               "default?": true,
               "photos": [
                       {
-                      "thumbnail_url": "https://m.media-amazon.com/images/I/41DMf5pk4JS._SX38_SY50_CR,0,0,38,50_.jpg",
-                      "url": "https://cdn.nba.com/manage/2022/01/image1-1-e1643120983945.png"
+                      "thumbnail_url": "https://m.media-amazon.com/images/I/31+BV5HPPIL._SS36_.jpg",
+                      "url": "https://m.media-amazon.com/images/I/41YOP98WZBL._AC_.jpg"
                   },
                       {
-                      "thumbnail_url": "https://m.media-amazon.com/images/I/31oxaE1lGtL._SX38_SY50_CR,0,0,38,50_.jpg",
-                      "url": "https://cdn.nba.com/manage/2021/10/image4-e1634563569249-784x497.png"
+                      "thumbnail_url": "https://m.media-amazon.com/images/I/31+BV5HPPIL._SS36_.jpg",
+                      "url": "https://m.media-amazon.com/images/I/A1+tIUHlnKL._AC_SL1500_.jpg"
                   }
                       // ...
               ],
@@ -42,8 +42,8 @@ const sampleProductStyles = {
           "default?": false,
           "photos": [
                       {
-                      "thumbnail_url": "https://m.media-amazon.com/images/I/31oxaE1lGtL._SX38_SY50_CR,0,0,38,50_.jpg",
-                      "url": "urlplaceholder/style_2_photo_number.jpg"
+                      "thumbnail_url": "https://m.media-amazon.com/images/I/21qZQ0W1hRL._SS36_.jpg",
+                      "url": "https://m.media-amazon.com/images/I/A1umI+PwGFL._AC_SL1500_.jpg"
           }
         // ...
               ],

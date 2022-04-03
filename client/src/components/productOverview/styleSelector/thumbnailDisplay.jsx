@@ -1,21 +1,20 @@
 import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
-const StyleContainer = styled.div``
-
-const ThumbnailBubble = styled.div`
-  border-radius: 50%;
+const ThumbnailContainer = styled.div`
+  width: 50px;
+  height: 50px;
 `
 
-export default function Thumbnail(props) {
-  const { children } = props;
+const ThumbnailBubble = styled.img`
+  width: 50px;
+  height: 50px;
+`
 
-  console.log(props.children);
+export default function Thumbnail({ url, clickHandler }) {
   return(
-    <StyleContainer>
-      <ThumbnailBubble>
-        {children}
-      </ThumbnailBubble>
-    </StyleContainer>
+    <ThumbnailContainer>
+      <ThumbnailBubble src={url} onClick={() => {clickHandler(url)}} />
+    </ThumbnailContainer>
   )
 }

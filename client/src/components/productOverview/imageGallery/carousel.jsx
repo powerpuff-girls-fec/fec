@@ -24,6 +24,8 @@ const CarouselContent = styled.div`
   transition: all 250ms linear;
   -ms-overflow-style: none;
   scrollbar-width: none;
+  // width: 250px;
+  // height: 250px;
 
   > * {
     width: 100%;
