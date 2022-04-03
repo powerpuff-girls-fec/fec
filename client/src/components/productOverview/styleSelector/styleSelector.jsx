@@ -13,13 +13,12 @@ const ThumbnailWrapper = styled.div`
 `
 
 const compileStyles = (styles) => {
-  let styleUrls = [];
-  let styleNames = [];
+  let styleUrls = [], styleNames = [];
   for (let i = 0; i < styles.length; i++) {
     styleUrls.push(styles[i].photos[0].thumbnail_url);
     styleNames.push(styles[i].name);
   }
-  return [styleUrls, styleNames]
+  return [styleUrls, styleNames];
 }
 
 
@@ -43,11 +42,6 @@ export default function StyleSelector(props) {
       }
     }
   }
-
-  // console.log('general styles info: ', styles)
-  // console.log('stylesUrls: ', stylesList);
-  // console.log('stylesName: ', stylesNames);
-
 
   return(
     <Container>

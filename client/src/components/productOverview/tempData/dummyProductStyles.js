@@ -53,7 +53,7 @@ const sampleProductStyles = {
                                   "size": "XS"
                         },
                         "38": {
-                                  "quantity": 16,
+                                  "quantity": 17,
                                   "size": "S"
                         },
                         "39": {

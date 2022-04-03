@@ -28,21 +28,21 @@ const RightColumn = styled.div`
   // different url/endpoints for different request types
   // separating into separate module
   // making generic get function, just alter url put in
-const getProductList = (url) => {
-  const [productData, setProductData] = useState(productData);
+// const getProductList = (url) => {
+//   const [productData, setProductData] = useState(productData);
 
-  useEffect(() => {
-    axios.get(url)
-    .then((result) => {
-      setProductData(result);
-    })
-    .catch((err) => {
-      console.log('err at getProductList ', err);
-    })
-  }, [url])
+//   useEffect(() => {
+//     axios.get(url)
+//     .then((result) => {
+//       setProductData(result);
+//     })
+//     .catch((err) => {
+//       console.log('err at getProductList ', err);
+//     })
+//   }, [url])
 
-  return productData;
-}
+//   return productData;
+// }
 
 
 export default function ProductOverview() {
@@ -67,7 +67,7 @@ export default function ProductOverview() {
       <RightColumn>
         <ProductInformation product={productInfo} review={productReviews} />
         <StyleSelector styles={productStylesList} handleIndexChange={handleIndexChange}/>
-        <AddToCart />
+        <AddToCart styles={productStylesList} index={index}/>
       </RightColumn>
     </Container>
   )
