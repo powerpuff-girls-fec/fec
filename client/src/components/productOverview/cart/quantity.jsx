@@ -6,8 +6,8 @@ const QuantityContainer = styled.div``
 export default function Quantity(props) {
   return(
     <QuantityContainer>
-      <label>Select quantity:</label>
       <select name="quantity">
+        <option>Select Quantity</option>
         {props.quantity.map((quantity, key) => <option value={quantity} key={key}>{quantity}</option>)}
       </select>
     </QuantityContainer>
