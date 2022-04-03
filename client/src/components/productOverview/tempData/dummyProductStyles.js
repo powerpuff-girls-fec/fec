@@ -49,16 +49,16 @@ const sampleProductStyles = {
               ],
           "skus": {
                         "37": {
-                                  "quantity": 8,
-                                  "size": "XS"
-                        },
-                        "38": {
-                                  "quantity": 17,
+                                  "quantity": 5,
                                   "size": "S"
                         },
+                        "38": {
+                                  "quantity": 7,
+                                  "size": "L"
+                        },
                         "39": {
-                                  "quantity": 17,
-                                  "size": "M"
+                                  "quantity": 32,
+                                  "size": "XXL"
                         },
               //...
                     }

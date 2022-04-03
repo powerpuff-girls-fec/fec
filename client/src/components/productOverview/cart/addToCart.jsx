@@ -17,23 +17,43 @@ const compileStyles = (styles) => {
   return [styleSizes, styleQuantities];
 }
 
-export default function AddToCart({index, styles}) {
 
+
+export default function AddToCart({index, styles}) {
   const compiledStyles = compileStyles(styles[index].skus);
 
-  // console.log(styles);
-
+  const [styleID, setStyleID] = useState(styles[index].style_id);
   const [styleSizes, setStyleSizes] = useState(compiledStyles[0]);
   const [styleQuantities, setStyleQuantities] = useState(compiledStyles[1]);
+  const [selectedSize, setSelectedSize] = useState('-');
+  const [quantityRange, setQuantityRange] = useState([]);
 
-  // const [currentStyle, setCurrentStyle] = useState(index);
+  if (styleID != styles[index].style_id) {
+    setStyleID(styles[index].style_id);
+    setStyleSizes(compiledStyles[0]);
+    setStyleQuantities(compiledStyles[1]);
+  }
 
+  const trackSizeSelection = (event) => {
+    var index = event.target.value;
+    setSelectedSize(styleSizes[index]);
+
+    var maxPurchasable = 15, arrayOfQuantities = [];
+    if (styleQuantities[index] < maxPurchasable) {
+      maxPurchasable = styleQuantities[index];
+    }
+
+    for (let i = 1; i <= maxPurchasable; i++) {
+      arrayOfQuantities.push(i);
+    }
+    setQuantityRange(arrayOfQuantities);
+  }
 
   return(
     <Container>
       <DropdownsContainer>
-        <Size sizes={styleSizes}/>
-        <Quantity quantity={styleQuantities}/>
+        <Size sizes={styleSizes} selectHandler={trackSizeSelection} />
+        <Quantity quantity={quantityRange}/>
       </DropdownsContainer>
       <AddButton />
     </Container>
