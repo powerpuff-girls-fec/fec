@@ -3,7 +3,7 @@ const sampleProductStyles = {
       "results": [
           {
               "style_id": 1,
-              "name": "Forest Green & Black",
+              "name": "blue",
               "original_price": "140",
               "sale_price": "0",
               "default?": true,
@@ -14,7 +14,7 @@ const sampleProductStyles = {
                   },
                       {
                       "thumbnail_url": "https://m.media-amazon.com/images/I/31+BV5HPPIL._SS36_.jpg",
-                      "url": "https://m.media-amazon.com/images/I/A1+tIUHlnKL._AC_SL1500_.jpg"
+                      "url": "https://m.media-amazon.com/images/I/41YOP98WZBL._AC_.jpg"
                   }
                       // ...
               ],
@@ -36,7 +36,7 @@ const sampleProductStyles = {
       },
     {
           "style_id": 2,
-          "name": "Desert Brown & Tan",
+          "name": "red",
           "original_price": "140",
           "sale_price": "0",
           "default?": false,

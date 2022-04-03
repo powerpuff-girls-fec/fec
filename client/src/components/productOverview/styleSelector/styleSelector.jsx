@@ -24,6 +24,7 @@ const compileStyles = (styles) => {
 
 
 export default function StyleSelector(props) {
+  const handleIndexChange = props.handleIndexChange;
   const styles = compileStyles(props.styles);
 
   const [stylesList, setStylesList] = useState(styles[0]);
@@ -37,18 +38,15 @@ export default function StyleSelector(props) {
         if (stylesList[i] !== currentStyle) {
           setCurrentStyle(stylesList[i]);
           setCurrentName(stylesNames[i]);
-
+          handleIndexChange(i);
         }
       }
     }
   }
 
-  // var stylesUrls = styles[0];
-  // var stylesName = styles[1];
-
-  console.log('general styles info: ', styles)
-  console.log('stylesUrls: ', stylesList);
-  console.log('stylesName: ', stylesNames);
+  // console.log('general styles info: ', styles)
+  // console.log('stylesUrls: ', stylesList);
+  // console.log('stylesName: ', stylesNames);
 
 
   return(

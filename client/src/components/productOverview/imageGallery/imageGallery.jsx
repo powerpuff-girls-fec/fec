@@ -11,7 +11,8 @@ const compileImageList = (photos) => {
 }
 
 export default function ImageGallery(props) {
-  var compiledImageList = compileImageList(props.styles[0].photos);
+  var index = props.index;
+  var compiledImageList = compileImageList(props.styles[index].photos);
 
   return(
     <div>

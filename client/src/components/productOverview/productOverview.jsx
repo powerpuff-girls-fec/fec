@@ -44,23 +44,29 @@ const getProductList = (url) => {
   return productData;
 }
 
+
 export default function ProductOverview() {
   // to refactor with server access, need to access product info, product styles, and product ratings
   var productInfo = dummyPI;
   var productStylesList = dummyPS.results;
   var productReviews = dummyRD;
+  const [index, setIndex] = useState(0);
+
+  const handleIndexChange = (i) => {
+    setIndex(i);
+  }
 
   // console.log('product list: ', dummyPL);
   // console.log('product info: ', productInfo);
-  console.log('product styles: ', productStylesList);
+  // console.log('product styles: ', productStylesList);
   // console.log('product reviews: ', productReviews)
 
   return (
     <Container>
-      <ImageGallery styles={productStylesList} />
+      <ImageGallery styles={productStylesList} index={index} />
       <RightColumn>
         <ProductInformation product={productInfo} review={productReviews} />
-        <StyleSelector styles={productStylesList} />
+        <StyleSelector styles={productStylesList} handleIndexChange={handleIndexChange}/>
         <AddToCart />
       </RightColumn>
     </Container>
