@@ -26,7 +26,7 @@ export default function AddToCart({index, styles}) {
   const [styleSizes, setStyleSizes] = useState(compiledStyles[0]);
   const [styleQuantities, setStyleQuantities] = useState(compiledStyles[1]);
   const [selectedSize, setSelectedSize] = useState('-');
-  const [quantityRange, setQuantityRange] = useState([]);
+  const [quantityRange, setQuantityRange] = useState(['-']);
 
   if (styleID != styles[index].style_id) {
     setStyleID(styles[index].style_id);
@@ -38,15 +38,20 @@ export default function AddToCart({index, styles}) {
     var index = event.target.value;
     setSelectedSize(styleSizes[index]);
 
-    var maxPurchasable = 15, arrayOfQuantities = [];
-    if (styleQuantities[index] < maxPurchasable) {
-      maxPurchasable = styleQuantities[index];
+    if (index === "Select Size") {
+      setQuantityRange(['-']);
+    } else {
+      var maxPurchasable = 15, arrayOfQuantities = [];
+      if (styleQuantities[index] < maxPurchasable) {
+        maxPurchasable = styleQuantities[index];
+      }
+
+      for (let i = 1; i <= maxPurchasable; i++) {
+        arrayOfQuantities.push(i);
+      }
+      setQuantityRange(arrayOfQuantities);
     }
 
-    for (let i = 1; i <= maxPurchasable; i++) {
-      arrayOfQuantities.push(i);
-    }
-    setQuantityRange(arrayOfQuantities);
   }
 
   return(

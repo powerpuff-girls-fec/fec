@@ -4,12 +4,24 @@ import styled from 'styled-components';
 const QuantityContainer = styled.div``
 
 export default function Quantity(props) {
-  return(
-    <QuantityContainer>
-      <select name="quantity">
-        <option>Select Quantity</option>
-        {props.quantity.map((quantity, key) => <option value={quantity} key={key}>{quantity}</option>)}
-      </select>
-    </QuantityContainer>
-  )
+
+  if (props.quantity[0] === '-') {
+    console.log('here')
+    return(
+      <QuantityContainer>
+        <select name="quantity" disabled>
+          <option>-</option>
+        </select>
+      </QuantityContainer>
+    )
+  } else {
+    return(
+      <QuantityContainer>
+        <select name="quantity">
+          <option>Select Quantity</option>
+          {props.quantity.map((quantity, key) => <option value={quantity} key={key}>{quantity}</option>)}
+        </select>
+      </QuantityContainer>
+    )
+  }
 }
