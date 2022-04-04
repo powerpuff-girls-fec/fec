@@ -4,6 +4,7 @@ import styled from 'styled-components';
 const QuantityContainer = styled.div``
 
 export default function Quantity(props) {
+  const selectHandler = props.selectHandler;
 
   if (props.quantity[0] === '-') {
     return(
@@ -16,7 +17,7 @@ export default function Quantity(props) {
   } else {
     return(
       <QuantityContainer>
-        <select name="quantity">
+        <select name="quantity" onChange={() => {selectHandler(event)}}>
           {props.quantity.map((quantity, key) => <option value={quantity} key={key}>{quantity}</option>)}
         </select>
       </QuantityContainer>

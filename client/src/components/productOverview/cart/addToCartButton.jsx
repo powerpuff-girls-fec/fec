@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
-export default function AddButton() {
+export default function AddButton({ handleSubmit }) {
 
   return(
-    <div>
-      buy button
-    </div>
+    <form onSubmit={() => {handleSubmit()}}>
+      <button type="submit">Add to Cart</button>
+    </form>
   )
 }

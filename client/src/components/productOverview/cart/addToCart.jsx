@@ -6,7 +6,10 @@ import AddButton from './addToCartButton.jsx';
 
 const Container = styled.div``
 
-const DropdownsContainer = styled.div``
+const DropdownsContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+`
 
 const compileStyles = (styles) => {
   let styleSizes = [], styleQuantities = [];
@@ -17,15 +20,14 @@ const compileStyles = (styles) => {
   return [styleSizes, styleQuantities];
 }
 
-
-
-export default function AddToCart({index, styles}) {
+export default function AddToCart({index, styles, createCartTicket}) {
   const compiledStyles = compileStyles(styles[index].skus);
 
   const [styleID, setStyleID] = useState(styles[index].style_id);
   const [styleSizes, setStyleSizes] = useState(compiledStyles[0]);
   const [styleQuantities, setStyleQuantities] = useState(compiledStyles[1]);
   const [selectedSize, setSelectedSize] = useState('-');
+  const [selectedQuantity, setSelectedQuantity] = useState(0);
   const [quantityRange, setQuantityRange] = useState(['-']);
 
   if (styleID != styles[index].style_id) {
@@ -51,16 +53,26 @@ export default function AddToCart({index, styles}) {
       }
       setQuantityRange(arrayOfQuantities);
     }
+  }
 
+  const trackQuantitySelection = (event) => {
+    setSelectedQuantity(event.target.value);
+  }
+
+  const handleSubmit = () => {
+    event.preventDefault();
+
+    var ticketInfo = {size: selectedSize, quantity: selectedQuantity}
+    createCartTicket(ticketInfo);
   }
 
   return(
     <Container>
       <DropdownsContainer>
         <Size sizes={styleSizes} selectHandler={trackSizeSelection} />
-        <Quantity quantity={quantityRange}/>
+        <Quantity quantity={quantityRange} selectHandler={trackQuantitySelection}/>
       </DropdownsContainer>
-      <AddButton />
+      <AddButton handleSubmit={handleSubmit}/>
     </Container>
   )
 }
