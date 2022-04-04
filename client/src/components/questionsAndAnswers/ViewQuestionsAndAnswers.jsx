@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
-import axios from 'axios';
+// import axios from 'axios';
 
 import QuestionSearch from './QuestionSearch';
 import QuestionsList from './QuestionsList/QuestionsList';
@@ -170,7 +170,6 @@ const questionData = {
 
 export default function ViewQuestionsAndAnswers() {
   const [questionsData, setQuestionData] = useState(questionData.results);
-  const questionsAsked = questionsData.length;
 
   // useEffect(() => {
   //   axios.get('http://localhost3000/api/questions')
@@ -181,21 +180,11 @@ export default function ViewQuestionsAndAnswers() {
   //     .catch((error) => console.log(error));
   // }, []);
 
-  console.log(questionsData);
-
-  if (questionsAsked === 0) {
-    return (
-      <Container>
-        <h1>QUESTIONS & ANSWERS</h1>
-        <QuestionsList results={questionsData} />
-      </Container>
-    );
-  }
-
   return (
     <Container>
       <h1>QUESTIONS & ANSWERS</h1>
-      <QuestionSearch setQuestionData={setQuestionData} />
+      {/* update originalData with result response once I figure that out */}
+      <QuestionSearch setQuestionData={setQuestionData} originalData={questionData.results} />
       <QuestionsList results={questionsData} />
     </Container>
   );
