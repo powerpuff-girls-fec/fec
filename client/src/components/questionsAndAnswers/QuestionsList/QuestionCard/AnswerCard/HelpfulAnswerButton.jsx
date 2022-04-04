@@ -1,13 +1,26 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
+
+const Button = styled.button`
+  background: none!important;
+  border: none;
+  padding: 0!important;
+  text-decoration: underline;
+  cursor: pointer;
+`;
 
 export default function HelpfulAnswerButton({ helpfulness }) {
   return (
-    <button type="button">
-      Helpful? Yes(
-      {helpfulness}
-      )
-    </button>
+    <>
+      Helpful?
+      {' '}
+      <Button onClick={() => console.log('swag')}>
+        Yes(
+        {helpfulness}
+        )
+      </Button>
+    </>
   );
 }
 

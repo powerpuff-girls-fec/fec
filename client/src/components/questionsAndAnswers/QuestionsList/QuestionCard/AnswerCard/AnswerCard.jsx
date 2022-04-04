@@ -6,16 +6,24 @@ import HelpfulAnswerButton from './HelpfulAnswerButton';
 import ReportAnswerButton from './ReportAnswerButton';
 
 export default function AnswerCard({ answer }) {
+  const dateObj = new Date(answer.date);
+  const dateOptions = { year: 'numeric', month: 'long', day: 'numeric' };
+  const dateString = dateObj.toLocaleDateString('en-US', dateOptions);
+
   return (
     <div>
       {answer.body}
       <AnswerCardPhotos photos={answer.photos} />
       <div>
         by
-        {answer.answerer_name}
+        {' '}
+        {answer.answerer_name === 'Seller' ? <b>Seller</b> : answer.answerer_name}
         ,
-        {answer.date}
+        {' '}
+        {dateString}
+        {'  |  '}
         <HelpfulAnswerButton helpfulness={answer.helpfulness} />
+        {'  |  '}
         <ReportAnswerButton />
       </div>
     </div>

@@ -20,7 +20,25 @@ const QuestionLevelButtons = styled.div`
   min-height: 10px;
 `;
 
+const compare = function compare(a, b) {
+  if (a.answerer_name === 'Seller') {
+    return 1;
+  }
+  if (b.answerer_name === 'Seller') {
+    return -1;
+  }
+  return a.helpfulness - b.helpfulness;
+};
+
 export default function QuestionsCard({ questionObj }) {
+  // answersArray addresses the problem of wanting to show answers in the order of 'helpfulness'.
+  // Any answer from the seller appears first (see compare function above)
+  const answersArray = [];
+  for (let i = 0; i < Object.keys(questionObj.answers).length; i += 1) {
+    answersArray.push(questionObj.answers[Object.keys(questionObj.answers)[i]]);
+  }
+  answersArray.sort(compare).reverse();
+
   return (
     <div>
       <Container>
@@ -33,7 +51,10 @@ export default function QuestionsCard({ questionObj }) {
           <AddAnswer />
         </QuestionLevelButtons>
       </Container>
-      <AnswersList answers={questionObj.answers} />
+      <Container>
+        A:
+        <AnswersList answers={answersArray} />
+      </Container>
     </div>
   );
 }
