@@ -27,7 +27,7 @@ export default function AddToCart({index, styles, createCartTicket}) {
   const [styleSizes, setStyleSizes] = useState(compiledStyles[0]);
   const [styleQuantities, setStyleQuantities] = useState(compiledStyles[1]);
   const [selectedSize, setSelectedSize] = useState('-');
-  const [selectedQuantity, setSelectedQuantity] = useState(0);
+  const [selectedQuantity, setSelectedQuantity] = useState(1);
   const [quantityRange, setQuantityRange] = useState(['-']);
 
   if (styleID != styles[index].style_id) {
@@ -41,7 +41,9 @@ export default function AddToCart({index, styles, createCartTicket}) {
     setSelectedSize(styleSizes[index]);
 
     if (index === "Select Size") {
+      setSelectedSize('-');
       setQuantityRange(['-']);
+      setSelectedQuantity(0);
     } else {
       var maxPurchasable = 15, arrayOfQuantities = [];
       if (styleQuantities[index] < maxPurchasable) {
@@ -72,7 +74,7 @@ export default function AddToCart({index, styles, createCartTicket}) {
         <Size sizes={styleSizes} selectHandler={trackSizeSelection} />
         <Quantity quantity={quantityRange} selectHandler={trackQuantitySelection}/>
       </DropdownsContainer>
-      <AddButton handleSubmit={handleSubmit}/>
+      <AddButton selectedSize={selectedSize} handleSubmit={handleSubmit}/>
     </Container>
   )
 }

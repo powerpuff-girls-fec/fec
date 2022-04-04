@@ -24,7 +24,7 @@ const sampleProductStyles = {
                                   "size": "XS"
                         },
                         "38": {
-                                  "quantity": 16,
+                                  "quantity": 0,
                                   "size": "S"
                         },
                         "39": {
