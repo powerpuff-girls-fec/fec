@@ -22,7 +22,10 @@ const ShareButtons = styled.div`
   padding-top: 5px;
 `
 
-const Review = styled.div``
+const Review = styled.div`
+  display: flex;
+  flex-direction: row;
+`
 
 const onFacebookClick = () => {
   window.open('https://www.facebook.com/sharer','Facebook','height=550,width=660,resizable=1');
@@ -53,6 +56,7 @@ export default function ProductInformation(props) {
     <Container>
       <Review>
         <Stars stars={averageRating} />
+        <div>Read all reviews</div>
       </Review>
       <Category>{props.product.category}</Category>
       <Title>{props.product.name}</Title>
