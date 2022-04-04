@@ -46,19 +46,22 @@ const averageReviews = (reviews) => {
     total += reviews[key];
     count += 1;
   }
-  return total / count;
+  return [total / count, count];
 }
 
 export default function ProductInformation(props) {
 
-  const averageRating = averageReviews(props.review.ratings);
+  const ratingInfo = averageReviews(props.review.ratings);
+  const averageRating = ratingInfo[0];
+  const ratingCount = ratingInfo[1];
   const index = props.index;
 
   return(
     <Container>
       <Review>
         <Stars stars={averageRating} />
-        <div>Read all reviews</div>
+        {/* this link needs to be changed to the ratings section of the page.*/}
+        <div><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Read all {ratingCount} reviews</a></div>
       </Review>
       <Category>{props.product.category}</Category>
       <Title>{props.product.name}</Title>
