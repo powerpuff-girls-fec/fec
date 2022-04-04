@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import AnswerCard from './AnswerCard/AnswerCard';
 
 const AnswersListContainer = styled.div`
-  max-height: 500px;
+  max-height: 50%;
   overflow-y: scroll;
 `;
 

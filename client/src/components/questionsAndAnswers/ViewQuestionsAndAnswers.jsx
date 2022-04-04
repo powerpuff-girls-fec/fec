@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
 import QuestionSearch from './QuestionSearch';
 import QuestionsList from './QuestionsList/QuestionsList';
 
 const Container = styled.div`
-  height: 100%;
+  height: 50%;
   display: flex;
   flex-direction: column;
 `;
@@ -168,6 +168,18 @@ const questionsData = {
 };
 
 export default function ViewQuestionsAndAnswers() {
+  const [questionData, setQuestionData] = useState(questionsData);
+  const questionsAsked = questionsData.results.length;
+
+  if (questionsAsked === 0) {
+    return (
+      <Container>
+        <h1>QUESTIONS & ANSWERS</h1>
+        <QuestionsList results={questionsData.results} />
+      </Container>
+    );
+  }
+
   return (
     <Container>
       <h1>QUESTIONS & ANSWERS</h1>

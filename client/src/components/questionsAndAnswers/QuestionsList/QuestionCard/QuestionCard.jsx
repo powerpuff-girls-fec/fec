@@ -32,11 +32,12 @@ const compare = function compare(a, b) {
 
 export default function QuestionsCard({ questionObj }) {
   // answersArray addresses the problem of wanting to show answers in the order of 'helpfulness'.
-  // Any answer from the seller appears first (see compare function above)
   const answersArray = [];
   for (let i = 0; i < Object.keys(questionObj.answers).length; i += 1) {
     answersArray.push(questionObj.answers[Object.keys(questionObj.answers)[i]]);
   }
+  // Any answer from the seller appears first (see compare function above),
+  // then ascending order by helpfulness
   answersArray.sort(compare).reverse();
 
   return (

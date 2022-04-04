@@ -13,7 +13,13 @@ const QuestionsListContainer = styled.div`
 
 export default function QuestionsList({ results }) {
   const questionsAsked = results.length;
-  const [renderLength, setRenderLength] = useState(2);
+  const [renderLength, setRenderLength] = useState(4);
+
+  if (questionsAsked === 0) {
+    return (
+      <AddAQuestionButton />
+    );
+  }
 
   return (
     <>
