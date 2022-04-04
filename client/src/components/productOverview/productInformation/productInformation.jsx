@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import Facebook from './shareButtons/facebookShare.jsx';
 import Twitter from './shareButtons/twitterShare.jsx';
 import Pinterest from './shareButtons/pinterestShare.jsx';
+import Price from './prices.jsx';
 import Stars from './Stars.jsx';
 
 const Container = styled.div`
@@ -51,6 +52,7 @@ const averageReviews = (reviews) => {
 export default function ProductInformation(props) {
 
   const averageRating = averageReviews(props.review.ratings);
+  const index = props.index;
 
   return(
     <Container>
@@ -60,8 +62,7 @@ export default function ProductInformation(props) {
       </Review>
       <Category>{props.product.category}</Category>
       <Title>{props.product.name}</Title>
-      {/* price will need to deal with sales, need to see what that looks like */}
-      <div>{props.product.default_price}</div>
+      <Price styles={props.styles[index]}/>
       <div>{props.product.description}</div>
       <ShareButtons>
         <Facebook clickHandler={onFacebookClick}/>

@@ -80,7 +80,7 @@ export default function ProductOverview() {
     <Container>
       <ImageGallery styles={productStylesList} index={index} />
       <RightColumn>
-        <ProductInformation product={productInfo} review={productReviews} />
+        <ProductInformation product={productInfo} review={productReviews} styles={productStylesList} index={index}/>
         <StyleSelector styles={productStylesList} handleIndexChange={handleIndexChange}/>
         <AddToCart styles={productStylesList} index={index} createCartTicket={createCartTicket}/>
       </RightColumn>

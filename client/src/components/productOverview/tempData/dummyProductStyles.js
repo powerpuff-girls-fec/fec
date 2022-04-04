@@ -5,7 +5,7 @@ const sampleProductStyles = {
               "style_id": 1,
               "name": "blue",
               "original_price": "140",
-              "sale_price": "0",
+              "sale_price": "140",
               "default?": true,
               "photos": [
                       {
@@ -38,7 +38,7 @@ const sampleProductStyles = {
           "style_id": 2,
           "name": "red",
           "original_price": "140",
-          "sale_price": "0",
+          "sale_price": "75",
           "default?": false,
           "photos": [
                       {
