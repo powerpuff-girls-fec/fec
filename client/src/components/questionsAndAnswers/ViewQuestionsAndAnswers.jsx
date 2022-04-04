@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
+import axios from 'axios';
 
 import QuestionSearch from './QuestionSearch';
 import QuestionsList from './QuestionsList/QuestionsList';
@@ -10,7 +11,7 @@ const Container = styled.div`
   flex-direction: column;
 `;
 
-const questionsData = {
+const questionData = {
   product_id: '65631',
   results: [
     {
@@ -168,14 +169,25 @@ const questionsData = {
 };
 
 export default function ViewQuestionsAndAnswers() {
-  const [questionData, setQuestionData] = useState(questionsData);
-  const questionsAsked = questionsData.results.length;
+  const [questionsData, setQuestionData] = useState(questionData.results);
+  const questionsAsked = questionsData.length;
+
+  // useEffect(() => {
+  //   axios.get('http://localhost3000/api/questions')
+  //     .then((result) => {
+  //       console.log(result)
+  //       setQuestionData(result);
+  //     })
+  //     .catch((error) => console.log(error));
+  // }, []);
+
+  console.log(questionsData);
 
   if (questionsAsked === 0) {
     return (
       <Container>
         <h1>QUESTIONS & ANSWERS</h1>
-        <QuestionsList results={questionsData.results} />
+        <QuestionsList results={questionsData} />
       </Container>
     );
   }
@@ -183,8 +195,8 @@ export default function ViewQuestionsAndAnswers() {
   return (
     <Container>
       <h1>QUESTIONS & ANSWERS</h1>
-      <QuestionSearch />
-      <QuestionsList results={questionsData.results} />
+      <QuestionSearch setQuestionData={setQuestionData} />
+      <QuestionsList results={questionsData} />
     </Container>
   );
 }

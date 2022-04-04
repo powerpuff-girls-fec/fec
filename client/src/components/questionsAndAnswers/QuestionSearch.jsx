@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 
-export default function QuestionSearch() {
-  const [searchTerm, setSearchTerm] = useState('');
+export default function QuestionSearch({ setQuestionData }) {
+  const [searchTerm, setSearchTerm] = useState('Have a question? Search for Answers');
   console.log(searchTerm);
   return (
     <input
-      defaultValue="Have a question? Search for Answers"
-      value={searchTerm}
-      onChange={(e) => (setSearchTerm(e.target.value))}
+      placeholder="Have a question? Search for Answers"
+      onChange={(e) => {
+        e.preventDefault();
+        setSearchTerm(e.target.value)}}
     />
   );
 }
