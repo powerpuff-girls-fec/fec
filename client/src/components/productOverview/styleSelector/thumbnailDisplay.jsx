@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import styled from 'styled-components';
+import Checkmark from './checkmark.jsx';
 
 const ThumbnailContainer = styled.div`
   border-style: solid;
@@ -12,10 +13,19 @@ const ThumbnailBubble = styled.img`
   height: 50px;
 `
 
-export default function Thumbnail({ url, clickHandler }) {
-  return(
-    <ThumbnailContainer>
-      <ThumbnailBubble src={url} onClick={() => {clickHandler(url)}} />
-    </ThumbnailContainer>
-  )
+export default function Thumbnail({ url, id, checkIndex, clickHandler }) {
+  if (id === checkIndex) {
+    return(
+      <ThumbnailContainer onClick={() => {clickHandler(url)}}>
+        <Checkmark />
+        <ThumbnailBubble src={url} />
+      </ThumbnailContainer>
+    )
+  } else {
+    return(
+      <ThumbnailContainer onClick={() => {clickHandler(url)}}>
+        <ThumbnailBubble src={url} />
+      </ThumbnailContainer>
+    )
+  }
 }
