@@ -2,14 +2,17 @@ import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import Thumbnail from './thumbnailDisplay.jsx';
 
-const Container = styled.div``
+const Container = styled.div`
+  height: 100%;
+  width: 100%;
+  border: 1px solid black;
+`
 
 const StyleName = styled.div``
 
 const ThumbnailWrapper = styled.div`
-  display: flex;
-  flex-direction: row;
-  padding-top: 5px;
+  display: grid;
+  grid-template-columns: 25% 25% 25% 25%;
 `
 
 const compileStyles = (styles) => {

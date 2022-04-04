@@ -2,7 +2,8 @@ import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
 const ThumbnailContainer = styled.div`
-  width: 50px;
+  border-style: solid;
+  flex-grow: 1;
   height: 50px;
 `
 

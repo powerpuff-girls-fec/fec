@@ -123,7 +123,7 @@ const sampleProductStyles = {
     },
     {
         "style_id": 5,
-        "name": "red",
+        "name": "also red",
         "original_price": "140",
         "sale_price": "75",
         "default?": false,
