@@ -9,7 +9,7 @@ const ListContainer = styled.div`
   padding: 0.5em 0.75em 0.5em 0.75em;
 `;
 
-export default function FactorList({ ratings }) {
+export default function BreakdownList({ ratings }) {
   return (
     <ListContainer>
       {[5, 4, 3, 2, 1].map((stars) => (
@@ -23,13 +23,13 @@ export default function FactorList({ ratings }) {
   );
 }
 
-FactorList.propTypes = {
+BreakdownList.propTypes = {
   ratings: PropTypes.shape({
-    1: PropTypes.number,
-    2: PropTypes.number,
-    3: PropTypes.number,
-    4: PropTypes.number,
-    5: PropTypes.number,
+    1: PropTypes.string,
+    2: PropTypes.string,
+    3: PropTypes.string,
+    4: PropTypes.string,
+    5: PropTypes.string,
     total: PropTypes.number.isRequired,
   }).isRequired,
 };

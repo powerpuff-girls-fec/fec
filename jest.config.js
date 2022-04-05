@@ -19,7 +19,7 @@ module.exports = {
   // Indicates whether the coverage information should be collected while executing the test
   collectCoverage: true,
 
-  // An array of glob patterns indicating a set of files 
+  // An array of glob patterns indicating a set of files
   // for which coverage information should be collected
   // collectCoverageFrom: undefined,
 
@@ -27,9 +27,9 @@ module.exports = {
   coverageDirectory: 'coverage',
 
   // An array of regexp pattern strings used to skip coverage collection
-  // coveragePathIgnorePatterns: [
-  //   "/node_modules/"
-  // ],
+  coveragePathIgnorePatterns: [
+    '/node_modules/',
+  ],
 
   // Indicates which provider should be used to instrument code for coverage
   // coverageProvider: "babel",
@@ -54,7 +54,7 @@ module.exports = {
   // Force coverage collection from ignored files using an array of glob patterns
   // forceCoverageMatch: [],
 
-  // A path to a module which exports an async function 
+  // A path to a module which exports an async function
   // that is triggered once before all test suites
   // globalSetup: undefined,
 

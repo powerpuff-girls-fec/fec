@@ -6,7 +6,7 @@ export default function App() {
   return (
     <>
       <h1>ppg yoy</h1>
-      <Reviews />
+      <Reviews productId={65631} />
     </>
   );
 }

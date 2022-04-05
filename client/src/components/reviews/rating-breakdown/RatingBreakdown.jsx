@@ -14,11 +14,11 @@ const Container = styled.div`
 
 function getRatingsStats(ratings) {
   const ratingsArray = [
-    ratings[1] || 0,
-    ratings[2] || 0,
-    ratings[3] || 0,
-    ratings[4] || 0,
-    ratings[5] || 0,
+    Number(ratings[1]) || 0,
+    Number(ratings[2]) || 0,
+    Number(ratings[3]) || 0,
+    Number(ratings[4]) || 0,
+    Number(ratings[5]) || 0,
   ];
 
   const out = {
@@ -51,18 +51,53 @@ export default function RatingBreakdown({ metadata }) {
 
 RatingBreakdown.propTypes = {
   metadata: PropTypes.shape({
-    product_id: PropTypes.number.isRequired,
+    product_id: PropTypes.string,
     ratings: PropTypes.shape({
-      1: PropTypes.number,
-      2: PropTypes.number,
-      3: PropTypes.number,
-      4: PropTypes.number,
-      5: PropTypes.number,
-    }).isRequired,
+      1: PropTypes.string,
+      2: PropTypes.string,
+      3: PropTypes.string,
+      4: PropTypes.string,
+      5: PropTypes.string,
+    }),
     recommended: PropTypes.shape({
-      true: PropTypes.number.isRequired,
-      false: PropTypes.number.isRequired,
-    }).isRequired,
-    characteristics: PropTypes.object.isRequired,
-  }).isRequired,
+      true: PropTypes.string,
+      false: PropTypes.string,
+    }),
+    characteristics: PropTypes.object,
+  }),
+};
+
+RatingBreakdown.defaultProps = {
+  metadata: {
+    product_id: '0',
+    ratings: {
+      1: '0',
+      2: '0',
+      3: '0',
+      4: '0',
+      5: '0',
+    },
+    recommended: {
+      false: '0',
+      true: '0',
+    },
+    characteristics: {
+      Fit: {
+        id: '220230',
+        value: '4.9393939393939394',
+      },
+      Length: {
+        id: '220231',
+        value: '4.9090909090909091',
+      },
+      Comfort: {
+        id: '220232',
+        value: '5.0000000000000000',
+      },
+      Quality: {
+        id: '220233',
+        value: '4.9393939393939394',
+      },
+    },
+  },
 };

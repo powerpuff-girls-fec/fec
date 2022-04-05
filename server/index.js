@@ -16,7 +16,9 @@ const port = process.env.PORT || 3000;
 app.use(express.static(path.resolve(__dirname, '../client/dist')));
 
 /* Add your routes here */
-app.get('/api/reviews', routes.getReviews);
+app.get('/api/reviews/:product_id', routes.getReviews);
+
+app.get('/api/reviews/meta/:product_id', routes.getReviewMeta);
 
 app.listen(port);
 console.log(`Listening at http://localhost:${port}`);

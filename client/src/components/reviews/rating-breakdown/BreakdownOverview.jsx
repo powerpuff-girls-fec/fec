@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import styled from 'styled-components';
 
-import Stars from '../Stars';
+import Stars from '../../common/Stars';
 
 const Container = styled.div`
   display: flex;

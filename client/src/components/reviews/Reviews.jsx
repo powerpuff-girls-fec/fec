@@ -1,40 +1,11 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
+
+import axios from 'axios';
 
 import styled from 'styled-components';
 
 import RatingBreakdown from './rating-breakdown/RatingBreakdown';
-
-const exampleReviewMetadata = {
-  product_id: 65631,
-  ratings: {
-    1: 1,
-    3: 7,
-    4: 32,
-    5: 7,
-  },
-  recommended: {
-    false: 1,
-    true: 46,
-  },
-  characteristics: {
-    Fit: {
-      id: 220230,
-      value: '4.9393939393939394',
-    },
-    Length: {
-      id: 220231,
-      value: '4.9090909090909091',
-    },
-    Comfort: {
-      id: 220232,
-      value: '5.0000000000000000',
-    },
-    Quality: {
-      id: 220233,
-      value: '4.9393939393939394',
-    },
-  },
-};
 
 const Container = styled.div`
   width: 1000px;
@@ -46,10 +17,27 @@ const Container = styled.div`
   margin: auto;
 `;
 
-export default function Reviews() {
+export default function Reviews({ productId }) {
+  const [reviewMetadata, setReviewMetadata] = useState(undefined);
+  const [reviews, setReviews] = useState(undefined);
+
+  useEffect(() => {
+    axios.get(`api/reviews/meta/${productId}`)
+      .then((res) => res.data)
+      .then((data) => setReviewMetadata(data));
+
+    axios.get(`api/reviews/${productId}`)
+      .then((res) => res.data)
+      .then((data) => setReviews(data));
+  }, []);
+
   return (
     <Container>
-      <RatingBreakdown metadata={exampleReviewMetadata} />
+      <RatingBreakdown metadata={reviewMetadata} />
     </Container>
   );
 }
+
+Reviews.propTypes = {
+  productId: PropTypes.number.isRequired,
+};
