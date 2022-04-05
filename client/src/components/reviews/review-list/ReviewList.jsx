@@ -2,14 +2,14 @@ import React from 'react';
 
 import styled from 'styled-components';
 
-function ReviewList({ className }) {
+const ListWrapper = styled.div`
+  border-top: 1px solid grey;
+`;
+
+export default function ReviewList() {
   return (
-    <div className={className}>
+    <ListWrapper>
       <p>uwu</p>
-    </div>
+    </ListWrapper>
   );
 }
-
-export default styled(ReviewList)`
-  background-color: #000000
-`;

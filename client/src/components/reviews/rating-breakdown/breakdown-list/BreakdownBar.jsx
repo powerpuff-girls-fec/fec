@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 
 import styled from 'styled-components';
 
-const BreakdownBarContainer = styled.div`
+const Container = styled.div`
   display: flex;
 `;
 
-const BreakdownBarText = styled.div`
+const Text = styled.div`
   display: flex;
   justify-content: right;
   padding-right: 0.5em;
@@ -37,15 +37,15 @@ const PercentageBar = styled(Bar)`
 
 export default function BreakdownBar({ stars, percentage }) {
   return (
-    <BreakdownBarContainer>
-      <BreakdownBarText>
+    <Container>
+      <Text>
         {`${stars} stars`}
-      </BreakdownBarText>
+      </Text>
       <BarContainer>
         <Bar />
         <PercentageBar percentage={percentage} />
       </BarContainer>
-    </BreakdownBarContainer>
+    </Container>
   );
 }
 
