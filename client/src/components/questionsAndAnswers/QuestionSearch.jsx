@@ -23,21 +23,43 @@ export default function QuestionSearch({ setQuestionData, originalData }) {
 }
 
 QuestionSearch.propTypes = {
-  setQuestionData: PropTypes.func.isRequired,
+  setQuestionData: PropTypes.func,
   originalData: PropTypes.arrayOf(PropTypes.shape({
     answers: PropTypes.objectOf(PropTypes.shape({
-      answerer_name: PropTypes.string.isRequired,
-      body: PropTypes.string.isRequired,
-      date: PropTypes.string.isRequired,
-      helpfulness: PropTypes.number.isRequired,
-      id: PropTypes.number.isRequired,
-      photos: PropTypes.arrayOf(PropTypes.string.isRequired),
+      answerer_name: PropTypes.string,
+      body: PropTypes.string,
+      date: PropTypes.string,
+      helpfulness: PropTypes.number,
+      id: PropTypes.number,
+      photos: PropTypes.arrayOf(PropTypes.string),
     })),
-    asker_name: PropTypes.string.isRequired,
-    question_body: PropTypes.string.isRequired,
-    question_date: PropTypes.string.isRequired,
-    question_helpfulness: PropTypes.number.isRequired,
-    question_id: PropTypes.number.isRequired,
-    reported: PropTypes.bool.isRequired,
-  })).isRequired,
+    asker_name: PropTypes.string,
+    question_body: PropTypes.string,
+    question_date: PropTypes.string,
+    question_helpfulness: PropTypes.number,
+    question_id: PropTypes.number,
+    reported: PropTypes.bool,
+  })),
+};
+
+QuestionSearch.defaultProps = {
+  setQuestionData: () => {},
+  originalData: [{
+    answers: {
+      5361400: {
+        answerer_name: '',
+        body: '',
+        date: '',
+        helpfulness: 0,
+        id: 5361400,
+        photos: [],
+      },
+    },
+    asker_name: '',
+    question_body: '',
+    question_date: '',
+    question_helpfulness: 0,
+    question_id: 573868,
+    reported: false,
+  }],
 };
