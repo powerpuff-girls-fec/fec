@@ -19,7 +19,7 @@ module.exports = {
   // Indicates whether the coverage information should be collected while executing the test
   collectCoverage: true,
 
-  // An array of glob patterns indicating a set of files 
+  // An array of glob patterns indicating a set of files
   // for which coverage information should be collected
   // collectCoverageFrom: undefined,
 
@@ -54,7 +54,7 @@ module.exports = {
   // Force coverage collection from ignored files using an array of glob patterns
   // forceCoverageMatch: [],
 
-  // A path to a module which exports an async function 
+  // A path to a module which exports an async function
   // that is triggered once before all test suites
   // globalSetup: undefined,
 
@@ -71,9 +71,9 @@ module.exports = {
   // maxWorkers: "50%",
 
   // An array of directory names to be searched recursively up from the requiring module's location
-  // moduleDirectories: [
-  //   "node_modules"
-  // ],
+  moduleDirectories: [
+    "node_modules"
+  ],
 
   // An array of file extensions your modules use
   // moduleFileExtensions: [
