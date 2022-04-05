@@ -35,7 +35,7 @@ const StarWrapper = styled.div`
 
 export default function BreakdownOverview({ stars, percentage }) {
   return (
-    <Container className="Breakdown Overview">
+    <Container>
       <ContainerText>RATINGS & REVIEWS</ContainerText>
       <OverallRatings>
         {stars.toFixed(1)}

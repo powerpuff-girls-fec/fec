@@ -6,6 +6,7 @@ import axios from 'axios';
 import styled from 'styled-components';
 
 import RatingBreakdown from './rating-breakdown/RatingBreakdown';
+import ReviewList from './review-list/ReviewList';
 
 const Container = styled.div`
   width: 1000px;
@@ -34,6 +35,7 @@ export default function Reviews({ productId }) {
   return (
     <Container>
       <RatingBreakdown metadata={reviewMetadata} />
+      <ReviewList reviews={reviews} />
     </Container>
   );
 }

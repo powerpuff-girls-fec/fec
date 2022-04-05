@@ -37,11 +37,11 @@ const PercentageBar = styled(Bar)`
 
 export default function BreakdownBar({ stars, percentage }) {
   return (
-    <BreakdownBarContainer className="Bar Container">
-      <BreakdownBarText className="Star Text">
+    <BreakdownBarContainer>
+      <BreakdownBarText>
         {`${stars} stars`}
       </BreakdownBarText>
-      <BarContainer className="Percentage Bar">
+      <BarContainer>
         <Bar />
         <PercentageBar percentage={percentage} />
       </BarContainer>
