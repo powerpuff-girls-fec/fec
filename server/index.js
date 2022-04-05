@@ -17,6 +17,7 @@ app.use(express.static(path.resolve(__dirname, '../client/dist')));
 
 /* Add your routes here */
 app.get('/api/reviews', routes.getReviews);
+app.get('/api/reviews/meta', routes.getReviewsMeta);
 
 app.listen(port);
 console.log(`Listening at http://localhost:${port}`);

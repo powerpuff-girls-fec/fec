@@ -24,10 +24,6 @@ const RightColumn = styled.div`
   grid-template-rows: 2fr 1fr 1fr;
 `
 
-// this is jsut ripped from what sean did, consider altering:
-  // different url/endpoints for different request types
-  // separating into separate module
-  // making generic get function, just alter url put in
 // const getProductList = (url) => {
 //   const [productData, setProductData] = useState(productData);
 
@@ -35,25 +31,35 @@ const RightColumn = styled.div`
 //     axios.get(url)
 //     .then((result) => {
 //       setProductData(result);
+//       return productData;
 //     })
 //     .catch((err) => {
 //       console.log('err at getProductList ', err);
 //     })
 //   }, [url])
-
-//   return productData;
 // }
 
+const getReviewsMeta = (url) => {
+  const [reviewMeta, setReviewMeta] = useState(reviewMeta);
+
+  useEffect(() => {
+    axios.get(url)
+    .then((result) => {
+      console.log('result: ', result);
+      setReviewMeta(result);
+    })
+    .catch((err) => {
+      console.log('err at getReviewsMeta ', err);
+    })
+  }, []);
+
+  return reviewMeta;
+}
 
 export default function ProductOverview() {
-  // to refactor with database access, need to access product info, product styles, and product ratings
-    // image gallery needs styles list for urls
-    // product info needs product info for name, price, description, needs reviews for ratings
-    // style selector needs styles list for thumbnails
-    // add to cart needs product styles for sizes, quantities
   var productInfo = dummyPI;
   var productStylesList = dummyPS.results;
-  var productReviews = dummyRD;
+  var productReviews = getReviewsMeta('http://localhost3000/api/reviews/meta');
   const [index, setIndex] = useState(0);
 
   const handleIndexChange = (i) => {
@@ -74,7 +80,7 @@ export default function ProductOverview() {
   // console.log('product list: ', dummyPL);
   // console.log('product info: ', productInfo);
   // console.log('product styles: ', productStylesList);
-  // console.log('product reviews: ', productReviews)
+  console.log('product reviews: ', productReviews)
 
   return (
     <Container>
