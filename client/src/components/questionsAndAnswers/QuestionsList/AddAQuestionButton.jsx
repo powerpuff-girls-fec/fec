@@ -1,7 +1,12 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-export default function AddAQuestionButton() {
+export default function AddAQuestionButton({ openModal }) {
   return (
-    <button type="button">ADD A QUESTION</button>
+    <button onClick={openModal} type="button">ADD A QUESTION</button>
   );
 }
+
+AddAQuestionButton.propTypes = {
+  openModal: PropTypes.func.isRequired,
+};

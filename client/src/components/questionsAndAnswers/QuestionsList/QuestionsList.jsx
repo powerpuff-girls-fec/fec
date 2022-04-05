@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import QuestionCard from './QuestionCard/QuestionCard';
 import AddAQuestionButton from './AddAQuestionButton';
 import MoreAnsweredQuestionsButton from './MoreAnsweredQuestionsButton';
+import Modal from '../Modal';
 
 const QuestionsListContainer = styled.div`
   max-height: 500px;
@@ -14,15 +15,24 @@ const QuestionsListContainer = styled.div`
 export default function QuestionsList({ results }) {
   const questionsAsked = results.length;
   const [renderLength, setRenderLength] = useState(4);
+  const [showModal, setShowModal] = useState(false);
+
+  const openModal = () => {
+    setShowModal((prevState) => !prevState);
+  };
 
   if (questionsAsked === 0) {
     return (
-      <AddAQuestionButton />
+      <>
+        <AddAQuestionButton openModal={openModal} />
+        <Modal showModal={showModal} openModal={openModal} setShowModal={setShowModal} />
+      </>
     );
   }
 
   return (
     <>
+      <Modal showModal={showModal} openModal={openModal} setShowModal={setShowModal} />
       <QuestionsListContainer>
         <div>
           {results.slice(0, renderLength).map((questionObj) => (
@@ -34,7 +44,7 @@ export default function QuestionsList({ results }) {
         </div>
       </QuestionsListContainer>
       <div>
-        <AddAQuestionButton />
+        <AddAQuestionButton openModal={openModal} />
         {questionsAsked <= 2 || questionsAsked <= renderLength ? null : (
           <MoreAnsweredQuestionsButton
             setRenderLength={setRenderLength}
