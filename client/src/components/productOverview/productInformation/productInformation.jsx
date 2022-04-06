@@ -45,15 +45,21 @@ const onPinterestClick = () => {
 const averageReviews = (reviews) => {
   let total = 0;
   let count = 0;
+  const values = Object.values(reviews);
 
-  for (var key in reviews) {
-    total += reviews[key];
-    count += 1;
+  for (let i = 0; i < values.length; i += 1) {
+    const numberOfReviews = Number(values[i]);
+    const reviewRating = i + 1;
+    total += (numberOfReviews * reviewRating);
+    count += numberOfReviews;
   }
   return [total / count, count];
 };
 
-export default function ProductInformation({ product, review, styles, index }) {
+export default function ProductInformation({
+  product, review, styles, index,
+}) {
+  // console.log(styles);
   const ratingInfo = averageReviews(review.ratings);
   const averageRating = ratingInfo[0];
   const ratingCount = ratingInfo[1];
@@ -72,7 +78,7 @@ export default function ProductInformation({ product, review, styles, index }) {
       </Review>
       <Category>{product.category}</Category>
       <Title>{product.name}</Title>
-      <Price styles={styles[index]} />
+      <Price styles={styles.results[index]} />
       <div>{product.description}</div>
       <ShareButtons>
         <Facebook clickHandler={onFacebookClick} />

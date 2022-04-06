@@ -63,14 +63,14 @@ export default function ProductOverview({ productID }) {
 
   return (
     <Container>
-      <ImageGallery styles={productStylesList} index={index} />
+      {/* <ImageGallery styles={productStylesList} index={index} /> */}
       <RightColumn>
-        {/* <ProductInformation
+        <ProductInformation
           product={productInfo}
           review={reviewMeta}
           styles={productStylesList}
           index={index}
-        /> */}
+        />
         {/* <StyleSelector styles={productStylesList} handleIndexChange={handleIndexChange} /> */}
         {/* <AddToCart styles={productStylesList} index={index} createCartTicket={createCartTicket} /> */}
       </RightColumn>
