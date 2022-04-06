@@ -6,8 +6,8 @@ import Reviews from './reviews/Reviews';
 export default function App() {
   return (
     <>
-      <Reviews productId={65631} />
       <ViewQuestionsAndAnswers />
+      <Reviews productId={65631} />
     </>
   );
 }
