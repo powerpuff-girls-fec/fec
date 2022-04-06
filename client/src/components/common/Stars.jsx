@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const StarContainer = styled.div`
+  height: 1em;
   font-size: 1.5rem;
   display: flex;
 `;
@@ -16,9 +17,9 @@ const FullStar = styled(EmptyStar)`
   position: relative;
   top: -1em;
   width: ${({ fill }) => {
-    let out = Math.round((fill * 100) / 25) * 25;
+    const out = Math.round((fill * 100) / 25) * 25;
 
-    switch(out) {
+    switch (out) {
       case 75:
         return 60;
       case 25:
