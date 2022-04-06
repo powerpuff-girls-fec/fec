@@ -34,7 +34,7 @@ export default function Reviews({ productId }) {
   return (
     <Container>
       <RatingBreakdown metadata={reviewMetadata} />
-      <ReviewList reviews={reviews} />
+      <ReviewList reviews={(reviews) ? reviews.results : reviews} />
     </Container>
   );
 }
