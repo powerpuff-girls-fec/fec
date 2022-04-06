@@ -55,7 +55,15 @@ export default function StyleSelector({ styles, handleIndexChange }) {
         {currentName}
       </StyleName>
       <ThumbnailWrapper>
-        {stylesList.map((url, key) => <Thumbnail url={url} key={key} id={key} clickHandler={styleChangeHandler} checkIndex={currentCheckPosition} />)}
+        {stylesList.map((url, key) => (
+          <Thumbnail
+            url={url}
+            key={key}
+            id={key}
+            clickHandler={styleChangeHandler}
+            checkIndex={currentCheckPosition}
+          />
+        ))}
       </ThumbnailWrapper>
     </Container>
   );

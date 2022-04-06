@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const CarouselContainer = styled.div`
-  width: 100%;
+  width: 62%;
   display: flex;
   flex-direction: column;
 `;
@@ -25,8 +25,8 @@ const CarouselContent = styled.div`
   transition: all 250ms linear;
   -ms-overflow-style: none;
   scrollbar-width: none;
-  // width: 250px;
-  // height: 250px;
+  height: 500px;
+  width: 500px;
 
   > * {
     width: 100%;

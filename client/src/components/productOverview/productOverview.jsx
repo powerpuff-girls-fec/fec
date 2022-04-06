@@ -10,8 +10,8 @@ import AddToCart from './cart/addToCart';
 
 const Container = styled.div`
   display: grid;
+  height: 20%;
   width: 100%;
-  height: 10em;
   grid-template-columns: 4fr 3fr;
 `;
 
@@ -21,7 +21,6 @@ const RightColumn = styled.div`
 `;
 
 export default function ProductOverview({ productID }) {
-  // const url = 'http://localhost:3000/';
   const [index, setIndex] = useState(0);
   const [reviewMeta, setReviewMeta] = useState(undefined);
   const [productInfo, setProductInfo] = useState(undefined);
@@ -49,6 +48,7 @@ export default function ProductOverview({ productID }) {
     const selectedStyle = productStylesList.results[index].style_id;
     const currentTicket = ticketInfo;
     currentTicket.style = selectedStyle;
+    currentTicket.item = productID;
 
     console.log(currentTicket);
     // this is then posted to the database

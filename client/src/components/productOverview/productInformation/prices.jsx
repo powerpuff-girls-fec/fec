@@ -12,8 +12,8 @@ export default function Price({ styles }) {
       <div>{displayPrice}</div>
     );
   }
-  const displayPrice = `$, ${price}`;
-  const discountedDisplayPrice = `$, ${discountedPrice}`;
+  const displayPrice = `$${price}`;
+  const discountedDisplayPrice = `$${discountedPrice}`;
   return (
     <div>
       <div>

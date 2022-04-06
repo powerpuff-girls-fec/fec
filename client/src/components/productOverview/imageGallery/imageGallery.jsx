@@ -1,7 +1,12 @@
 import React from 'react';
+import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
 import Carousel from './carousel';
+
+const ImageComponent = styled.div`
+  padding-left: 200px;
+`;
 
 const compileImageList = (photos) => {
   const listOfPhotos = [];
@@ -15,11 +20,11 @@ export default function ImageGallery({ index, styles }) {
   const compiledImageList = compileImageList(styles.results[index].photos);
 
   return (
-    <div>
+    <ImageComponent>
       <Carousel>
         {compiledImageList.map((url, key) => <img src={url} key={key} alt="placeholder" />)}
       </Carousel>
-    </div>
+    </ImageComponent>
   );
 }
 
