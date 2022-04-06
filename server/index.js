@@ -20,5 +20,7 @@ app.get('/api/reviews/:product_id', routes.getReviews);
 
 app.get('/api/reviews/meta/:product_id', routes.getReviewMeta);
 
+app.get('/api/questions', routes.getQuestions);
+
 app.listen(port);
 console.log(`Listening at http://localhost:${port}`);

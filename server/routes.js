@@ -13,3 +13,9 @@ module.exports.getReviewMeta = (req, res) => {
     .then((result) => res.send(result.data))
     .catch((err) => res.send(`Error: ${err.message}`));
 };
+
+// GET /api/questions
+module.exports.getQuestions = (req, res) => {
+  handlers.getQuestions(65631)
+    .then((result) => res.send(result.data));
+};
