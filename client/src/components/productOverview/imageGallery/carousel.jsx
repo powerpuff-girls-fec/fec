@@ -36,7 +36,6 @@ const CarouselContent = styled.div`
 `;
 
 function Carousel({ children }) {
-  console.log(children);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [length, setLength] = useState(children.length);
 

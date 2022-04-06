@@ -63,7 +63,7 @@ export default function ProductOverview({ productID }) {
 
   return (
     <Container>
-      {/* <ImageGallery styles={productStylesList} index={index} /> */}
+      <ImageGallery styles={productStylesList} index={index} />
       <RightColumn>
         <ProductInformation
           product={productInfo}
@@ -71,8 +71,8 @@ export default function ProductOverview({ productID }) {
           styles={productStylesList}
           index={index}
         />
-        {/* <StyleSelector styles={productStylesList} handleIndexChange={handleIndexChange} /> */}
-        {/* <AddToCart styles={productStylesList} index={index} createCartTicket={createCartTicket} /> */}
+        <StyleSelector styles={productStylesList} handleIndexChange={handleIndexChange} />
+        <AddToCart styles={productStylesList} index={index} createCartTicket={createCartTicket} />
       </RightColumn>
     </Container>
   );

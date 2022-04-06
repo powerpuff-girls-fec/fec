@@ -17,7 +17,6 @@ const compileStyles = (styles) => {
   const styleQuantities = [];
 
   const values = Object.values(styles);
-  console.log(values);
 
   for (let i = 0; i < values.length; i += 1) {
     styleSizes.push(values[i].size);
