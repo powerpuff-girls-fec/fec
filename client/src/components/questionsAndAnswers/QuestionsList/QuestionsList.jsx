@@ -5,11 +5,11 @@ import styled from 'styled-components';
 import QuestionCard from './QuestionCard/QuestionCard';
 import AddAQuestionButton from './AddAQuestionButton';
 import MoreAnsweredQuestionsButton from './MoreAnsweredQuestionsButton';
-import Modal from '../Modal';
+import AddAQuestionModal from '../AddAQuestionModal';
 
 const QuestionsListContainer = styled.div`
   max-height: 500px;
-  overflow-y: scroll;
+  overflow-y: hidden;
 `;
 
 export default function QuestionsList({ results }) {
@@ -25,14 +25,18 @@ export default function QuestionsList({ results }) {
     return (
       <>
         <AddAQuestionButton openModal={openModal} />
-        <Modal showModal={showModal} openModal={openModal} setShowModal={setShowModal} />
+        <AddAQuestionModal
+          showModal={showModal}
+          openModal={openModal}
+          setShowModal={setShowModal}
+        />
       </>
     );
   }
 
   return (
     <>
-      <Modal showModal={showModal} openModal={openModal} setShowModal={setShowModal} />
+      <AddAQuestionModal showModal={showModal} openModal={openModal} setShowModal={setShowModal} />
       <QuestionsListContainer>
         <div>
           {results.slice(0, renderLength).map((questionObj) => (

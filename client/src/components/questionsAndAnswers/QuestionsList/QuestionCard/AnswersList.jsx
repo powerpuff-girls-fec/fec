@@ -6,7 +6,7 @@ import AnswerCard from './AnswerCard/AnswerCard';
 
 const AnswersListContainer = styled.div`
   max-height: 50%;
-  overflow-y: scroll;
+  overflow-y: hidden;
 `;
 
 export default function AnswersList({ answers }) {
