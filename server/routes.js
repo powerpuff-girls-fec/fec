@@ -40,3 +40,9 @@ module.exports.getProductStyles = (req, res) => {
     })
     .catch((err) => console.log(err.message));
 };
+
+module.exports.putHelpfulAnswer = (req, res) => {
+  handlers.putHelpfulAnswer(req.params.answer_id)
+    .then((result) => res.send(result.data))
+    .catch((err) => res.send(`Error: ${err.message}`));
+};

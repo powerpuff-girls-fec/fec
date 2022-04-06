@@ -22,6 +22,7 @@ app.get('/api/products/:product_id', routes.getProductInfo);
 app.get('/api/products/:product_id/styles', routes.getProductStyles);
 app.get('/api/reviews/:product_id', routes.getReviews);
 app.get('/api/questions/:product_id', routes.getQuestions);
+app.put('/api/answers/:answer_id/helpful', routes.putHelpfulAnswer);
 
 app.listen(port);
 console.log(`Listening at http://localhost:${port}`);

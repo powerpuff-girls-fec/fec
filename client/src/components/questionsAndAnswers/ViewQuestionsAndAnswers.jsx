@@ -7,7 +7,7 @@ import QuestionSearch from './QuestionSearch';
 import QuestionsList from './QuestionsList/QuestionsList';
 
 const Container = styled.div`
-  height: 50%;
+  height: 50vh;
   display: flex;
   flex-direction: column;
 `;

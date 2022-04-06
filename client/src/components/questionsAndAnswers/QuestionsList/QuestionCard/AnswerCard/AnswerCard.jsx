@@ -22,7 +22,7 @@ export default function AnswerCard({ answer }) {
         {' '}
         {dateString}
         {'  |  '}
-        <HelpfulAnswerButton helpfulness={answer.helpfulness} />
+        <HelpfulAnswerButton helpfulness={answer.helpfulness} answerId={answer.id} />
         {'  |  '}
         <ReportAnswerButton />
       </div>

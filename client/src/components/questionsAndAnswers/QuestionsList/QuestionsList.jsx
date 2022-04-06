@@ -9,7 +9,7 @@ import AddAQuestionModal from '../AddAQuestionModal';
 
 const QuestionsListContainer = styled.div`
   max-height: 500px;
-  overflow-y: hidden;
+  overflow-y: scroll;
 `;
 
 export default function QuestionsList({ results }) {
