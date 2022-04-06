@@ -37,7 +37,14 @@ export default function Review({ review }) {
         <Stars stars={review.rating} />
         <span style={{ color: 'rgb(130, 130, 130)' }}>
           {`${review.reviewer_name}, ${
-            new Date(review.date).toLocaleDateString(undefined, { month: 'long', day: 'numeric', year: 'numeric' })
+            new Date(review.date).toLocaleDateString(
+              undefined,
+              {
+                month: 'long',
+                day: 'numeric',
+                year: 'numeric',
+              },
+            )
           }`}
         </span>
       </Header>
@@ -45,8 +52,8 @@ export default function Review({ review }) {
       <div>{review.body}</div>
 
       {/* eslint-disable react/jsx-one-expression-per-line */}
-      {(review.response) ? <div style={{ paddingTop: '30px' }}><B>💬</B> {review.response}</div> : null}
       {(review.recommend) ? <div style={{ paddingTop: '30px' }}><B>🗸</B> I recommend this product</div> : null}
+      {(review.response) ? <div style={{ paddingTop: '30px' }}><B>💬</B> {review.response}</div> : null}
       {/* eslint-enable react/jsx-one-expression-per-line */}
 
     </Container>
