@@ -47,6 +47,12 @@ module.exports.putHelpfulAnswer = (req, res) => {
     .catch((err) => res.send(`Error: ${err.message}`));
 };
 
+module.exports.putHelpfulQuestion = (req, res) => {
+  handlers.putHelpfulQuestion(req.params.question_id)
+    .then((result) => res.send(result.data))
+    .catch((err) => res.send(`Error: ${err.message}`));
+};
+
 module.exports.putReportAnswer = (req, res) => {
   handlers.putReportAnswer(req.params.answer_id)
     .then((result) => res.send(result.data))

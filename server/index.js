@@ -23,6 +23,7 @@ app.get('/api/products/:product_id/styles', routes.getProductStyles);
 app.get('/api/reviews/:product_id', routes.getReviews);
 app.get('/api/questions/:product_id', routes.getQuestions);
 app.put('/api/answers/:answer_id/helpful', routes.putHelpfulAnswer);
+app.put('/api/questions/:question_id/helpful', routes.putHelpfulQuestion);
 app.put('/api/answers/:answer_id/report', routes.putReportAnswer);
 
 app.listen(port);

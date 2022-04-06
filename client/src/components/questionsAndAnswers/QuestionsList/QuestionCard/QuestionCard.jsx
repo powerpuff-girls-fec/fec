@@ -48,7 +48,10 @@ export default function QuestionsCard({ questionObj }) {
           {questionObj.question_body}
         </Question>
         <QuestionLevelButtons>
-          <HelpfulQuestionButton questionHelpfulness={questionObj.question_helpfulness} />
+          <HelpfulQuestionButton
+            questionHelpfulness={questionObj.question_helpfulness}
+            questionId={questionObj.question_id}
+          />
           <AddAnswer />
         </QuestionLevelButtons>
       </Container>
