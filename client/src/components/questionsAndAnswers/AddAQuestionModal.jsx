@@ -35,17 +35,6 @@ const ModalContent = styled.div`
   align-items: center;
   line-height: 1.8;
   color: #141414;
-
-  p {
-    margin-bottom: 1rem;
-  }
-
-  button {
-    padding: 10px 24px;
-    background: #141414;
-    color: #fff;
-    border: none;
-  }
 `;
 
 const FormContainer = styled.div`
@@ -102,6 +91,7 @@ export default function AddAQuestionModal({ showModal, setShowModal }) {
                 value={values.nickname}
                 onChange={handleChange}
               />
+              <div>For privacy reasons, do not use your full name or email address</div>
               <div>*Email</div>
               <input
                 name="email"
