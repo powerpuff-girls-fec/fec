@@ -8,6 +8,7 @@ module.exports = {
   extends: [
     'plugin:react/recommended',
     'airbnb',
+    'plugin:import/recommended',
   ],
   globals: {
     Atomics: 'readonly',
@@ -29,5 +30,15 @@ module.exports = {
     'no-console': 0,
     'react/no-array-index-key': 0,
     'react/forbid-prop-types': [2, { forbid: ['any'] }],
+  },
+  settings: {
+    'import/resolver': {
+      alias: {
+        map: [
+          ['common', './client/src/components/common'],
+        ],
+        extensions: ['.js', '.jsx'],
+      },
+    },
   },
 };
