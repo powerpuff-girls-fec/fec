@@ -25,6 +25,12 @@ const Summary = styled.div`
   padding-bottom: 30px;
 `;
 
+const Response = styled.div`
+  background-color: #c4c4c4;
+  border-radius: 1em;
+  padding: 1em;
+`;
+
 // eslint-disable-next-line react/prop-types
 function B({ children }) {
   return <span style={{ fontWeight: 'bold' }}>{children}</span>;
@@ -53,7 +59,7 @@ export default function Review({ review }) {
 
       {/* eslint-disable react/jsx-one-expression-per-line */}
       {(review.recommend) ? <div style={{ paddingTop: '30px' }}><B>🗸</B> I recommend this product</div> : null}
-      {(review.response) ? <div style={{ paddingTop: '30px' }}><B>💬</B> {review.response}</div> : null}
+      {(review.response) ? <Response style={{ paddingTop: '30px' }}><B>💬</B> {review.response}</Response> : null}
       {/* eslint-enable react/jsx-one-expression-per-line */}
 
     </Container>
