@@ -5,7 +5,7 @@ import Carousel from './carousel';
 
 const compileImageList = (photos) => {
   const listOfPhotos = [];
-  for (let i = 0; i < photos.length; i + 1) {
+  for (let i = 0; i < photos.length; i += 1) {
     listOfPhotos.push(photos[i].url);
   }
   return listOfPhotos;

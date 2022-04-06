@@ -1,23 +1,24 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const CarouselContainer = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-`
+`;
 
 const CarouselWrapper = styled.div`
   display: flex;
   width: 100%;
   position: relative;
-`
+`;
 
 const CarouselContentWrapper = styled.div`
   overflow: hidden;
   width: 100%;
   height: 100%;
-`
+`;
 
 const CarouselContent = styled.div`
   display: flex;
@@ -32,34 +33,34 @@ const CarouselContent = styled.div`
     flex-shrink: 0;
     flex-grow: 1;
   }
-`
+`;
 
-const Carousel = (props) => {
-  const { children } = props;
+function Carousel({ children }) {
+  console.log(children);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [length, setLength] = useState(children.length);
 
   useEffect(() => {
-    setLength(children.length)
-  }, [children])
+    setLength(children.length);
+  }, [children]);
 
   const next = () => {
     if (currentIndex < (length - 1)) {
-        setCurrentIndex(prevState => prevState + 1)
+      setCurrentIndex((prevState) => prevState + 1);
     }
-  }
+  };
 
   const prev = () => {
-      if (currentIndex > 0) {
-          setCurrentIndex(prevState => prevState - 1)
-      }
-  }
+    if (currentIndex > 0) {
+      setCurrentIndex((prevState) => prevState - 1);
+    }
+  };
 
   return (
     <div>
       <CarouselContainer>
         <CarouselWrapper>
-          <button onClick={() => prev()} className="left-arrow">
+          <button type="button" onClick={() => prev()} className="left-arrow">
             &lt;
           </button>
           <CarouselContentWrapper>
@@ -67,13 +68,21 @@ const Carousel = (props) => {
               {children}
             </CarouselContent>
           </CarouselContentWrapper>
-          <button onClick={() => next()} className="right-arrow">
+          <button type="button" onClick={() => next()} className="right-arrow">
             &gt;
           </button>
         </CarouselWrapper>
       </CarouselContainer>
     </div>
-  )
+  );
 }
 
 export default Carousel;
+
+Carousel.propTypes = {
+  children: PropTypes.arrayOf(PropTypes.shape()),
+};
+
+Carousel.defaultProps = {
+  children: [],
+};
