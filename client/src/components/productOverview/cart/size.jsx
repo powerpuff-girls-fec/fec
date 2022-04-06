@@ -1,16 +1,27 @@
-import { useState, useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
-const SizeContainer = styled.div``
+const SizeContainer = styled.div``;
 
-export default function Size(props) {
-  const selectHandler = props.selectHandler;
-  return(
+export default function Size({ selectHandler, sizes }) {
+  return (
     <SizeContainer>
-      <select name="sizes" onChange={() => {selectHandler(event)}}>
+      {/* eslint-disable-next-line no-restricted-globals */}
+      <select name="sizes" onChange={() => { selectHandler(event); }}>
         <option>Select Size</option>
-        {props.sizes.map((size, key) => <option value={key} key={key}>{size}</option>)}
+        {sizes.map((size, key) => <option value={key} key={key}>{size}</option>)}
       </select>
     </SizeContainer>
-  )
+  );
 }
+
+Size.propTypes = {
+  sizes: PropTypes.arrayOf(PropTypes.string),
+  selectHandler: PropTypes.func,
+};
+
+Size.defaultProps = {
+  sizes: [],
+  selectHandler: () => {},
+};

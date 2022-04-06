@@ -1,18 +1,30 @@
-import { useState, useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
-export default function AddButton({ selectedSize, available, handleSubmit }) {
+const Button = styled.button``;
+
+export default function AddButton({ selectedSize, handleSubmit }) {
   if (selectedSize === '-') {
     return (
       <form>
         <button type="submit" disabled>Add to Cart</button>
       </form>
-    )
-  } else {
-    return(
-      <form onSubmit={() => {handleSubmit()}}>
-        <button type="submit">Add to Cart</button>
-      </form>
-    )
+    );
   }
+  return (
+    <form onSubmit={() => { handleSubmit(); }}>
+      <Button type="submit">Add to Cart</Button>
+    </form>
+  );
 }
+
+AddButton.propTypes = {
+  selectedSize: PropTypes.string,
+  handleSubmit: PropTypes.func,
+};
+
+AddButton.defaultProps = {
+  selectedSize: '-',
+  handleSubmit: () => {},
+};

@@ -4,7 +4,7 @@ import ProductOverview from './productOverview/productOverview.jsx'
 export default function App() {
   return (
     <>
-      <ProductOverview />
+      <ProductOverview productID={65631} />
     </>
   );
 }

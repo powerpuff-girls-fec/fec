@@ -1,80 +1,133 @@
-import { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
-import Size from './size.jsx';
-import Quantity from './quantity.jsx'
-import AddButton from './addToCartButton.jsx';
+import PropTypes from 'prop-types';
+import Size from './size';
+import Quantity from './quantity';
+import AddButton from './addToCartButton';
 
-const Container = styled.div``
+const Container = styled.div``;
 
 const DropdownsContainer = styled.div`
   display: flex;
   flex-direction: row;
-`
+`;
 
 const compileStyles = (styles) => {
-  let styleSizes = [], styleQuantities = [];
-  for (let key in styles) {
-    styleSizes.push(styles[key].size);
-    styleQuantities.push(styles[key].quantity);
+  const styleSizes = [];
+  const styleQuantities = [];
+
+  const values = Object.values(styles);
+  console.log(values);
+
+  for (let i = 0; i < values.length; i + 1) {
+    styleSizes.push(values[i].size);
+    styleQuantities.push(values[i].quantity);
   }
+  console.log('sizes', styleSizes);
   return [styleSizes, styleQuantities];
-}
+};
 
-export default function AddToCart({index, styles, createCartTicket}) {
-  const compiledStyles = compileStyles(styles[index].skus);
+export default function AddToCart({ index, styles, createCartTicket }) {
+  // console.log('styles', styles);
+  const compiledStyles = compileStyles(styles.results[index].skus);
+  let maxPurchasable = 15;
+  const arrayOfQuantities = [];
+  let ticketInfo = [];
 
-  const [styleID, setStyleID] = useState(styles[index].style_id);
+  const [styleID, setStyleID] = useState(styles.results[index].style_id);
   const [styleSizes, setStyleSizes] = useState(compiledStyles[0]);
   const [styleQuantities, setStyleQuantities] = useState(compiledStyles[1]);
   const [selectedSize, setSelectedSize] = useState('-');
   const [selectedQuantity, setSelectedQuantity] = useState(1);
   const [quantityRange, setQuantityRange] = useState(['-']);
 
-  if (styleID != styles[index].style_id) {
-    setStyleID(styles[index].style_id);
+  if (styleID !== styles.results[index].style_id) {
+    setStyleID(styles.results[index].style_id);
     setStyleSizes(compiledStyles[0]);
     setStyleQuantities(compiledStyles[1]);
   }
 
   const trackSizeSelection = (event) => {
-    var index = event.target.value;
-    setSelectedSize(styleSizes[index]);
+    const indexOfSelection = event.target.value;
+    setSelectedSize(styleSizes[indexOfSelection]);
 
-    if (index === "Select Size") {
+    if (indexOfSelection === 'Select Size') {
       setSelectedSize('-');
       setQuantityRange(['-']);
       setSelectedQuantity(0);
     } else {
-      var maxPurchasable = 15, arrayOfQuantities = [];
       if (styleQuantities[index] < maxPurchasable) {
-        maxPurchasable = styleQuantities[index];
+        maxPurchasable = styleQuantities[indexOfSelection];
       }
 
-      for (let i = 1; i <= maxPurchasable; i++) {
+      for (let i = 1; i <= maxPurchasable; i + 1) {
         arrayOfQuantities.push(i);
       }
       setQuantityRange(arrayOfQuantities);
     }
-  }
+  };
 
   const trackQuantitySelection = (event) => {
     setSelectedQuantity(event.target.value);
-  }
+  };
 
   const handleSubmit = () => {
-    event.preventDefault();
-
-    var ticketInfo = {size: selectedSize, quantity: selectedQuantity}
+    ticketInfo = { size: selectedSize, quantity: selectedQuantity };
     createCartTicket(ticketInfo);
-  }
+  };
 
-  return(
+  return (
     <Container>
       <DropdownsContainer>
         <Size sizes={styleSizes} selectHandler={trackSizeSelection} />
-        <Quantity quantity={quantityRange} selectHandler={trackQuantitySelection}/>
+        <Quantity quantity={quantityRange} selectHandler={trackQuantitySelection} />
       </DropdownsContainer>
-      <AddButton selectedSize={selectedSize} handleSubmit={handleSubmit}/>
+      <AddButton selectedSize={selectedSize} handleSubmit={handleSubmit} />
     </Container>
-  )
+  );
 }
+
+AddToCart.propTypes = {
+  index: PropTypes.number,
+  styles: PropTypes.shape({
+    product_id: PropTypes.string,
+    results: PropTypes.arrayOf(PropTypes.shape({
+      style_id: PropTypes.number,
+      name: PropTypes.string,
+      original_price: PropTypes.string,
+      sale_price: PropTypes.string,
+      default: PropTypes.bool,
+      photos: PropTypes.arrayOf(PropTypes.shape({
+        thumbnail_url: PropTypes.string,
+        url: PropTypes.string,
+      })),
+      skus: PropTypes.shape({}),
+    })),
+  }),
+  createCartTicket: PropTypes.func,
+};
+
+AddToCart.defaultProps = {
+  index: 0,
+  styles: {
+    product_id: '',
+    results: [{
+      style_id: 0,
+      name: '',
+      original_price: '0',
+      sale_price: '0',
+      default: false,
+      photos: [{
+        thumbnail_url: '',
+        url: '',
+      }],
+      skus: {
+        2352322: {
+          quantity: 0,
+          size: '',
+        },
+      },
+    }],
+  },
+  createCartTicket: () => {},
+};

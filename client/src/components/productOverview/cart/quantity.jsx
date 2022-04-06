@@ -1,26 +1,35 @@
-import { useState, useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
-const QuantityContainer = styled.div``
+const QuantityContainer = styled.div``;
 
-export default function Quantity(props) {
-  const selectHandler = props.selectHandler;
-
-  if (props.quantity[0] === '-') {
-    return(
+export default function Quantity({ selectHandler, quantity }) {
+  if (quantity[0] === '-') {
+    return (
       <QuantityContainer>
         <select name="quantity" disabled>
           <option>-</option>
         </select>
       </QuantityContainer>
-    )
-  } else {
-    return(
-      <QuantityContainer>
-        <select name="quantity" onChange={() => {selectHandler(event)}}>
-          {props.quantity.map((quantity, key) => <option value={quantity} key={key}>{quantity}</option>)}
-        </select>
-      </QuantityContainer>
-    )
+    );
   }
+  return (
+    <QuantityContainer>
+      {/* eslint-disable-next-line no-restricted-globals */}
+      <select name="quantity" onChange={() => { selectHandler(event); }}>
+        {quantity.map((number, key) => <option value={number} key={key}>{number}</option>)}
+      </select>
+    </QuantityContainer>
+  );
 }
+
+Quantity.propTypes = {
+  quantity: PropTypes.arrayOf(PropTypes.string),
+  selectHandler: PropTypes.func,
+};
+
+Quantity.defaultProps = {
+  quantity: [],
+  selectHandler: () => {},
+};
