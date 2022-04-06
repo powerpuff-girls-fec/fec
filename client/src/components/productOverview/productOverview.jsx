@@ -57,10 +57,6 @@ export default function ProductOverview({ productID }) {
     // to best suite our needs
   };
 
-  // console.log('product info: ', productInfo);
-  // console.log('product styles: ', productStylesList);
-  // console.log('product reviews: ', reviewMeta);
-
   return (
     <Container>
       <ImageGallery styles={productStylesList} index={index} />
