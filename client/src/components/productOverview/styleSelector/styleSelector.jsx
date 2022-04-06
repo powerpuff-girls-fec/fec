@@ -20,7 +20,7 @@ const ThumbnailWrapper = styled.div`
 const compileStyles = (styles) => {
   const styleUrls = [];
   const styleNames = [];
-  for (let i = 0; i < styles.length; i + 1) {
+  for (let i = 0; i < styles.length; i += 1) {
     styleUrls.push(styles[i].photos[0].thumbnail_url);
     styleNames.push(styles[i].name);
   }
@@ -28,8 +28,7 @@ const compileStyles = (styles) => {
 };
 
 export default function StyleSelector({ styles, handleIndexChange }) {
-  console.log(styles);
-  const stylesInfo = compileStyles(styles);
+  const stylesInfo = compileStyles(styles.results);
   const stylesList = stylesInfo[0];
   const stylesNames = stylesInfo[1];
 
@@ -38,7 +37,8 @@ export default function StyleSelector({ styles, handleIndexChange }) {
   const [currentName, setCurrentName] = useState(stylesNames[0]);
 
   const styleChangeHandler = (url) => {
-    for (let i = 0; i < stylesList.length; i + 1) {
+    console.log(url);
+    for (let i = 0; i < stylesList.length; i += 1) {
       if (stylesList[i] === url) {
         if (stylesList[i] !== currentStyle) {
           setCurrentStyle(stylesList[i]);
@@ -48,7 +48,7 @@ export default function StyleSelector({ styles, handleIndexChange }) {
         }
       }
     }
-  }
+  };
 
   return (
     <Container>
@@ -56,11 +56,7 @@ export default function StyleSelector({ styles, handleIndexChange }) {
         {currentName}
       </StyleName>
       <ThumbnailWrapper>
-        {stylesList.map((url, key) => {
-          return (
-            <Thumbnail url={url} key={key} id={key} clickHandler={styleChangeHandler} checkIndex={currentCheckPosition}/>
-          )
-        })}
+        {stylesList.map((url, key) => <Thumbnail url={url} key={key} id={key} clickHandler={styleChangeHandler} checkIndex={currentCheckPosition} />)}
       </ThumbnailWrapper>
     </Container>
   );
