@@ -24,7 +24,7 @@ export default function AnswerCard({ answer }) {
         {'  |  '}
         <HelpfulAnswerButton helpfulness={answer.helpfulness} answerId={answer.id} />
         {'  |  '}
-        <ReportAnswerButton />
+        <ReportAnswerButton answerId={answer.id} />
       </div>
     </div>
   );

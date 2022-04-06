@@ -14,4 +14,5 @@ module.exports = {
   getProductStyles: (id) => axios.get(`https://${path.join(apiPath, `products/${id}/styles`)}`),
   getQuestions: (id) => axios.get(`https://${path.join(apiPath, 'qa/questions')}`, { params: { product_id: id } }),
   putHelpfulAnswer: (id) => axios.put(`https://${path.join(apiPath, `qa/answers/${id}/helpful`)}`, { params: { answer_id: id } }),
+  putReportAnswer: (id) => axios.put(`https://${path.join(apiPath, `/qa/answers/${id}/report`)}`, { params: { answer_id: id } }),
 };
