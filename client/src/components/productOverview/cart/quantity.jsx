@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 const QuantityContainer = styled.div``;
 
 export default function Quantity({ selectHandler, quantity }) {
-  if (quantity[0] === '-') {
+  if (quantity[0] === -1) {
     return (
       <QuantityContainer>
         <select name="quantity" disabled>
@@ -25,11 +25,11 @@ export default function Quantity({ selectHandler, quantity }) {
 }
 
 Quantity.propTypes = {
-  quantity: PropTypes.arrayOf(PropTypes.string),
+  quantity: PropTypes.arrayOf(PropTypes.number),
   selectHandler: PropTypes.func,
 };
 
 Quantity.defaultProps = {
-  quantity: [],
+  quantity: [-1],
   selectHandler: () => {},
 };

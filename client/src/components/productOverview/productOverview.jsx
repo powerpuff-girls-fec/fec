@@ -46,7 +46,7 @@ export default function ProductOverview({ productID }) {
   };
 
   const createCartTicket = (ticketInfo) => {
-    const selectedStyle = productStylesList[index].style_id;
+    const selectedStyle = productStylesList.results[index].style_id;
     const currentTicket = ticketInfo;
     currentTicket.style = selectedStyle;
 

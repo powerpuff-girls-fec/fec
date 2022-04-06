@@ -13,9 +13,12 @@ export default function AddButton({ selectedSize, handleSubmit }) {
     );
   }
   return (
-    <form onSubmit={() => { handleSubmit(); }}>
-      <Button type="submit">Add to Cart</Button>
-    </form>
+    <div>
+      {/* eslint-disable-next-line no-restricted-globals */}
+      <form onSubmit={() => { handleSubmit(event); }}>
+        <Button type="submit">Add to Cart</Button>
+      </form>
+    </div>
   );
 }
 

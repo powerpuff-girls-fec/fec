@@ -19,16 +19,14 @@ const compileStyles = (styles) => {
   const values = Object.values(styles);
   console.log(values);
 
-  for (let i = 0; i < values.length; i + 1) {
+  for (let i = 0; i < values.length; i += 1) {
     styleSizes.push(values[i].size);
     styleQuantities.push(values[i].quantity);
   }
-  console.log('sizes', styleSizes);
   return [styleSizes, styleQuantities];
 };
 
 export default function AddToCart({ index, styles, createCartTicket }) {
-  // console.log('styles', styles);
   const compiledStyles = compileStyles(styles.results[index].skus);
   let maxPurchasable = 15;
   const arrayOfQuantities = [];
@@ -39,7 +37,7 @@ export default function AddToCart({ index, styles, createCartTicket }) {
   const [styleQuantities, setStyleQuantities] = useState(compiledStyles[1]);
   const [selectedSize, setSelectedSize] = useState('-');
   const [selectedQuantity, setSelectedQuantity] = useState(1);
-  const [quantityRange, setQuantityRange] = useState(['-']);
+  const [quantityRange, setQuantityRange] = useState([-1]);
 
   if (styleID !== styles.results[index].style_id) {
     setStyleID(styles.results[index].style_id);
@@ -53,14 +51,14 @@ export default function AddToCart({ index, styles, createCartTicket }) {
 
     if (indexOfSelection === 'Select Size') {
       setSelectedSize('-');
-      setQuantityRange(['-']);
+      setQuantityRange([-1]);
       setSelectedQuantity(0);
     } else {
       if (styleQuantities[index] < maxPurchasable) {
         maxPurchasable = styleQuantities[indexOfSelection];
       }
 
-      for (let i = 1; i <= maxPurchasable; i + 1) {
+      for (let i = 1; i <= maxPurchasable; i += 1) {
         arrayOfQuantities.push(i);
       }
       setQuantityRange(arrayOfQuantities);
@@ -71,7 +69,8 @@ export default function AddToCart({ index, styles, createCartTicket }) {
     setSelectedQuantity(event.target.value);
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = (event) => {
+    event.preventDefault();
     ticketInfo = { size: selectedSize, quantity: selectedQuantity };
     createCartTicket(ticketInfo);
   };
