@@ -10,5 +10,8 @@ const apiPath = 'app-hrsei-api.herokuapp.com/api/fec2/rfp/';
 module.exports = {
   // GET /api/reviews
   getReviews: (id) => axios.get(`https://${path.join(apiPath, 'reviews')}`, { params: { product_id: id } }),
+
+  getReviewMeta: (id) => axios.get(`https://${path.join(apiPath, 'reviews/meta')}`, { params: { product_id: id } }),
+
   getQuestions: (id) => axios.get(`https://${path.join(apiPath, 'qa/questions')}`, { params: { product_id: id } }),
 };
