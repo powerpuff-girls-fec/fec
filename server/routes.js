@@ -9,8 +9,9 @@ module.exports.getReviews = (req, res) => {
 
 // GET /api/questions
 module.exports.getQuestions = (req, res) => {
-  handlers.getQuestions(65631)
-    .then((result) => res.send(result.data));
+  handlers.getQuestions(req.params.product_id)
+    .then((result) => res.send(result.data))
+    .catch((err) => res.send(`Error: ${err.message}`));
 };
 
 module.exports.getReviewsMeta = (req, res) => {

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
+import PropTypes from 'prop-types';
 
 import QuestionSearch from './QuestionSearch';
 import QuestionsList from './QuestionsList/QuestionsList';
@@ -11,11 +12,11 @@ const Container = styled.div`
   flex-direction: column;
 `;
 
-export default function ViewQuestionsAndAnswers() {
+export default function ViewQuestionsAndAnswers({ productId }) {
   const [questionsData, setQuestionData] = useState(undefined);
 
   useEffect(() => {
-    axios.get('http://localhost:3000/api/questions')
+    axios.get(`/api/questions/${productId}`)
       .then((response) => {
         setQuestionData(response.data.results);
       })
@@ -30,3 +31,7 @@ export default function ViewQuestionsAndAnswers() {
     </Container>
   );
 }
+
+ViewQuestionsAndAnswers.propTypes = {
+  productId: PropTypes.number.isRequired,
+};
