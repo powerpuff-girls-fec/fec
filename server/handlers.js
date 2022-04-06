@@ -8,10 +8,9 @@ axios.defaults.headers.common['content-type'] = 'application/json';
 const apiPath = 'app-hrsei-api.herokuapp.com/api/fec2/rfp/';
 
 module.exports = {
-  // GET /api/reviews
   getReviews: (id) => axios.get(`https://${path.join(apiPath, 'reviews')}`, { params: { product_id: id } }),
-
-  getReviewMeta: (id) => axios.get(`https://${path.join(apiPath, 'reviews/meta')}`, { params: { product_id: id } }),
-
+  getReviewsMeta: (id) => axios.get(`https://${path.join(apiPath, 'reviews/meta')}`, { params: { product_id: id } }),
+  getProductInfo: (id) => axios.get(`https://${path.join(apiPath, `products/${id}`)}`),
+  getProductStyles: (id) => axios.get(`https://${path.join(apiPath, `products/${id}/styles`)}`),
   getQuestions: (id) => axios.get(`https://${path.join(apiPath, 'qa/questions')}`, { params: { product_id: id } }),
 };
