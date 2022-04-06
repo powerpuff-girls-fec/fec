@@ -53,7 +53,7 @@ export default function AddToCart({ index, styles, createCartTicket }) {
       setQuantityRange([-1]);
       setSelectedQuantity(0);
     } else {
-      if (styleQuantities[index] < maxPurchasable) {
+      if (styleQuantities[indexOfSelection] < maxPurchasable) {
         maxPurchasable = styleQuantities[indexOfSelection];
       }
 

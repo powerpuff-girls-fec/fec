@@ -37,7 +37,6 @@ export default function StyleSelector({ styles, handleIndexChange }) {
   const [currentName, setCurrentName] = useState(stylesNames[0]);
 
   const styleChangeHandler = (url) => {
-    console.log(url);
     for (let i = 0; i < stylesList.length; i += 1) {
       if (stylesList[i] === url) {
         if (stylesList[i] !== currentStyle) {
