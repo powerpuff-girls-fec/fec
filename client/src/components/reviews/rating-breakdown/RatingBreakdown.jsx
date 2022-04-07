@@ -13,13 +13,11 @@ const Container = styled.div`
 `;
 
 function getRatingsStats(ratings) {
-  const ratingsArray = [
-    Number(ratings[1]) || 0,
-    Number(ratings[2]) || 0,
-    Number(ratings[3]) || 0,
-    Number(ratings[4]) || 0,
-    Number(ratings[5]) || 0,
-  ];
+  const ratingsArray = [];
+
+  for (let i = 1; i <= 5; i += 1) {
+    ratingsArray.push(Number(ratings[i]) || 0);
+  }
 
   const out = {
     total: ratingsArray.reduce((total, rating) => total + rating, 0),
