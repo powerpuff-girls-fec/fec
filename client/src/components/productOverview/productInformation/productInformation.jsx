@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+// import { Routes, Route, Link } from 'react-router-dom';
 
 import Facebook from './shareButtons/facebookShare';
 import Twitter from './shareButtons/twitterShare';
@@ -69,7 +70,7 @@ export default function ProductInformation({
       <Review>
         <Stars stars={averageRating} />
         <div>
-          <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">
+          <a href="#reviews">
             Read all
             {ratingCount}
             reviews

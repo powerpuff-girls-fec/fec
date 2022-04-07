@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import styled from 'styled-components';
+import React from 'react';
+import styled, { keyframes } from 'styled-components';
 import PropTypes from 'prop-types';
 
 const Container = styled.div``;
@@ -29,13 +29,18 @@ const MyModal = styled.div`
   background-color: rgba(0,0,0,0.9)
 `;
 
+const ZoomAnimation = keyframes`
+  from {transform:scale(0)}
+  to {transform:scale(1)}
+`;
+
 const MyModalContent = styled.img`
   margin: auto;
   display: block;
   width: 80%
   max-width: 700px;
 
-  animation-name: zoom;
+  animation-name: ${ZoomAnimation};
   animation-duration: 0.6s;
 `;
 
@@ -56,10 +61,15 @@ const CloseButton = styled.span`
 `;
 
 export default function CurrentModal({ image }) {
+  const onImageClick = () => {
+    // console.log('click');
+    // modal.style.display = 'block';
+  };
+
   return (
     <Container>
-      <ImageContainer src={image} alt="placeholder" />
-      <MyModal>
+      <ImageContainer src={image} alt="placeholder" onClick={() => { onImageClick(); }} />
+      <MyModal className="modal">
         <CloseButton className="close">&times;</CloseButton>
         <MyModalContent id="img01" alt="" />
       </MyModal>
