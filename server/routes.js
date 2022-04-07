@@ -69,3 +69,15 @@ module.exports.postQuestion = (req, res) => {
     .then((result) => res.send(result.data))
     .catch((err) => res.send(`Error: ${err.message}`));
 };
+
+module.exports.postAnswer = (req, res) => {
+  handlers.postAnswer({
+    body: req.body.answer,
+    name: req.body.nickname,
+    email: req.body.email,
+    photos: req.body.photos,
+    question_id: Number(req.params.question_id),
+  })
+    .then((result) => res.send(result.data))
+    .catch((err) => res.send(`Error: ${err.message}`));
+};

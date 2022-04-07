@@ -27,7 +27,6 @@ export default function QuestionsList({ results, productId }) {
         <AddAQuestionButton openModal={openModal} />
         <AddAQuestionModal
           showModal={showModal}
-          openModal={openModal}
           setShowModal={setShowModal}
           productId={productId}
         />
@@ -39,7 +38,6 @@ export default function QuestionsList({ results, productId }) {
     <>
       <AddAQuestionModal
         showModal={showModal}
-        openModal={openModal}
         setShowModal={setShowModal}
         productId={productId}
       />
@@ -49,6 +47,7 @@ export default function QuestionsList({ results, productId }) {
             <QuestionCard
               key={questionObj.question_id}
               questionObj={questionObj}
+              productId={productId}
             />
           ))}
         </div>

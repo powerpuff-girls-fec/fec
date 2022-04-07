@@ -1,9 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 
-import AnswerCardPhotos from './AnswerCardPhotos';
 import HelpfulAnswerButton from './HelpfulAnswerButton';
 import ReportAnswerButton from './ReportAnswerButton';
+
+const AnswerCardPhotoContainer = styled.div`
+  display: flex;
+`;
 
 export default function AnswerCard({ answer }) {
   const dateObj = new Date(answer.date);
@@ -13,7 +17,11 @@ export default function AnswerCard({ answer }) {
   return (
     <div>
       {answer.body}
-      <AnswerCardPhotos photos={answer.photos} />
+      {answer.photos.length > 0 ? (
+        <AnswerCardPhotoContainer>
+          {answer.photos.map((image) => (<img key={image} src={image} alt="dummy" width="40" height="40" />))}
+        </AnswerCardPhotoContainer>
+      ) : null}
       <div>
         by
         {' '}

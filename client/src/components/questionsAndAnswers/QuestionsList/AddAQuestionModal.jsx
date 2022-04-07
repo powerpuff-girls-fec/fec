@@ -49,14 +49,31 @@ export default function AddAQuestionModal({ showModal, setShowModal, productId }
   const [values, handleChange, resetValues] = useForm({ question: '', nickname: '', email: '' });
   const [alert, setAlert] = useState(false);
   const modalRef = useRef();
+
   const closeModal = (e) => {
     if (modalRef.current === e.target) {
       setShowModal(false);
     }
   };
+
+  const submitForm = (e) => {
+    e.preventDefault();
+    if (values.question === '' || values.nickname === '' || values.email === '' || !re.test(values.email)
+    ) {
+      setAlert(true);
+    } else {
+      axios.post(`/api/questions/${productId}`, values)
+        .then((res) => console.log(res))
+        .then(() => setShowModal(false))
+        .then(() => resetValues())
+        .catch((err) => console.log(err));
+    }
+  };
+
   if (!showModal) {
     return null;
   }
+
   return ReactDom.createPortal(
     <Background ref={modalRef} onClick={closeModal}>
       <ModalWrapper showModal={showModal}>
@@ -66,20 +83,7 @@ export default function AddAQuestionModal({ showModal, setShowModal, productId }
             About the [Product Name Here]
           </div>
           <FormContainer>
-            <form onSubmit={(e) => {
-              e.preventDefault();
-              if (values.question === '' || values.nickname === '' || values.email === '' || !re.test(values.email)
-              ) {
-                setAlert(true);
-              } else {
-                axios.post(`/api/questions/${productId}`, values)
-                  .then((res) => console.log(res))
-                  .then(() => setShowModal(false))
-                  .then(() => resetValues())
-                  .catch((err) => console.log(err));
-              }
-            }}
-            >
+            <form onSubmit={submitForm}>
               <div>*Question</div>
               <textarea
                 name="question"

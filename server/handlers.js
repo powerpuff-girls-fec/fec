@@ -12,9 +12,18 @@ module.exports = {
   getReviewsMeta: (id) => axios.get(`https://${path.join(apiPath, 'reviews/meta')}`, { params: { product_id: id } }),
   getProductInfo: (id) => axios.get(`https://${path.join(apiPath, `products/${id}`)}`),
   getProductStyles: (id) => axios.get(`https://${path.join(apiPath, `products/${id}/styles`)}`),
-  getQuestions: (id) => axios.get(`https://${path.join(apiPath, 'qa/questions')}`, { params: { product_id: id } }),
+  getQuestions: (id) => axios.get(`https://${path.join(apiPath, 'qa/questions')}`, { params: { product_id: id, count: 1000 } }),
   putHelpfulAnswer: (id) => axios.put(`https://${path.join(apiPath, `qa/answers/${id}/helpful`)}`, { params: { answer_id: id } }),
   putHelpfulQuestion: (id) => axios.put(`https://${path.join(apiPath, `qa/questions/${id}/helpful`)}`, { params: { question_id: id } }),
   putReportAnswer: (id) => axios.put(`https://${path.join(apiPath, `qa/answers/${id}/report`)}`, { params: { answer_id: id } }),
   postQuestion: (request) => axios.post(`https://${path.join(apiPath, 'qa/questions')}`, request),
+  postAnswer: (request) => axios.post(
+    `https://${path.join(apiPath, `qa/questions/${request.question_id}/answers`)}`,
+    {
+      body: request.body,
+      name: request.name,
+      email: request.email,
+      photos: request.photos,
+    },
+  ),
 };

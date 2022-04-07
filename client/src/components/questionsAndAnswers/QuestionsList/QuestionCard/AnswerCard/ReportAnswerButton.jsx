@@ -21,7 +21,7 @@ export default function ReportAnswerButton({ answerId }) {
     );
   }
   return (
-    <Button onClick={() => axios.put(`/api/answers/${answerId}/report`).then(() => setClicked(true))}>
+    <Button onClick={() => axios.put(`/api/answers/${answerId}/report`).then(() => setClicked(true)).catch((err) => console.log(err))}>
       Report
     </Button>
   );
