@@ -1,11 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
 import Carousel from './carousel';
+import CurrentModal from './currentModal';
 
 const ImageComponent = styled.div`
-  padding-left: 200px;
+  padding-left: 100px;
 `;
 
 const compileImageList = (photos) => {
@@ -18,12 +19,18 @@ const compileImageList = (photos) => {
 
 export default function ImageGallery({ index, styles }) {
   const compiledImageList = compileImageList(styles.results[index].photos);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  const indexChangeHandler = (imageIndex) => {
+    setCurrentImageIndex(imageIndex);
+  };
 
   return (
     <ImageComponent>
-      <Carousel>
+      <Carousel changeHandler={indexChangeHandler}>
         {compiledImageList.map((url, key) => <img src={url} key={key} alt="placeholder" />)}
       </Carousel>
+      <CurrentModal image={compiledImageList[currentImageIndex]} />
     </ImageComponent>
   );
 }
