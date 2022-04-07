@@ -45,16 +45,17 @@ export default function ProductOverview({ productID }) {
   };
 
   const createCartTicket = (ticketInfo) => {
-    const selectedStyle = productStylesList.results[index].style_id;
     const currentTicket = ticketInfo;
-    currentTicket.style = selectedStyle;
-    currentTicket.item = productID;
+    // const selectedStyle = productStylesList.results[index].style_id;
+    currentTicket.style = productStylesList.results[index].style_id;
 
     console.log(currentTicket);
-    // this is then posted to the database
-    // don't quite understand if the information in ticketInfo is what
-    // will actually be needed / wanted, but it can easily be altered
-    // to best suite our needs
+
+    axios.post('/api/cart', currentTicket)
+      .then((res) => console.log(res))
+      .catch((err) => console.log('err ', err));
+
+    // console.log(currentTicket);
   };
 
   return (

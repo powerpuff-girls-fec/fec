@@ -13,4 +13,5 @@ module.exports = {
   getProductInfo: (id) => axios.get(`https://${path.join(apiPath, `products/${id}`)}`),
   getProductStyles: (id) => axios.get(`https://${path.join(apiPath, `products/${id}/styles`)}`),
   getQuestions: (id) => axios.get(`https://${path.join(apiPath, 'qa/questions')}`, { params: { product_id: id } }),
+  postCart: (request) => axios.post(`https://${path.join(apiPath, 'cart')}`, request),
 };

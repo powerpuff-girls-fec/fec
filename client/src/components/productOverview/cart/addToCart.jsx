@@ -70,7 +70,7 @@ export default function AddToCart({ index, styles, createCartTicket }) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    ticketInfo = { size: selectedSize, quantity: selectedQuantity };
+    ticketInfo = { quantity: selectedQuantity };
     createCartTicket(ticketInfo);
   };
 
