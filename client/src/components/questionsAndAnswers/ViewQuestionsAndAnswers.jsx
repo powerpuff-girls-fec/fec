@@ -12,12 +12,15 @@ const Container = styled.div`
   flex-direction: column;
 `;
 
+let originalData;
+
 export default function ViewQuestionsAndAnswers({ productId }) {
   const [questionsData, setQuestionData] = useState(undefined);
 
   useEffect(() => {
     axios.get(`/api/questions/${productId}`)
       .then((response) => {
+        originalData = JSON.parse(JSON.stringify(response.data.results));
         setQuestionData(response.data.results);
       })
       .catch((error) => console.log(error));
@@ -26,8 +29,11 @@ export default function ViewQuestionsAndAnswers({ productId }) {
   return (
     <Container>
       <h1>QUESTIONS & ANSWERS</h1>
-      <QuestionSearch setQuestionData={setQuestionData} originalData={questionsData} />
-      <QuestionsList results={questionsData} />
+      <QuestionSearch
+        setQuestionData={setQuestionData}
+        originalData={originalData}
+      />
+      <QuestionsList results={questionsData} productId={productId} />
     </Container>
   );
 }

@@ -17,7 +17,7 @@ module.exports.getQuestions = (req, res) => {
 module.exports.getReviewsMeta = (req, res) => {
   handlers.getReviewsMeta(req.params.product_id)
     .then((result) => {
-      console.log(result.data);
+      // console.log(result.data);
       res.send(result.data);
     })
     .catch((err) => console.log(err.message));
@@ -26,7 +26,7 @@ module.exports.getReviewsMeta = (req, res) => {
 module.exports.getProductInfo = (req, res) => {
   handlers.getProductInfo(req.params.product_id)
     .then((result) => {
-      console.log(result.data);
+      // console.log(result.data);
       res.send(result.data);
     })
     .catch((err) => console.log(err.message));
@@ -35,7 +35,7 @@ module.exports.getProductInfo = (req, res) => {
 module.exports.getProductStyles = (req, res) => {
   handlers.getProductStyles(req.params.product_id)
     .then((result) => {
-      console.log(result.data);
+      // console.log(result.data);
       res.send(result.data);
     })
     .catch((err) => console.log(err.message));
@@ -55,6 +55,17 @@ module.exports.putHelpfulQuestion = (req, res) => {
 
 module.exports.putReportAnswer = (req, res) => {
   handlers.putReportAnswer(req.params.answer_id)
+    .then((result) => res.send(result.data))
+    .catch((err) => res.send(`Error: ${err.message}`));
+};
+
+module.exports.postQuestion = (req, res) => {
+  handlers.postQuestion({
+    body: req.body.question,
+    name: req.body.nickname,
+    email: req.body.email,
+    product_id: Number(req.params.product_id),
+  })
     .then((result) => res.send(result.data))
     .catch((err) => res.send(`Error: ${err.message}`));
 };

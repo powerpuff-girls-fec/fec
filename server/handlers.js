@@ -15,5 +15,6 @@ module.exports = {
   getQuestions: (id) => axios.get(`https://${path.join(apiPath, 'qa/questions')}`, { params: { product_id: id } }),
   putHelpfulAnswer: (id) => axios.put(`https://${path.join(apiPath, `qa/answers/${id}/helpful`)}`, { params: { answer_id: id } }),
   putHelpfulQuestion: (id) => axios.put(`https://${path.join(apiPath, `qa/questions/${id}/helpful`)}`, { params: { question_id: id } }),
-  putReportAnswer: (id) => axios.put(`https://${path.join(apiPath, `/qa/answers/${id}/report`)}`, { params: { answer_id: id } }),
+  putReportAnswer: (id) => axios.put(`https://${path.join(apiPath, `qa/answers/${id}/report`)}`, { params: { answer_id: id } }),
+  postQuestion: (request) => axios.post(`https://${path.join(apiPath, 'qa/questions')}`, request),
 };

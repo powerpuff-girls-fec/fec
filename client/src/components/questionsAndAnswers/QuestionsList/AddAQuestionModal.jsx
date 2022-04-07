@@ -1,9 +1,10 @@
 import React, { useState, useRef } from 'react';
+import ReactDom from 'react-dom';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import ReactDom from 'react-dom';
+import axios from 'axios';
 
-import useForm from './useForm';
+import useForm from '../useForm';
 
 const Background = styled.div`
   width: 100%;
@@ -44,8 +45,8 @@ const FormContainer = styled.div`
 
 const re = /^[^@]+@[^@]+\.[^@]+$/;
 
-export default function AddAQuestionModal({ showModal, setShowModal }) {
-  const [values, handleChange] = useForm({ question: '', nickname: '', email: '' });
+export default function AddAQuestionModal({ showModal, setShowModal, productId }) {
+  const [values, handleChange, resetValues] = useForm({ question: '', nickname: '', email: '' });
   const [alert, setAlert] = useState(false);
   const modalRef = useRef();
   const closeModal = (e) => {
@@ -71,8 +72,11 @@ export default function AddAQuestionModal({ showModal, setShowModal }) {
               ) {
                 setAlert(true);
               } else {
-                // POST /qa/questions, then close modla
-                setShowModal(false);
+                axios.post(`/api/questions/${productId}`, values)
+                  .then((res) => console.log(res))
+                  .then(() => setShowModal(false))
+                  .then(() => resetValues())
+                  .catch((err) => console.log(err));
               }
             }}
             >
@@ -123,4 +127,5 @@ export default function AddAQuestionModal({ showModal, setShowModal }) {
 AddAQuestionModal.propTypes = {
   showModal: PropTypes.bool.isRequired,
   setShowModal: PropTypes.func.isRequired,
+  productId: PropTypes.number.isRequired,
 };

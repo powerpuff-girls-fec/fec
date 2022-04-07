@@ -5,14 +5,14 @@ import styled from 'styled-components';
 import QuestionCard from './QuestionCard/QuestionCard';
 import AddAQuestionButton from './AddAQuestionButton';
 import MoreAnsweredQuestionsButton from './MoreAnsweredQuestionsButton';
-import AddAQuestionModal from '../AddAQuestionModal';
+import AddAQuestionModal from './AddAQuestionModal';
 
 const QuestionsListContainer = styled.div`
   max-height: 500px;
   overflow-y: scroll;
 `;
 
-export default function QuestionsList({ results }) {
+export default function QuestionsList({ results, productId }) {
   const questionsAsked = results.length;
   const [renderLength, setRenderLength] = useState(4);
   const [showModal, setShowModal] = useState(false);
@@ -29,6 +29,7 @@ export default function QuestionsList({ results }) {
           showModal={showModal}
           openModal={openModal}
           setShowModal={setShowModal}
+          productId={productId}
         />
       </>
     );
@@ -36,7 +37,12 @@ export default function QuestionsList({ results }) {
 
   return (
     <>
-      <AddAQuestionModal showModal={showModal} openModal={openModal} setShowModal={setShowModal} />
+      <AddAQuestionModal
+        showModal={showModal}
+        openModal={openModal}
+        setShowModal={setShowModal}
+        productId={productId}
+      />
       <QuestionsListContainer>
         <div>
           {results.slice(0, renderLength).map((questionObj) => (
@@ -76,6 +82,7 @@ QuestionsList.propTypes = {
     question_id: PropTypes.number,
     reported: PropTypes.bool,
   })),
+  productId: PropTypes.number.isRequired,
 };
 
 QuestionsList.defaultProps = {

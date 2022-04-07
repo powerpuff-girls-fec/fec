@@ -8,11 +8,9 @@ export default function QuestionSearch({ setQuestionData, originalData }) {
       onChange={(e) => {
         e.preventDefault();
         if (e.target.value.length >= 3) {
-          setQuestionData(
-            (data) => (data.filter(
-              (obj) => obj.question_body.toLowerCase().includes(e.target.value.toLowerCase()),
-            )),
-          );
+          setQuestionData(originalData.filter(
+            (obj) => obj.question_body.toLowerCase().includes(e.target.value.toLowerCase()),
+          ));
         }
         if (e.target.value.length < 3) {
           setQuestionData(originalData);
