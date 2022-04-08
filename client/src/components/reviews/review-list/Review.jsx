@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+
+import axios from 'axios';
 
 import styled from 'styled-components';
 
@@ -31,7 +33,37 @@ const Response = styled.div`
   padding: 1em;
 `;
 
+const HelpfulnessReportWrapper = styled.div`
+  padding-top: 1em;
+  color: #555555;
+`;
+
+const HelpfulnessButton = styled.button`
+  display: inline-block;
+  text-decoration: underline;
+  padding: 0;
+  background: inherit;
+  border: none;
+  font-size: inherit;
+  color: inherit;
+
+  &:hover {
+    color: #aaaaaa;
+    cursor: pointer;
+  }
+`;
+
 export default function Review({ review }) {
+  const [markedHelpful, markHelpful] = useState(false);
+
+  const helpfulnessOnClick = () => {
+    if (!markedHelpful) {
+      markHelpful(true);
+
+      axios.put(`/api/reviews/${review.review_id}/helpful`);
+    }
+  };
+
   return (
     <Container>
       <Header>
@@ -57,6 +89,13 @@ export default function Review({ review }) {
       {(review.response) ? <Response style={{ paddingTop: '30px' }}><b>💬</b> {review.response}</Response> : null}
       {/* eslint-enable react/jsx-one-expression-per-line */}
 
+      <HelpfulnessReportWrapper>
+        Helpful?&nbsp;&nbsp;
+        <HelpfulnessButton onClick={helpfulnessOnClick}>
+          Yes
+        </HelpfulnessButton>
+        {` (${review.helpfulness + ((markedHelpful) ? 1 : 0)})`}
+      </HelpfulnessReportWrapper>
     </Container>
   );
 }
@@ -70,7 +109,7 @@ Review.propTypes = {
     summary: PropTypes.string,
     body: PropTypes.string,
     date: PropTypes.string,
-    helpfullness: PropTypes.number,
+    helpfulness: PropTypes.number,
     photos: PropTypes.arrayOf(PropTypes.shape({
       id: PropTypes.number,
       url: PropTypes.string,

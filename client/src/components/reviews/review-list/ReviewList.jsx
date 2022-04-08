@@ -12,11 +12,32 @@ const ListWrapper = styled.div`
   flex-direction: column;
 `;
 
+const Select = styled.select`
+  background-color: inherit;
+  border: none;
+  font-family: inherit;
+  border-bottom: solid 1px black;
+  font-size: 1em;
+  font-weight: inherit;
+`;
+
+const SelectWrapper = styled.div`
+  font-weight: bold;
+`;
+
 export default function ReviewList({
-  reviews, addReviewhandler, moreReviewsHandler, reviewsRemaining,
+  reviews, addReviewhandler, moreReviewsHandler, reviewsRemaining, totalReviews, sortChangeHandler,
 }) {
   return (
     <div>
+      <SelectWrapper>
+        {`${totalReviews} reviews, sorted by `}
+        <Select onChange={sortChangeHandler}>
+          <option value="relevance">Relevance</option>
+          <option value="helpful">Helpfulness</option>
+          <option value="newest">Newest</option>
+        </Select>
+      </SelectWrapper>
       <ListWrapper>
         {reviews.map((review) => <Review key={review.review_id} review={review} />)}
       </ListWrapper>
@@ -47,7 +68,9 @@ ReviewList.propTypes = {
   })),
   moreReviewsHandler: PropTypes.func.isRequired,
   addReviewhandler: PropTypes.func.isRequired,
+  sortChangeHandler: PropTypes.func.isRequired,
   reviewsRemaining: PropTypes.bool.isRequired,
+  totalReviews: PropTypes.number.isRequired,
 };
 
 ReviewList.defaultProps = {

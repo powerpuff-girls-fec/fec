@@ -12,30 +12,11 @@ const Container = styled.div`
   padding: 0 40px 0 0;
 `;
 
-function getRatingsStats(ratings) {
-  const ratingsArray = [];
-
-  for (let i = 1; i <= 5; i += 1) {
-    ratingsArray.push(Number(ratings[i]) || 0);
-  }
-
-  const out = {
-    total: ratingsArray.reduce((total, rating) => total + rating, 0),
-  };
-
-  out.average = ratingsArray.reduce((total, rating, i) => (
-    total + rating * i), 0) / out.total + 1;
-
-  return out;
-}
-
 function getRecPercentage(recommended) {
   return (recommended.true / (recommended.true + recommended.false)) * 100;
 }
 
-export default function RatingBreakdown({ metadata }) {
-  const { average, total } = getRatingsStats(metadata.ratings);
-
+export default function RatingBreakdown({ metadata, average, total }) {
   return (
     <Container>
       <BreakdownOverview
@@ -63,6 +44,8 @@ RatingBreakdown.propTypes = {
     }),
     characteristics: PropTypes.object,
   }),
+  average: PropTypes.number.isRequired,
+  total: PropTypes.number.isRequired,
 };
 
 RatingBreakdown.defaultProps = {

@@ -8,6 +8,23 @@ import styled from 'styled-components';
 import RatingBreakdown from './rating-breakdown/RatingBreakdown';
 import ReviewList from './review-list/ReviewList';
 
+function getRatingsStats(ratings) {
+  const ratingsArray = [];
+
+  for (let i = 1; i <= 5; i += 1) {
+    ratingsArray.push(Number(ratings[i]) || 0);
+  }
+
+  const out = {
+    total: ratingsArray.reduce((total, rating) => total + rating, 0),
+  };
+
+  out.average = ratingsArray.reduce((total, rating, i) => (
+    total + rating * i), 0) / out.total + 1;
+
+  return out;
+}
+
 const Container = styled.div`
   width: 1000px;
   height: 10em;
@@ -26,7 +43,7 @@ export default function Reviews({ productId }) {
   const loadReviews = (count = 2) => {
     if (!reviewsRemaining) { return; }
 
-    axios.get(`api/reviews/${productId}`, { params: { count, page: (reviews.length / 2) + 1 } })
+    axios.get(`api/reviews/${productId}`, { params: { count, page: Math.ceil((reviews.length / 2) + 1) } })
       .then((res) => res.data.results)
       .then((data) => {
         if (data.length === 0) { setReviewsRemaining(false); }
@@ -47,16 +64,20 @@ export default function Reviews({ productId }) {
       .then((data) => setReviewMetadata(data));
 
     loadReviews(4);
-  }, []);
+  }, [productId]);
+
+  const { average, total } = getRatingsStats((reviewMetadata) ? reviewMetadata.ratings : {});
 
   return (
     <Container>
-      <RatingBreakdown metadata={reviewMetadata} />
+      <RatingBreakdown metadata={reviewMetadata} average={average} total={total} />
       <ReviewList
         reviews={reviews.slice(0, displayed)}
         moreReviewsHandler={displayMoreReviews}
         addReviewhandler={() => console.log('uwu')}
+        sortChangeHandler={(e) => console.log(e.target.value)}
         reviewsRemaining={reviewsRemaining}
+        totalReviews={total}
       />
     </Container>
   );

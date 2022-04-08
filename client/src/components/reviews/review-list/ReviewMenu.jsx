@@ -9,6 +9,7 @@ const Button = styled.button`
   border-radius: 0;
 
   &:hover {
+    cursor: pointer;
     filter: brightness(0.75);
   }
 `;
