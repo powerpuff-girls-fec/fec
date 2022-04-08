@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef } from 'react';
 import ReactDom from 'react-dom';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
@@ -61,8 +61,7 @@ export default function AddAnswerModal({
 }) {
   const [values, handleChange, resetValues] = useForm({ answer: '', nickname: '', email: '' });
   const [alert, setAlert] = useState(false);
-  const [images, setImages] = useState([]);
-  const [imagePreviewURLs, setImagePreviewURLs] = useState([]);
+  const [imgURLs, setImgURLs] = useState([]);
 
   const uploadedImages = useRef([]);
   const modalRef = useRef();
@@ -74,21 +73,14 @@ export default function AddAnswerModal({
   };
 
   const onImageChange = (e) => {
-    setImages((files) => [...files, ...e.target.files]);
+    const reader = new FileReader();
+    reader.readAsDataURL(e.target.files[0]);
+    reader.onloadend = () => {
+      setImgURLs((prev) => [...prev, reader.result]);
+    };
   };
 
-  useEffect(() => {
-    const newImagePreviewURLs = images.map((image) => URL.createObjectURL(image));
-    setImagePreviewURLs(newImagePreviewURLs);
-  }, [images]);
-
-  const cloudinaryUpload = (image) => {
-    const formData = new FormData();
-    formData.append('file', image);
-    formData.append('upload_preset', 'briklxcc');
-
-    return axios.post('https://api.cloudinary.com/v1_1/davabqcee/image/upload', formData);
-  };
+  const cloudinaryUpload = (imageURL) => axios.post('/api/cloudinary', { imagedata: imageURL });
 
   const submitForm = (e) => {
     e.preventDefault();
@@ -99,18 +91,16 @@ export default function AddAnswerModal({
     // else, go through submit process
     } else {
       // if images exist, convert them into URLs via Cloudinary upload
-      if (images.length > 0) {
-        for (let i = 0; i < images.length; i += 1) {
+      if (imgURLs.length > 0) {
+        for (let i = 0; i < imgURLs.length; i += 1) {
           // if on last index, make post request after image upload
-          if (i === images.length - 1) {
-            cloudinaryUpload(images[i])
+          if (i === imgURLs.length - 1) {
+            cloudinaryUpload(imgURLs[i])
               .then((res) => {
-                uploadedImages.current = [...uploadedImages.current, res.data.url];
+                uploadedImages.current = [...uploadedImages.current, res.data];
               })
               .then(() => {
-                console.log({ ...values, photos: [...uploadedImages.current] });
                 axios.post(`/api/answers/${questionId}`, { ...values, photos: [...uploadedImages.current] })
-                  .then((res) => console.log(res))
                   .then(() => setShowModal(false))
                   .then(() => resetValues())
                   .catch((err) => console.log(err));
@@ -118,19 +108,18 @@ export default function AddAnswerModal({
               .catch((err) => console.log(err));
           // else, we're not on the last index. Upload to Cloudinary without post
           } else {
-            cloudinaryUpload(images[i])
+            cloudinaryUpload(imgURLs[i])
               .then((res) => {
-                uploadedImages.current = [...uploadedImages.current, res.data.url];
+                uploadedImages.current = [...uploadedImages.current, res.data];
               })
               .catch((err) => console.log(err));
           }
         }
       }
       // if there are no images, skip Cloudinary upload and post question
-      if (images.length === 0) {
+      if (imgURLs.length === 0) {
         // otherwise, there are no images. we can just post without waiting for upload
         axios.post(`/api/answers/${questionId}`, { ...values, photos: [] })
-          .then((res) => console.log(res))
           .then(() => setShowModal(false))
           .then(() => resetValues())
           .catch((err) => console.log(err));
@@ -179,7 +168,7 @@ export default function AddAnswerModal({
               />
               <div>For authentication reasons, you will not be emailed</div>
               <div>Upload Up to 5 Photos</div>
-              {images.length < 5 ? (
+              {imgURLs.length < 5 ? (
                 <input
                   name="images"
                   type="file"
@@ -189,7 +178,7 @@ export default function AddAnswerModal({
               ) : null}
               <div>Image Preivew</div>
               <PreviewContainer>
-                {imagePreviewURLs.map((imageSrc) => <img key={imageSrc} src={imageSrc} alt="preview" height="30" width="30" />)}
+                {imgURLs.map((imageSrc) => <img key={imageSrc} src={imageSrc} alt="preview" height="30" width="30" />)}
               </PreviewContainer>
               <input type="submit" value="Submit" />
               {alert ? (

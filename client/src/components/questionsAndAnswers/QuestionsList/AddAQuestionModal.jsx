@@ -63,7 +63,6 @@ export default function AddAQuestionModal({ showModal, setShowModal, productId }
       setAlert(true);
     } else {
       axios.post(`/api/questions/${productId}`, values)
-        .then((res) => console.log(res))
         .then(() => setShowModal(false))
         .then(() => resetValues())
         .catch((err) => console.log(err));

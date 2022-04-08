@@ -1,9 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
+
+const Button = styled.button`
+  background: none!important;
+  border: none;
+  padding: 0!important;
+  text-decoration: underline;
+  cursor: pointer;
+`;
 
 export default function AddAnswer({ openModal }) {
   return (
-    <button type="button" onClick={openModal}>Add Answer</button>
+    <Button type="button" onClick={openModal}>Add Answer</Button>
   );
 }
 

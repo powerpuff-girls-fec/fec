@@ -1,5 +1,6 @@
 const path = require('path');
 const axios = require('axios');
+const { cloudinary } = require('./utils/cloudinary');
 
 // Set the default Authorization header to the api key
 axios.defaults.headers.common.Authorization = process.env.API_KEY || 'API_KEY_HERE';
@@ -26,4 +27,12 @@ module.exports = {
       photos: request.photos,
     },
   ),
+  postCloudinary: async (data, callback) => {
+    try {
+      const response = await cloudinary.uploader.upload(data);
+      callback(null, response.url);
+    } catch (error) {
+      callback(error, null);
+    }
+  },
 };

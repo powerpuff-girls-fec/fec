@@ -55,6 +55,7 @@ export default function QuestionsCard({ questionObj }) {
             questionHelpfulness={questionObj.question_helpfulness}
             questionId={questionObj.question_id}
           />
+          {' | '}
           <AddAnswer openModal={openModal} />
           <AddAnswerModal
             showModal={showModal}

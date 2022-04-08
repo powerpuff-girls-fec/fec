@@ -81,3 +81,13 @@ module.exports.postAnswer = (req, res) => {
     .then((result) => res.send(result.data))
     .catch((err) => res.send(`Error: ${err.message}`));
 };
+
+module.exports.postCloudinary = (req, res) => {
+  handlers.postCloudinary(req.body.imagedata, (err, response) => {
+    if (err) {
+      console.log(`Cloudinary post errror: ${err}`);
+      res.send(500);
+    }
+    res.send(response);
+  });
+};

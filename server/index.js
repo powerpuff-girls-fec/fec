@@ -27,6 +27,7 @@ app.put('/api/questions/:question_id/helpful', routes.putHelpfulQuestion);
 app.put('/api/answers/:answer_id/report', routes.putReportAnswer);
 app.post('/api/questions/:product_id', routes.postQuestion);
 app.post('/api/answers/:question_id', routes.postAnswer);
+app.post('/api/cloudinary', routes.postCloudinary);
 
 app.listen(port);
 console.log(`Listening at http://localhost:${port}`);
