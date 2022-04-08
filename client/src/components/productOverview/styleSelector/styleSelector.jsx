@@ -7,7 +7,6 @@ import Thumbnail from './thumbnailDisplay';
 const Container = styled.div`
   height: 100%;
   width: 100%;
-  border: 1px solid black;
 `;
 
 const StyleName = styled.div``;
