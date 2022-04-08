@@ -28,6 +28,12 @@ module.exports.getReviewsMeta = (req, res) => {
     .catch((err) => console.log(err.message));
 };
 
+module.exports.putReviewHelpful = (req, res) => {
+  handlers.markReviewHelpful(req.params.review_id)
+    .then((result) => res.status(204).send(result.data))
+    .catch((err) => console.log(err.message));
+};
+
 module.exports.getProductInfo = (req, res) => {
   handlers.getProductInfo(req.params.product_id)
     .then((result) => {

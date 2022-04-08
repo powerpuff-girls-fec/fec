@@ -19,6 +19,7 @@ module.exports = {
       },
     },
   ),
+  markReviewHelpful: (id) => axios.put(`https://${path.join(apiPath, `reviews/${id}/helpful`)}`),
   getReviewsMeta: (id) => axios.get(`https://${path.join(apiPath, 'reviews/meta')}`, { params: { product_id: id } }),
   getProductInfo: (id) => axios.get(`https://${path.join(apiPath, `products/${id}`)}`),
   getProductStyles: (id) => axios.get(`https://${path.join(apiPath, `products/${id}/styles`)}`),
