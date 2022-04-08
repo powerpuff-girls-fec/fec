@@ -10,6 +10,6 @@
 
 #### Authors
 
- - Benjamin Cope
- - Sean Trinh
- - Zynh Ludwig
+ - [Benjamin Cope](https://github.com/Alphose)
+ - [Sean Trinh](https://github.com/seanatrinh)
+ - [Zynh Ludwig](https://github.com/Zynh0722)

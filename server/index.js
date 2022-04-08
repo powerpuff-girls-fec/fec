@@ -17,10 +17,12 @@ app.use(express.static(path.resolve(__dirname, '../client/dist')));
 
 /* Add your routes here */
 app.get('/api/reviews', routes.getReviews);
+app.get('/api/reviews/:product_id', routes.getReviews);
 app.get('/api/reviews/meta/:product_id', routes.getReviewsMeta);
+
 app.get('/api/products/:product_id', routes.getProductInfo);
 app.get('/api/products/:product_id/styles', routes.getProductStyles);
-app.get('/api/reviews/:product_id', routes.getReviews);
+
 app.get('/api/questions', routes.getQuestions);
 app.post('/api/cart', routes.postCart);
 

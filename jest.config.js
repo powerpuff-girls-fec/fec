@@ -74,6 +74,7 @@ module.exports = {
   moduleDirectories: [
     'node_modules',
     'client/src',
+    'client/src/components',
   ],
 
   // An array of file extensions your modules use

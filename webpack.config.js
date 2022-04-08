@@ -21,5 +21,8 @@ module.exports = {
   },
   resolve: {
     extensions: ['*', '.js', '.jsx'],
+    alias: {
+      common: path.resolve(__dirname, 'client/src/components/common'),
+    },
   },
 };
