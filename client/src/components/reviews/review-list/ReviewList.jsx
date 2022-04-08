@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import Review from './Review';
+import ReviewMenu from './ReviewMenu';
 
 const ListWrapper = styled.div`
   width: 100%;
@@ -11,11 +12,20 @@ const ListWrapper = styled.div`
   flex-direction: column;
 `;
 
-export default function ReviewList({ reviews }) {
+export default function ReviewList({
+  reviews, addReviewhandler, moreReviewsHandler, reviewsRemaining,
+}) {
   return (
-    <ListWrapper>
-      {reviews.map((review) => <Review key={review.review_id} review={review} />)}
-    </ListWrapper>
+    <div>
+      <ListWrapper>
+        {reviews.map((review) => <Review key={review.review_id} review={review} />)}
+      </ListWrapper>
+      <ReviewMenu
+        moreReviewsHandler={moreReviewsHandler}
+        addReviewhandler={addReviewhandler}
+        reviewsRemaining={reviewsRemaining}
+      />
+    </div>
   );
 }
 
@@ -35,6 +45,9 @@ ReviewList.propTypes = {
     })),
     reviewer_name: PropTypes.string,
   })),
+  moreReviewsHandler: PropTypes.func.isRequired,
+  addReviewhandler: PropTypes.func.isRequired,
+  reviewsRemaining: PropTypes.bool.isRequired,
 };
 
 ReviewList.defaultProps = {
