@@ -6,15 +6,18 @@ import Price from './prices';
 import Stars from './Stars';
 
 const Container = styled.div`
-display: grid;
-width: 100%;
-height: 10em;
-grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 10em;
+  padding-bottom: 50px;
 `;
 
 const Category = styled.div``;
 
-const Title = styled.div``;
+const Title = styled.div`
+  font-size: 30px;
+`;
 
 const ShareButtons = styled.div`
   display: flex;
@@ -25,6 +28,10 @@ const ShareButtons = styled.div`
 const Review = styled.div`
   display: flex;
   flex-direction: row;
+`;
+
+const ReviewLink = styled.div`
+  padding-left: 10px;
 `;
 
 const FacebookShare = styled.img`
@@ -82,13 +89,13 @@ export default function ProductInformation({
     <Container>
       <Review>
         <Stars stars={averageRating} />
-        <div>
+        <ReviewLink>
           <a href="#reviews">
-            Read all
+            Read all &nbsp;
             {ratingCount}
-            reviews
+            &nbsp;reviews
           </a>
-        </div>
+        </ReviewLink>
       </Review>
       <Category>{product.category}</Category>
       <Title>{product.name}</Title>

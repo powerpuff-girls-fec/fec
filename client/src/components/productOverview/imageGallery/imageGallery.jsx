@@ -6,6 +6,8 @@ import Carousel from './carousel';
 import CurrentModal from './currentModal';
 
 const ImageComponent = styled.div`
+  background-color: #D3D3D3;
+  flex-basis: 65%;
   display: flex;
   flex-direction: column;
   padding-left: 100px;

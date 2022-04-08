@@ -9,15 +9,17 @@ import StyleSelector from './styleSelector/styleSelector';
 import AddToCart from './cart/addToCart';
 
 const Container = styled.div`
-  display: grid;
-  height: 20%;
+  display: flex;
+  flex-direction: row;
+  height: 30%;
   width: 100%;
-  grid-template-columns: 4fr 3fr;
 `;
 
 const RightColumn = styled.div`
-  display: grid;
-  grid-template-rows: 2fr 1fr 1fr;
+  display: flex;
+  flex-basis: 35%;
+  flex-direction: column;
+  justify-content: space-around;
 `;
 
 export default function ProductOverview({ productID }) {

@@ -9,7 +9,9 @@ const Container = styled.div`
   width: 100%;
 `;
 
-const StyleName = styled.div``;
+const StyleName = styled.div`
+  font-weight: bold;
+`;
 
 const ThumbnailWrapper = styled.div`
   display: grid;
