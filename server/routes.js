@@ -2,9 +2,12 @@ const handlers = require('./handlers');
 
 // GET /api/reviews
 module.exports.getReviews = (req, res) => {
-  req.params.product_id = req.params.product_id || 65631;
+  const id = req.params.product_id || 65631;
+  const page = req.query.page || 1;
+  const count = req.query.count || 2;
+  const sort = req.query.sort || 'relevant';
 
-  handlers.getReviews(req.params.product_id)
+  handlers.getReviews(id, page, sort, count)
     .then((result) => res.send(result.data))
     .catch((err) => res.send(`Error: ${err.message}`));
 };
