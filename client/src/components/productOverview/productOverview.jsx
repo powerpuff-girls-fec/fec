@@ -29,15 +29,18 @@ export default function ProductOverview({ productID }) {
   useEffect(() => {
     axios.get(`api/products/${productID}`)
       .then((result) => result.data)
-      .then((data) => setProductInfo(data));
+      .then((data) => setProductInfo(data))
+      .catch((err) => console.log(err));
 
     axios.get(`api/reviews/meta/${productID}`)
       .then((result) => result.data)
-      .then((data) => setReviewMeta(data));
+      .then((data) => setReviewMeta(data))
+      .catch((err) => console.log(err));
 
     axios.get(`api/products/${productID}/styles`)
       .then((result) => result.data)
-      .then((data) => setProductStylesList(data));
+      .then((data) => setProductStylesList(data))
+      .catch((err) => console.log(err));
   }, []);
 
   const handleIndexChange = (i) => {
@@ -46,16 +49,11 @@ export default function ProductOverview({ productID }) {
 
   const createCartTicket = (ticketInfo) => {
     const currentTicket = ticketInfo;
-    // const selectedStyle = productStylesList.results[index].style_id;
     currentTicket.style = productStylesList.results[index].style_id;
 
-    console.log(currentTicket);
-
     axios.post('/api/cart', currentTicket)
-      .then((res) => console.log(res))
+      .then((res) => console.log('res', res))
       .catch((err) => console.log('err ', err));
-
-    // console.log(currentTicket);
   };
 
   return (

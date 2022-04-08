@@ -17,7 +17,7 @@ export default function Quantity({ selectHandler, quantity }) {
   return (
     <QuantityContainer>
       {/* eslint-disable-next-line no-restricted-globals */}
-      <select name="quantity" onChange={() => { selectHandler(event); }}>
+      <select name="quantity" onChange={(event) => { selectHandler(event); }}>
         {quantity.map((number, key) => <option value={number} key={key}>{number}</option>)}
       </select>
     </QuantityContainer>

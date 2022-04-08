@@ -1,11 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-// import { Routes, Route, Link } from 'react-router-dom';
 
-import Facebook from './shareButtons/facebookShare';
-import Twitter from './shareButtons/twitterShare';
-import Pinterest from './shareButtons/pinterestShare';
 import Price from './prices';
 import Stars from './Stars';
 
@@ -29,6 +25,24 @@ const ShareButtons = styled.div`
 const Review = styled.div`
   display: flex;
   flex-direction: row;
+`;
+
+const FacebookShare = styled.img`
+  width: 25px;
+  height: 25px;
+  padding-right: 5px;
+`;
+
+const PinterestShare = styled.img`
+  width: 25px;
+  height: 25px;
+  padding-right: 5px;
+`;
+
+const TwitterShare = styled.img`
+  width: 25px;
+  height: 25px;
+  padding-right: 5px;
 `;
 
 const onFacebookClick = () => {
@@ -60,7 +74,6 @@ const averageReviews = (reviews) => {
 export default function ProductInformation({
   product, review, styles, index,
 }) {
-  // console.log(styles);
   const ratingInfo = averageReviews(review.ratings);
   const averageRating = ratingInfo[0];
   const ratingCount = ratingInfo[1];
@@ -82,9 +95,9 @@ export default function ProductInformation({
       <Price styles={styles.results[index]} />
       <div>{product.description}</div>
       <ShareButtons>
-        <Facebook clickHandler={onFacebookClick} />
-        <Twitter clickHandler={onTwitterClick} />
-        <Pinterest clickHandler={onPinterestClick} />
+        <FacebookShare src="https://favpng.com/img/share_facebook.png" onClick={() => onFacebookClick()} />
+        <TwitterShare src="https://favpng.com/img/share_twitter.png" onClick={() => onTwitterClick()} />
+        <PinterestShare src="https://favpng.com/img/share_pinterest.png" onClick={() => onPinterestClick()} />
       </ShareButtons>
     </Container>
   );

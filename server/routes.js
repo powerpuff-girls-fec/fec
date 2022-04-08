@@ -41,10 +41,8 @@ module.exports.getProductStyles = (req, res) => {
 };
 
 module.exports.postCart = (req, res) => {
-  console.log(req.body);
   handlers.postCart({
-    sku_id: req.body.style,
-    // count: req.body.quantity,
+    sku_id: Number(req.body.sku_id),
   })
     .then((result) => {
       console.log(result.data);
