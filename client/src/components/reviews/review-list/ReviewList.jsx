@@ -33,7 +33,7 @@ export default function ReviewList({
       <SelectWrapper>
         {`${totalReviews} reviews, sorted by `}
         <Select onChange={sortChangeHandler}>
-          <option value="relevance">Relevance</option>
+          <option value="relevant">Relevance</option>
           <option value="helpful">Helpfulness</option>
           <option value="newest">Newest</option>
         </Select>

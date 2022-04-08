@@ -38,33 +38,23 @@ export default function Reviews({ productId }) {
   const [reviewMetadata, setReviewMetadata] = useState();
   const [reviews, setReviews] = useState([]);
   const [displayed, setDisplayed] = useState(2);
-  const [reviewsRemaining, setReviewsRemaining] = useState(true);
-
-  const loadReviews = (count = 2) => {
-    if (!reviewsRemaining) { return; }
-
-    axios.get(`api/reviews/${productId}`, { params: { count, page: Math.ceil((reviews.length / 2) + 1) } })
-      .then((res) => res.data.results)
-      .then((data) => {
-        if (data.length === 0) { setReviewsRemaining(false); }
-
-        return data;
-      })
-      .then((data) => setReviews([...reviews, ...data]));
-  };
+  const [sort, setSort] = useState('relevant');
 
   const displayMoreReviews = () => {
     setDisplayed(displayed + 2);
-    loadReviews();
   };
 
   useEffect(() => {
     axios.get(`api/reviews/meta/${productId}`)
       .then((res) => res.data)
       .then((data) => setReviewMetadata(data));
-
-    loadReviews(4);
   }, [productId]);
+
+  useEffect(() => {
+    axios.get(`api/reviews/${productId}`, { params: { count: 9999, sort } })
+      .then((res) => res.data.results)
+      .then((data) => setReviews(data));
+  }, [productId, sort]);
 
   const { average, total } = getRatingsStats((reviewMetadata) ? reviewMetadata.ratings : {});
 
@@ -75,8 +65,8 @@ export default function Reviews({ productId }) {
         reviews={reviews.slice(0, displayed)}
         moreReviewsHandler={displayMoreReviews}
         addReviewhandler={() => console.log('uwu')}
-        sortChangeHandler={(e) => console.log(e.target.value)}
-        reviewsRemaining={reviewsRemaining}
+        sortChangeHandler={(e) => setSort(e.target.value)}
+        reviewsRemaining={displayed <= reviews.length}
         totalReviews={total}
       />
     </Container>
