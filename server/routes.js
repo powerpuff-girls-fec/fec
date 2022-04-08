@@ -13,10 +13,10 @@ module.exports.getQuestions = (req, res) => {
     .then((result) => res.send(result.data));
 };
 
+// GET /api/reviews/meta
 module.exports.getReviewsMeta = (req, res) => {
   handlers.getReviewsMeta(req.params.product_id)
     .then((result) => {
-      // console.log(result.data);
       res.send(result.data);
     })
     .catch((err) => console.log(err.message));
@@ -25,7 +25,6 @@ module.exports.getReviewsMeta = (req, res) => {
 module.exports.getProductInfo = (req, res) => {
   handlers.getProductInfo(req.params.product_id)
     .then((result) => {
-      // console.log(result.data);
       res.send(result.data);
     })
     .catch((err) => console.log(err.message));
@@ -34,7 +33,6 @@ module.exports.getProductInfo = (req, res) => {
 module.exports.getProductStyles = (req, res) => {
   handlers.getProductStyles(req.params.product_id)
     .then((result) => {
-      // console.log(result.data);
       res.send(result.data);
     })
     .catch((err) => console.log(err.message));
@@ -45,7 +43,6 @@ module.exports.postCart = (req, res) => {
     sku_id: Number(req.body.sku_id),
   })
     .then((result) => {
-      console.log(result.data);
       res.send(result.data);
     })
     .catch((err) => res.status(500).send(err));

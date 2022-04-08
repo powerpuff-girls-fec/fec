@@ -5,11 +5,17 @@ import Size from './size';
 import Quantity from './quantity';
 import AddButton from './addToCartButton';
 
-const Container = styled.div``;
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding-top: 05px;
+`;
 
 const DropdownsContainer = styled.div`
   display: flex;
   flex-direction: row;
+  justify-content: space-around;
+  padding-bottom: 10px;
 `;
 
 const compileStyles = (styles) => {

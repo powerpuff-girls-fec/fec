@@ -6,8 +6,9 @@ import ViewQuestionsAndAnswers from './questionsAndAnswers/ViewQuestionsAndAnswe
 import Reviews from './reviews/Reviews';
 
 const Container = styled.div`
-  display: grid;
-  grid-template-rows: 1fr 1fr 1fr;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
 `;
 
 export default function App() {

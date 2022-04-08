@@ -5,8 +5,8 @@ import PropTypes from 'prop-types';
 const Container = styled.div``;
 
 const ImageContainer = styled.img`
-  height: 100px;
-  width: 100px;
+  height: 500px;
+  width: auto;
   cursor: pointer;
   transition: 0.3s;
 
@@ -62,7 +62,6 @@ const CloseButton = styled.span`
 
 export default function CurrentModal({ image }) {
   const onImageClick = () => {
-    // console.log('click');
     // modal.style.display = 'block';
   };
 

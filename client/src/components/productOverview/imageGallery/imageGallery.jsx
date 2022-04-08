@@ -6,6 +6,8 @@ import Carousel from './carousel';
 import CurrentModal from './currentModal';
 
 const ImageComponent = styled.div`
+  display: flex;
+  flex-direction: column;
   padding-left: 100px;
 `;
 

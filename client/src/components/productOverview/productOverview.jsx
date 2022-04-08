@@ -52,7 +52,7 @@ export default function ProductOverview({ productID }) {
     currentTicket.style = productStylesList.results[index].style_id;
 
     axios.post('/api/cart', currentTicket)
-      .then((res) => console.log('res', res))
+      .then((res) => console.log('res', res.data))
       .catch((err) => console.log('err ', err));
   };
 
