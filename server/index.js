@@ -20,6 +20,7 @@ app.get('/api/reviews', routes.getReviews);
 app.get('/api/reviews/:product_id', routes.getReviews);
 app.get('/api/reviews/meta/:product_id', routes.getReviewsMeta);
 app.put('/api/reviews/:review_id/helpful', routes.putReviewHelpful);
+app.put('/api/reviews/:review_id/helpful', routes.reportReview);
 
 app.get('/api/products/:product_id', routes.getProductInfo);
 app.get('/api/products/:product_id/styles', routes.getProductStyles);

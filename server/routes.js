@@ -32,6 +32,12 @@ module.exports.putReviewHelpful = (req, res) => {
     .catch((err) => console.log(`Error: ${err.message}`));
 };
 
+module.exports.reportReview = (req, res) => {
+  handlers.reportReview(req.params.review_id)
+    .then((result) => res.status(204).send(result.data))
+    .catch((err) => console.log(`Error: ${err.message}`));
+};
+
 module.exports.getProductInfo = (req, res) => {
   handlers.getProductInfo(req.params.product_id)
     .then((result) => res.send(result.data))
