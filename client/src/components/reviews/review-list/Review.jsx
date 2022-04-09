@@ -28,9 +28,9 @@ const Summary = styled.div`
 `;
 
 const Response = styled.div`
-  background-color: #c4c4c4;
-  border-radius: 1em;
-  padding: 1em;
+  background-color: #EBEBEB;
+  padding: 1em 1em 1em 1em;
+  margin: 1em 0 0.5em 0;
 `;
 
 const HelpfulnessReportWrapper = styled.div`
@@ -95,7 +95,11 @@ export default function Review({ review }) {
 
       {/* eslint-disable react/jsx-one-expression-per-line */}
       {(review.recommend) ? <div style={{ paddingTop: '30px' }}><b>🗸</b> I recommend this product</div> : null}
-      {(review.response) ? <Response style={{ paddingTop: '30px' }}><b>Response:</b> {review.response}</Response> : null}
+      {(review.response) ? (
+        <Response><b>Response:</b>
+          <p style={{ marginBlockEnd: '0' }}>{review.response}</p>
+        </Response>
+      ) : null}
       {/* eslint-enable react/jsx-one-expression-per-line */}
 
       <HelpfulnessReportWrapper>
