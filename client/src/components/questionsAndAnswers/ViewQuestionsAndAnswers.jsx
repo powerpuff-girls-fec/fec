@@ -7,10 +7,10 @@ import QuestionSearch from './QuestionSearch';
 import QuestionsList from './QuestionsList/QuestionsList';
 
 const FlexContainer = styled.div`
-  height: 750px;
   width: 1000px;
   display: flex;
   flex-direction: column;
+  margin: auto;
 `;
 
 const Header = styled.h1`
