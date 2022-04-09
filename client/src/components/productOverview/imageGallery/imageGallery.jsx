@@ -1,16 +1,77 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
-import Carousel from './carousel';
-import CurrentModal from './currentModal';
+// import DisplayCarousel from './displayCarousel';
+
+// import Carousel from './carousel';
+// import CurrentModal from './currentModal';
 
 const ImageComponent = styled.div`
   background-color: #D3D3D3;
   flex-basis: 65%;
   display: flex;
-  flex-direction: column;
-  padding-left: 100px;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+`;
+
+const DisplayCarousel = styled.img`
+  width:100%;
+  max-width:600px;
+  height: 800px;
+`;
+
+const LeftArrow = styled.img`
+  width: 9px;
+  height: 9px;
+
+  position: relative;
+  right: 6px;
+  bottom: 2px;
+`;
+
+const RightArrow = styled.img`
+  width: 9px;
+  height: 9px;
+
+  position: relative;
+  right: 3px;
+  bottom: 2px;
+`;
+
+const LeftButton = styled.button`
+  position: relative;
+  left: 20px;
+  top: 10%;
+
+  border-radius: 50%;
+  border-width: 1px;
+  width: 10px;
+  height: 15px;
+  background-color: white;
+
+  transition-duration: 0.2s;
+  &:hover {
+    background-color: lightgray;
+  }
+`;
+
+const RightButton = styled.button`
+  position: relative;
+  right: 20px;
+  top: 10%;
+
+  border-radius: 50%;
+  border-width: 1px;
+  width: 10px;
+  height: 15px;
+  background-color: white;
+
+  transition-duration: 0.2s;
+  &:hover {
+    background-color: lightgray;
+  }
 `;
 
 const compileImageList = (photos) => {
@@ -24,17 +85,39 @@ const compileImageList = (photos) => {
 export default function ImageGallery({ index, styles }) {
   const compiledImageList = compileImageList(styles.results[index].photos);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [length, setLength] = useState(compiledImageList.length);
 
-  const indexChangeHandler = (imageIndex) => {
-    setCurrentImageIndex(imageIndex);
+  const rightArrow = 'https://cdn-icons-png.flaticon.com/512/467/467282.png';
+  const leftArrow = 'https://cdn-icons-png.flaticon.com/512/467/467274.png';
+
+  useEffect(() => {
+    setLength(compiledImageList.length);
+  }, [compiledImageList]);
+
+  const next = () => {
+    if (currentImageIndex < (length - 1)) {
+      setCurrentImageIndex((prevState) => prevState + 1);
+    }
   };
+
+  const previous = () => {
+    if (currentImageIndex > 0) {
+      setCurrentImageIndex((prevState) => prevState - 1);
+    }
+  };
+
+  console.log(compiledImageList);
+  console.log(length);
 
   return (
     <ImageComponent>
-      <Carousel changeHandler={indexChangeHandler}>
-        {compiledImageList.map((url, key) => <img src={url} key={key} alt="placeholder" />)}
-      </Carousel>
-      <CurrentModal image={compiledImageList[currentImageIndex]} />
+      <LeftButton type="button" onClick={() => previous()}>
+        <LeftArrow src={leftArrow} />
+      </LeftButton>
+      <DisplayCarousel src={compiledImageList[currentImageIndex]} />
+      <RightButton type="button" onClick={() => next()}>
+        <RightArrow src={rightArrow} />
+      </RightButton>
     </ImageComponent>
   );
 }
