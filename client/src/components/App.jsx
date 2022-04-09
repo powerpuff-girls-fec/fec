@@ -4,7 +4,8 @@ import ProductOverview from './productOverview/productOverview';
 import ViewQuestionsAndAnswers from './questionsAndAnswers/ViewQuestionsAndAnswers';
 import Reviews from './reviews/Reviews';
 
-const Container = styled.div`
+const Container = styled.div` 
+  color: #525252;
   display: grid;
   grid-template-rows: 1fr 1fr 1fr;
 `;
