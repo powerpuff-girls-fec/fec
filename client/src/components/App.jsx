@@ -13,7 +13,7 @@ export default function App() {
   return (
     <Container>
       <ProductOverview productID={65631} />
-      <ViewQuestionsAndAnswers productId={65632} />
+      <ViewQuestionsAndAnswers productId={65631} />
       <Reviews productId={65631} />
     </Container>
   );

@@ -18,14 +18,14 @@ const Background = styled.div`
 `;
 
 const ModalWrapper = styled.div`
-  width: 800px;
-  height: 500px;
+  width: 600px;
+  height: 600px;
   box-shadow: 0 5px 16px rgba(0, 0, 0, 0.2);
   background: #fff;
   color: #000;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  position: relative
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
   z-index: 10;
   border-radius: 10px;
 `;
@@ -41,6 +41,11 @@ const ModalContent = styled.div`
 
 const FormContainer = styled.div`
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  line-height: 1.8;
+  color: #141414;
 `;
 
 const re = /^[^@]+@[^@]+\.[^@]+$/;

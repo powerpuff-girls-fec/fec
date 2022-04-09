@@ -6,10 +6,17 @@ import PropTypes from 'prop-types';
 import QuestionSearch from './QuestionSearch';
 import QuestionsList from './QuestionsList/QuestionsList';
 
-const Container = styled.div`
-  height: 50vh;
+const FlexContainer = styled.div`
+  height: 750px;
+  width: 1000px;
   display: flex;
   flex-direction: column;
+`;
+
+const Header = styled.h1`
+  font-family: "HelveticaNeue", Arial;
+  font-size: 16px;
+  margin: 5px
 `;
 
 let originalData;
@@ -29,14 +36,16 @@ export default function ViewQuestionsAndAnswers({ productId }) {
   }, []);
 
   return (
-    <Container data-testid="qa">
-      <h1>QUESTIONS & ANSWERS</h1>
+
+    <FlexContainer data-testid="qa">
+      <Header>QUESTIONS & ANSWERS</Header>
       <QuestionSearch
         setQuestionData={setQuestionData}
         originalData={originalData}
       />
       <QuestionsList results={questionsData} productId={productId} />
-    </Container>
+    </FlexContainer>
+
   );
 }
 
