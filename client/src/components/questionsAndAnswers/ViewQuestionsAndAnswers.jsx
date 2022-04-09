@@ -1,32 +1,58 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
+import PropTypes from 'prop-types';
 
 import QuestionSearch from './QuestionSearch';
 import QuestionsList from './QuestionsList/QuestionsList';
 
-const Container = styled.div`
-  height: 50%;
+const FlexContainer = styled.div`
+  width: 1000px;
   display: flex;
   flex-direction: column;
+  margin: auto;
 `;
 
-export default function ViewQuestionsAndAnswers() {
+const Header = styled.h1`
+  font-family: "HelveticaNeue", Arial;
+  font-size: 16px;
+  margin: 5px
+`;
+
+let originalData;
+
+export default function ViewQuestionsAndAnswers({ productId }) {
   const [questionsData, setQuestionData] = useState(undefined);
 
   useEffect(() => {
-    axios.get('http://localhost:3000/api/questions')
-      .then((response) => {
-        setQuestionData(response.data.results);
-      })
-      .catch((error) => console.log(error));
+    if (productId !== 0) {
+      axios.get(`/api/questions/${productId}`)
+        .then((response) => {
+          originalData = JSON.parse(JSON.stringify(response.data.results));
+          setQuestionData(response.data.results);
+        })
+        .catch((error) => console.log(error));
+    }
   }, []);
 
   return (
-    <Container>
-      <h1>QUESTIONS & ANSWERS</h1>
-      <QuestionSearch setQuestionData={setQuestionData} originalData={questionsData} />
-      <QuestionsList results={questionsData} />
-    </Container>
+
+    <FlexContainer data-testid="qa">
+      <Header>QUESTIONS & ANSWERS</Header>
+      <QuestionSearch
+        setQuestionData={setQuestionData}
+        originalData={originalData}
+      />
+      <QuestionsList results={questionsData} productId={productId} />
+    </FlexContainer>
+
   );
 }
+
+ViewQuestionsAndAnswers.propTypes = {
+  productId: PropTypes.number,
+};
+
+ViewQuestionsAndAnswers.defaultProps = {
+  productId: 0,
+};

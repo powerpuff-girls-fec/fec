@@ -14,7 +14,11 @@ module.exports.getReviews = (req, res) => {
 
 // GET /api/questions
 module.exports.getQuestions = (req, res) => {
+<<<<<<< HEAD
   handlers.getQuestions(65631)
+=======
+  handlers.getQuestions(req.params.product_id)
+>>>>>>> main
     .then((result) => res.send(result.data))
     .catch((err) => res.send(`Error: ${err.message}`));
 };
@@ -54,4 +58,55 @@ module.exports.getProductStyles = (req, res) => {
   handlers.getProductStyles(req.params.product_id)
     .then((result) => res.send(result.data))
     .catch((err) => console.log(`Error: ${err.message}`));
+};
+
+module.exports.putHelpfulAnswer = (req, res) => {
+  handlers.putHelpfulAnswer(req.params.answer_id)
+    .then((result) => res.send(result.data))
+    .catch((err) => res.send(`Error: ${err.message}`));
+};
+
+module.exports.putHelpfulQuestion = (req, res) => {
+  handlers.putHelpfulQuestion(req.params.question_id)
+    .then((result) => res.send(result.data))
+    .catch((err) => res.send(`Error: ${err.message}`));
+};
+
+module.exports.putReportAnswer = (req, res) => {
+  handlers.putReportAnswer(req.params.answer_id)
+    .then((result) => res.send(result.data))
+    .catch((err) => res.send(`Error: ${err.message}`));
+};
+
+module.exports.postQuestion = (req, res) => {
+  handlers.postQuestion({
+    body: req.body.question,
+    name: req.body.nickname,
+    email: req.body.email,
+    product_id: Number(req.params.product_id),
+  })
+    .then((result) => res.send(result.data))
+    .catch((err) => res.send(`Error: ${err.message}`));
+};
+
+module.exports.postAnswer = (req, res) => {
+  handlers.postAnswer({
+    body: req.body.answer,
+    name: req.body.nickname,
+    email: req.body.email,
+    photos: req.body.photos,
+    question_id: Number(req.params.question_id),
+  })
+    .then((result) => res.send(result.data))
+    .catch((err) => res.send(`Error: ${err.message}`));
+};
+
+module.exports.postCloudinary = (req, res) => {
+  handlers.postCloudinary(req.body.imagedata, (err, response) => {
+    if (err) {
+      console.log(`Cloudinary post errror: ${err}`);
+      res.send(500);
+    }
+    res.send(response);
+  });
 };
