@@ -14,16 +14,12 @@ module.exports.getReviews = (req, res) => {
 
 // GET /api/questions
 module.exports.getQuestions = (req, res) => {
-<<<<<<< HEAD
-  handlers.getQuestions(65631)
-=======
   handlers.getQuestions(req.params.product_id)
->>>>>>> main
     .then((result) => res.send(result.data))
     .catch((err) => res.send(`Error: ${err.message}`));
 };
 
-// GET /api/reviews/meta/:product_id
+// GET /api/reviews/meta
 module.exports.getReviewsMeta = (req, res) => {
   handlers.getReviewsMeta(req.params.product_id)
     .then((result) => res.send(result.data))
@@ -50,12 +46,25 @@ module.exports.postReview = (req, res) => {
 
 module.exports.getProductInfo = (req, res) => {
   handlers.getProductInfo(req.params.product_id)
+<<<<<<< HEAD
+    .then((result) => {
+      res.send(result.data);
+    })
+    .catch((err) => console.log(err.message));
+=======
     .then((result) => res.send(result.data))
     .catch((err) => console.log(`Error: ${err.message}`));
+>>>>>>> main
 };
 
 module.exports.getProductStyles = (req, res) => {
   handlers.getProductStyles(req.params.product_id)
+<<<<<<< HEAD
+    .then((result) => {
+      res.send(result.data);
+    })
+    .catch((err) => console.log(err.message));
+=======
     .then((result) => res.send(result.data))
     .catch((err) => console.log(`Error: ${err.message}`));
 };
@@ -109,4 +118,15 @@ module.exports.postCloudinary = (req, res) => {
     }
     res.send(response);
   });
+>>>>>>> main
+};
+
+module.exports.postCart = (req, res) => {
+  handlers.postCart({
+    sku_id: Number(req.body.sku_id),
+  })
+    .then((result) => {
+      res.send(result.data);
+    })
+    .catch((err) => res.status(500).send(err));
 };

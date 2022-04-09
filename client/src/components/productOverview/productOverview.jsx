@@ -9,15 +9,17 @@ import StyleSelector from './styleSelector/styleSelector';
 import AddToCart from './cart/addToCart';
 
 const Container = styled.div`
-  display: grid;
-  height: 20%;
+  display: flex;
+  flex-direction: row;
+  height: 30%;
   width: 100%;
-  grid-template-columns: 4fr 3fr;
 `;
 
 const RightColumn = styled.div`
-  display: grid;
-  grid-template-rows: 2fr 1fr 1fr;
+  display: flex;
+  flex-basis: 35%;
+  flex-direction: column;
+  justify-content: space-around;
 `;
 
 export default function ProductOverview({ productID }) {
@@ -29,15 +31,18 @@ export default function ProductOverview({ productID }) {
   useEffect(() => {
     axios.get(`api/products/${productID}`)
       .then((result) => result.data)
-      .then((data) => setProductInfo(data));
+      .then((data) => setProductInfo(data))
+      .catch((err) => console.log(err));
 
     axios.get(`api/reviews/meta/${productID}`)
       .then((result) => result.data)
-      .then((data) => setReviewMeta(data));
+      .then((data) => setReviewMeta(data))
+      .catch((err) => console.log(err));
 
     axios.get(`api/products/${productID}/styles`)
       .then((result) => result.data)
-      .then((data) => setProductStylesList(data));
+      .then((data) => setProductStylesList(data))
+      .catch((err) => console.log(err));
   }, []);
 
   const handleIndexChange = (i) => {
@@ -45,21 +50,13 @@ export default function ProductOverview({ productID }) {
   };
 
   const createCartTicket = (ticketInfo) => {
-    const selectedStyle = productStylesList.results[index].style_id;
     const currentTicket = ticketInfo;
-    currentTicket.style = selectedStyle;
-    currentTicket.item = productID;
+    currentTicket.style = productStylesList.results[index].style_id;
 
-    console.log(currentTicket);
-    // this is then posted to the database
-    // don't quite understand if the information in ticketInfo is what
-    // will actually be needed / wanted, but it can easily be altered
-    // to best suite our needs
+    axios.post('/api/cart', currentTicket)
+      .then((res) => console.log('res', res.data))
+      .catch((err) => console.log('err ', err));
   };
-
-  // console.log('product info: ', productInfo);
-  // console.log('product styles: ', productStylesList);
-  // console.log('product reviews: ', reviewMeta);
 
   return (
     <Container>

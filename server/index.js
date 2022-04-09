@@ -35,6 +35,7 @@ app.post('/api/answers/:question_id', routes.postAnswer);
 app.post('/api/cloudinary', routes.postCloudinary);
 
 app.get('/api/questions', routes.getQuestions);
+app.post('/api/cart', routes.postCart);
 
 app.listen(port);
 console.log(`Listening at http://localhost:${port}`);
