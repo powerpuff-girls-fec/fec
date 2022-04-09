@@ -18,16 +18,18 @@ export default function ViewQuestionsAndAnswers({ productId }) {
   const [questionsData, setQuestionData] = useState(undefined);
 
   useEffect(() => {
-    axios.get(`/api/questions/${productId}`)
-      .then((response) => {
-        originalData = JSON.parse(JSON.stringify(response.data.results));
-        setQuestionData(response.data.results);
-      })
-      .catch((error) => console.log(error));
+    if (productId !== 0) {
+      axios.get(`/api/questions/${productId}`)
+        .then((response) => {
+          originalData = JSON.parse(JSON.stringify(response.data.results));
+          setQuestionData(response.data.results);
+        })
+        .catch((error) => console.log(error));
+    }
   }, []);
 
   return (
-    <Container>
+    <Container data-testid="qa">
       <h1>QUESTIONS & ANSWERS</h1>
       <QuestionSearch
         setQuestionData={setQuestionData}
@@ -39,5 +41,9 @@ export default function ViewQuestionsAndAnswers({ productId }) {
 }
 
 ViewQuestionsAndAnswers.propTypes = {
-  productId: PropTypes.number.isRequired,
+  productId: PropTypes.number,
+};
+
+ViewQuestionsAndAnswers.defaultProps = {
+  productId: 0,
 };

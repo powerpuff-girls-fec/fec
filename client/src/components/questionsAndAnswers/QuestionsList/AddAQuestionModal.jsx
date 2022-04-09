@@ -75,7 +75,7 @@ export default function AddAQuestionModal({ showModal, setShowModal, productId }
 
   return ReactDom.createPortal(
     <Background ref={modalRef} onClick={closeModal}>
-      <ModalWrapper showModal={showModal}>
+      <ModalWrapper showModal={showModal} data-testid="AddAQuestionModal">
         <ModalContent>
           <div>
             Ask Your Question
@@ -130,5 +130,5 @@ export default function AddAQuestionModal({ showModal, setShowModal, productId }
 AddAQuestionModal.propTypes = {
   showModal: PropTypes.bool.isRequired,
   setShowModal: PropTypes.func.isRequired,
-  productId: PropTypes.number.isRequired,
+  productId: PropTypes.number,
 };

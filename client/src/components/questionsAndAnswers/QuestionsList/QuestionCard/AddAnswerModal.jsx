@@ -132,7 +132,7 @@ export default function AddAnswerModal({
   }
   return ReactDom.createPortal(
     <Background ref={modalRef} onClick={closeModal}>
-      <ModalWrapper showModal={showModal}>
+      <ModalWrapper showModal={showModal} data-testid="AddAnswerModal">
         <ModalContent>
           <div>
             Submit your Answer
@@ -148,6 +148,7 @@ export default function AddAnswerModal({
                 maxLength="1000"
                 value={values.answer}
                 onChange={handleChange}
+                data-testid="AddAnswerModal-answer"
               />
               <div>*Nickname</div>
               <input
@@ -156,6 +157,7 @@ export default function AddAnswerModal({
                 placeholder="Example: jack543!"
                 value={values.nickname}
                 onChange={handleChange}
+                data-testid="AddAnswerModal-nickname"
               />
               <div>For privacy reasons, do not use your full name or email address</div>
               <div>*Email</div>
@@ -165,6 +167,7 @@ export default function AddAnswerModal({
                 placeholder="Example: jack@email.com"
                 value={values.email}
                 onChange={handleChange}
+                data-testid="AddAnswerModal-email"
               />
               <div>For authentication reasons, you will not be emailed</div>
               <div>Upload Up to 5 Photos</div>

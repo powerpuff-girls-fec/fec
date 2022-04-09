@@ -31,7 +31,7 @@ const compare = function compare(a, b) {
   return b.helpfulness - a.helpfulness;
 };
 
-export default function QuestionsCard({ questionObj }) {
+export default function QuestionsCard({ questionObj, testid }) {
   const answersArray = [];
   for (let i = 0; i < Object.keys(questionObj.answers).length; i += 1) {
     answersArray.push(questionObj.answers[Object.keys(questionObj.answers)[i]]);
@@ -44,7 +44,7 @@ export default function QuestionsCard({ questionObj }) {
   };
 
   return (
-    <div>
+    <div data-testid={testid}>
       <Container>
         <Question>
           Q:
@@ -90,4 +90,5 @@ QuestionsCard.propTypes = {
     question_id: PropTypes.number.isRequired,
     reported: PropTypes.bool.isRequired,
   }).isRequired,
+  testid: PropTypes.string.isRequired,
 };

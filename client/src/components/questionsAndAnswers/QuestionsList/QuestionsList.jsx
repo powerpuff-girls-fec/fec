@@ -41,16 +41,15 @@ export default function QuestionsList({ results, productId }) {
         setShowModal={setShowModal}
         productId={productId}
       />
-      <QuestionsListContainer>
-        <div>
-          {results.slice(0, renderLength).map((questionObj) => (
-            <QuestionCard
-              key={questionObj.question_id}
-              questionObj={questionObj}
-              productId={productId}
-            />
-          ))}
-        </div>
+      <QuestionsListContainer data-testid="QuestionsList">
+        {results.slice(0, renderLength).map((questionObj, i) => (
+          <QuestionCard
+            key={questionObj.question_id}
+            questionObj={questionObj}
+            productId={productId}
+            testid={`QuestionCard${i}`}
+          />
+        ))}
       </QuestionsListContainer>
       <div>
         <AddAQuestionButton openModal={openModal} />
@@ -81,7 +80,7 @@ QuestionsList.propTypes = {
     question_id: PropTypes.number,
     reported: PropTypes.bool,
   })),
-  productId: PropTypes.number.isRequired,
+  productId: PropTypes.number,
 };
 
 QuestionsList.defaultProps = {
@@ -103,4 +102,5 @@ QuestionsList.defaultProps = {
     question_id: 573868,
     reported: false,
   }],
+  productId: 0,
 };

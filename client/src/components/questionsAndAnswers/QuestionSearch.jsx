@@ -16,6 +16,7 @@ export default function QuestionSearch({ setQuestionData, originalData }) {
           setQuestionData(originalData);
         }
       }}
+      data-testid="QuestionSearch"
     />
   );
 }
