@@ -5,14 +5,14 @@ import styled from 'styled-components';
 import QuestionCard from './QuestionCard/QuestionCard';
 import AddAQuestionButton from './AddAQuestionButton';
 import MoreAnsweredQuestionsButton from './MoreAnsweredQuestionsButton';
-import AddAQuestionModal from '../AddAQuestionModal';
+import AddAQuestionModal from './AddAQuestionModal';
 
 const QuestionsListContainer = styled.div`
   max-height: 500px;
-  overflow-y: hidden;
+  overflow-y: scroll;
 `;
 
-export default function QuestionsList({ results }) {
+export default function QuestionsList({ results, productId }) {
   const questionsAsked = results.length;
   const [renderLength, setRenderLength] = useState(4);
   const [showModal, setShowModal] = useState(false);
@@ -27,8 +27,8 @@ export default function QuestionsList({ results }) {
         <AddAQuestionButton openModal={openModal} />
         <AddAQuestionModal
           showModal={showModal}
-          openModal={openModal}
           setShowModal={setShowModal}
+          productId={productId}
         />
       </>
     );
@@ -36,16 +36,20 @@ export default function QuestionsList({ results }) {
 
   return (
     <>
-      <AddAQuestionModal showModal={showModal} openModal={openModal} setShowModal={setShowModal} />
-      <QuestionsListContainer>
-        <div>
-          {results.slice(0, renderLength).map((questionObj) => (
-            <QuestionCard
-              key={questionObj.question_id}
-              questionObj={questionObj}
-            />
-          ))}
-        </div>
+      <AddAQuestionModal
+        showModal={showModal}
+        setShowModal={setShowModal}
+        productId={productId}
+      />
+      <QuestionsListContainer data-testid="QuestionsList">
+        {results.slice(0, renderLength).map((questionObj, i) => (
+          <QuestionCard
+            key={questionObj.question_id}
+            questionObj={questionObj}
+            productId={productId}
+            testid={`QuestionCard${i}`}
+          />
+        ))}
       </QuestionsListContainer>
       <div>
         <AddAQuestionButton openModal={openModal} />
@@ -76,6 +80,7 @@ QuestionsList.propTypes = {
     question_id: PropTypes.number,
     reported: PropTypes.bool,
   })),
+  productId: PropTypes.number,
 };
 
 QuestionsList.defaultProps = {
@@ -97,4 +102,5 @@ QuestionsList.defaultProps = {
     question_id: 573868,
     reported: false,
   }],
+  productId: 0,
 };
