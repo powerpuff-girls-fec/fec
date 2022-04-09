@@ -38,7 +38,7 @@ const HelpfulnessReportWrapper = styled.div`
   color: #555555;
 `;
 
-const HelpfulnessButton = styled.button`
+const HelpfulnessReportButton = styled.button`
   display: inline-block;
   text-decoration: underline;
   padding: 0;
@@ -91,9 +91,9 @@ export default function Review({ review }) {
 
       <HelpfulnessReportWrapper>
         Helpful?&nbsp;&nbsp;
-        <HelpfulnessButton onClick={helpfulnessOnClick}>
+        <HelpfulnessReportButton onClick={helpfulnessOnClick}>
           Yes
-        </HelpfulnessButton>
+        </HelpfulnessReportButton>
         {` (${review.helpfulness + ((markedHelpful) ? 1 : 0)})`}
       </HelpfulnessReportWrapper>
     </Container>
