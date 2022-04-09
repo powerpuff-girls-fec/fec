@@ -7,10 +7,11 @@ import Thumbnail from './thumbnailDisplay';
 const Container = styled.div`
   height: 100%;
   width: 100%;
-  border: 1px solid black;
 `;
 
-const StyleName = styled.div``;
+const StyleName = styled.div`
+  font-weight: bold;
+`;
 
 const ThumbnailWrapper = styled.div`
   display: grid;
@@ -34,14 +35,14 @@ export default function StyleSelector({ styles, handleIndexChange }) {
 
   const [currentCheckPosition, setCurrentCheckPosition] = useState(0);
   const [currentStyle, setCurrentStyle] = useState(stylesList[0]);
-  const [currentName, setCurrentName] = useState(stylesNames[0]);
+  const [currentStyleIndex, setCurrentStyleIndex] = useState(0);
 
   const styleChangeHandler = (url) => {
     for (let i = 0; i < stylesList.length; i += 1) {
       if (stylesList[i] === url) {
         if (stylesList[i] !== currentStyle) {
           setCurrentStyle(stylesList[i]);
-          setCurrentName(stylesNames[i]);
+          setCurrentStyleIndex(i);
           setCurrentCheckPosition(i);
           handleIndexChange(i);
         }
@@ -52,7 +53,7 @@ export default function StyleSelector({ styles, handleIndexChange }) {
   return (
     <Container>
       <StyleName>
-        {currentName}
+        {stylesNames[currentStyleIndex]}
       </StyleName>
       <ThumbnailWrapper>
         {stylesList.map((url, key) => (

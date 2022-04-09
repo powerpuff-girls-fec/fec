@@ -2,22 +2,22 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
-import Facebook from './shareButtons/facebookShare';
-import Twitter from './shareButtons/twitterShare';
-import Pinterest from './shareButtons/pinterestShare';
 import Price from './prices';
 import Stars from './Stars';
 
 const Container = styled.div`
-display: grid;
-width: 100%;
-height: 10em;
-grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 10em;
+  padding-bottom: 50px;
 `;
 
 const Category = styled.div``;
 
-const Title = styled.div``;
+const Title = styled.div`
+  font-size: 30px;
+`;
 
 const ShareButtons = styled.div`
   display: flex;
@@ -28,6 +28,28 @@ const ShareButtons = styled.div`
 const Review = styled.div`
   display: flex;
   flex-direction: row;
+`;
+
+const ReviewLink = styled.div`
+  padding-left: 10px;
+`;
+
+const FacebookShare = styled.img`
+  width: 25px;
+  height: 25px;
+  padding-right: 5px;
+`;
+
+const PinterestShare = styled.img`
+  width: 25px;
+  height: 25px;
+  padding-right: 5px;
+`;
+
+const TwitterShare = styled.img`
+  width: 25px;
+  height: 25px;
+  padding-right: 5px;
 `;
 
 const onFacebookClick = () => {
@@ -59,7 +81,6 @@ const averageReviews = (reviews) => {
 export default function ProductInformation({
   product, review, styles, index,
 }) {
-  // console.log(styles);
   const ratingInfo = averageReviews(review.ratings);
   const averageRating = ratingInfo[0];
   const ratingCount = ratingInfo[1];
@@ -68,22 +89,22 @@ export default function ProductInformation({
     <Container>
       <Review>
         <Stars stars={averageRating} />
-        <div>
-          <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">
-            Read all
+        <ReviewLink>
+          <a href="#reviews">
+            Read all &nbsp;
             {ratingCount}
-            reviews
+            &nbsp;reviews
           </a>
-        </div>
+        </ReviewLink>
       </Review>
       <Category>{product.category}</Category>
       <Title>{product.name}</Title>
       <Price styles={styles.results[index]} />
       <div>{product.description}</div>
       <ShareButtons>
-        <Facebook clickHandler={onFacebookClick} />
-        <Twitter clickHandler={onTwitterClick} />
-        <Pinterest clickHandler={onPinterestClick} />
+        <FacebookShare src="https://favpng.com/img/share_facebook.png" onClick={() => onFacebookClick()} />
+        <TwitterShare src="https://favpng.com/img/share_twitter.png" onClick={() => onTwitterClick()} />
+        <PinterestShare src="https://favpng.com/img/share_pinterest.png" onClick={() => onPinterestClick()} />
       </ShareButtons>
     </Container>
   );

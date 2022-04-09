@@ -1,6 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-// import styled from 'styled-components';
+import styled from 'styled-components';
+
+const Prices = styled.div`
+  font-style: italic;
+`;
 
 export default function Price({ styles }) {
   const price = styles.original_price;
@@ -9,18 +13,16 @@ export default function Price({ styles }) {
   if (discountedPrice === null) {
     const displayPrice = `$${price}`;
     return (
-      <div>{displayPrice}</div>
+      <Prices>{displayPrice}</Prices>
     );
   }
   const displayPrice = `$${price}`;
   const discountedDisplayPrice = `$${discountedPrice}`;
   return (
-    <div>
-      <div>
-        <del>{displayPrice}</del>
-        {discountedDisplayPrice}
-      </div>
-    </div>
+    <Prices>
+      <del>{displayPrice}</del>
+      {discountedDisplayPrice}
+    </Prices>
   );
 }
 
