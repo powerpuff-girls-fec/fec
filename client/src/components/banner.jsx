@@ -7,7 +7,7 @@ const BannerBar = styled.h1`
   text-align: center;
   font-size: 40px;
   font-weight: bold;
-  font-family: Sans-Serif;
+  font-family: "Comic Sans MS", "Comic Sans", cursive;;
 `;
 
 export default function Banner() {
