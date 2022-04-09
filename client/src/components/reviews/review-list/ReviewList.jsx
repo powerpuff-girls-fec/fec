@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 
 import styled from 'styled-components';
 
+import axios from 'axios';
+
 import Review from './Review';
 import ReviewMenu from './ReviewMenu';
 import ReviewModal from './ReviewModal';
@@ -29,7 +31,13 @@ const SelectWrapper = styled.div`
 `;
 
 export default function ReviewList({
-  reviews, moreReviewsHandler, reviewsRemaining, totalReviews, sortChangeHandler, characteristics,
+  reviews,
+  moreReviewsHandler,
+  reviewsRemaining,
+  totalReviews,
+  sortChangeHandler,
+  characteristics,
+  productId,
 }) {
   const [showModal, setShowModal] = useState(false);
 
@@ -38,7 +46,12 @@ export default function ReviewList({
   };
 
   const postReview = (e) => {
-    console.log(e);
+    axios.post('/api/reviews', {
+      ...e,
+      product_id: productId,
+      characteristics: Object.keys(e.characteristics).reduce((acc, key) => (
+        { ...acc, [key]: e.characteristics[key].value }), {}),
+    });
   };
 
   return (
@@ -91,6 +104,7 @@ ReviewList.propTypes = {
   reviewsRemaining: PropTypes.bool.isRequired,
   totalReviews: PropTypes.number.isRequired,
   characteristics: PropTypes.object.isRequired,
+  productId: PropTypes.number.isRequired,
 };
 
 ReviewList.defaultProps = {

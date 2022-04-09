@@ -69,6 +69,7 @@ export default function Reviews({ productId }) {
         reviewsRemaining={displayed <= reviews.length}
         totalReviews={reviews.length}
         characteristics={(reviewMetadata) ? reviewMetadata.characteristics : {}}
+        productId={productId}
       />
     </Container>
   );
