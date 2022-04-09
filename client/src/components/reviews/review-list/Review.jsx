@@ -55,12 +55,21 @@ const HelpfulnessReportButton = styled.button`
 
 export default function Review({ review }) {
   const [markedHelpful, markHelpful] = useState(false);
+  const [reported, report] = useState(false);
 
   const helpfulnessOnClick = () => {
     if (!markedHelpful) {
       markHelpful(true);
 
       axios.put(`/api/reviews/${review.review_id}/helpful`);
+    }
+  };
+
+  const reportOnClick = () => {
+    if (!reported) {
+      report(true);
+
+      // axios.put(`/api/reviews/${review.review_id}/report`);
     }
   };
 
@@ -86,15 +95,25 @@ export default function Review({ review }) {
 
       {/* eslint-disable react/jsx-one-expression-per-line */}
       {(review.recommend) ? <div style={{ paddingTop: '30px' }}><b>🗸</b> I recommend this product</div> : null}
-      {(review.response) ? <Response style={{ paddingTop: '30px' }}><b>💬</b> {review.response}</Response> : null}
+      {(review.response) ? <Response style={{ paddingTop: '30px' }}><b>Response:</b> {review.response}</Response> : null}
       {/* eslint-enable react/jsx-one-expression-per-line */}
 
       <HelpfulnessReportWrapper>
         Helpful?&nbsp;&nbsp;
+
         <HelpfulnessReportButton onClick={helpfulnessOnClick}>
           Yes
         </HelpfulnessReportButton>
+
         {` (${review.helpfulness + ((markedHelpful) ? 1 : 0)})`}
+
+        {/* '  |  ' */}
+        &nbsp;&nbsp;|&nbsp;&nbsp;
+
+        <HelpfulnessReportButton onClick={reportOnClick}>
+          Report
+        </HelpfulnessReportButton>
+
       </HelpfulnessReportWrapper>
     </Container>
   );
