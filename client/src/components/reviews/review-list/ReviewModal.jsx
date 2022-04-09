@@ -3,6 +3,8 @@ import ReactDom from 'react-dom';
 
 import styled from 'styled-components';
 
+import underText from '../rating-breakdown/factor-list/characteristics.json';
+
 const Background = styled.div`
   width: 100%;
   height: 100%;
@@ -43,8 +45,17 @@ const FormLabel = styled.label`
 const FormEntry = styled.div`
   width: 50%;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+`;
+
+const CharUnderText = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 75%;
+  margin-left: 25%;
 `;
 
 export default function ReviewModal({ showModal, setShowModal, characteristics }) {
@@ -169,13 +180,14 @@ export default function ReviewModal({ showModal, setShowModal, characteristics }
               <input
                 name="email"
                 id="email"
+                type="email"
                 value={values.email}
                 onChange={updateValue}
               />
             </FormLabel>
           </FormEntry>
 
-          <FormEntry key="recommend">
+          <FormEntry style={{ flexDirection: 'row' }} key="recommend">
             Recommend:&nbsp;
             <FormLabel htmlFor="recommend">
               <label htmlFor="yes">
@@ -230,6 +242,11 @@ export default function ReviewModal({ showModal, setShowModal, characteristics }
                   onChange={updateCharacteristic}
                 />
               </FormLabel>
+              <CharUnderText>
+                {underText[values.characteristics[key].name].map(
+                  (text) => (<div>{text}</div>),
+                )}
+              </CharUnderText>
             </FormEntry>
           ))}
 
