@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+
+import axios from 'axios';
 
 import styled from 'styled-components';
 
@@ -26,17 +28,51 @@ const Summary = styled.div`
 `;
 
 const Response = styled.div`
-  background-color: #c4c4c4;
-  border-radius: 1em;
-  padding: 1em;
+  background-color: #EBEBEB;
+  padding: 1em 1em 1em 1em;
+  margin: 1em 0 0.5em 0;
 `;
 
-// eslint-disable-next-line react/prop-types
-function B({ children }) {
-  return <span style={{ fontWeight: 'bold' }}>{children}</span>;
-}
+const HelpfulnessReportWrapper = styled.div`
+  padding-top: 1em;
+  color: #555555;
+`;
+
+const HelpfulnessReportButton = styled.button`
+  display: inline-block;
+  text-decoration: underline;
+  padding: 0;
+  background: inherit;
+  border: none;
+  font-size: inherit;
+  color: inherit;
+
+  &:hover {
+    color: #aaaaaa;
+    cursor: pointer;
+  }
+`;
 
 export default function Review({ review }) {
+  const [markedHelpful, markHelpful] = useState(false);
+  const [reported, report] = useState(false);
+
+  const helpfulnessOnClick = () => {
+    if (!markedHelpful) {
+      markHelpful(true);
+
+      axios.put(`/api/reviews/${review.review_id}/helpful`);
+    }
+  };
+
+  const reportOnClick = () => {
+    if (!reported) {
+      report(true);
+
+      axios.put(`/api/reviews/${review.review_id}/report`);
+    }
+  };
+
   return (
     <Container>
       <Header>
@@ -58,10 +94,31 @@ export default function Review({ review }) {
       <div>{review.body}</div>
 
       {/* eslint-disable react/jsx-one-expression-per-line */}
-      {(review.recommend) ? <div style={{ paddingTop: '30px' }}><B>🗸</B> I recommend this product</div> : null}
-      {(review.response) ? <Response style={{ paddingTop: '30px' }}><B>💬</B> {review.response}</Response> : null}
+      {(review.recommend) ? <div style={{ paddingTop: '30px' }}><b>🗸</b> I recommend this product</div> : null}
+      {(review.response) ? (
+        <Response><b>Response:</b>
+          <p style={{ marginBlockEnd: '0' }}>{review.response}</p>
+        </Response>
+      ) : null}
       {/* eslint-enable react/jsx-one-expression-per-line */}
 
+      <HelpfulnessReportWrapper>
+        Helpful?&nbsp;&nbsp;
+
+        <HelpfulnessReportButton onClick={helpfulnessOnClick}>
+          Yes
+        </HelpfulnessReportButton>
+
+        {` (${review.helpfulness + ((markedHelpful) ? 1 : 0)})`}
+
+        {/* '  |  ' */}
+        &nbsp;&nbsp;|&nbsp;&nbsp;
+
+        <HelpfulnessReportButton onClick={reportOnClick}>
+          {(reported) ? 'Reported!' : 'Report'}
+        </HelpfulnessReportButton>
+
+      </HelpfulnessReportWrapper>
     </Container>
   );
 }
@@ -75,7 +132,7 @@ Review.propTypes = {
     summary: PropTypes.string,
     body: PropTypes.string,
     date: PropTypes.string,
-    helpfullness: PropTypes.number,
+    helpfulness: PropTypes.number,
     photos: PropTypes.arrayOf(PropTypes.shape({
       id: PropTypes.number,
       url: PropTypes.string,

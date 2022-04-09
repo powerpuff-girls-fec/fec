@@ -11,5 +11,10 @@ export default function useForm(initialValues) {
         [e.target.name]: e.target.value,
       });
     },
+    () => {
+      setValues({
+        ...initialValues,
+      });
+    },
   ];
 }

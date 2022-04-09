@@ -5,6 +5,12 @@ import styled from 'styled-components';
 
 const Container = styled.div`
   display: flex;
+  align-items: center;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #dbdbdb;
+  }
 `;
 
 const Text = styled.div`
@@ -17,7 +23,8 @@ const BarContainer = styled.div`
   position: relative;
   display: flex;
   flex-grow: 1;
-  margin: 0.1em 0 0.1em 0;
+  height: 1em;
+  margin: 0.5em 0 0.5em 0;
   border-radius: 10px;
   overflow: hidden;
   grid-column: 2;

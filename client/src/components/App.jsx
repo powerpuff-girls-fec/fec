@@ -7,9 +7,9 @@ import ViewQuestionsAndAnswers from './questionsAndAnswers/ViewQuestionsAndAnswe
 import Reviews from './reviews/Reviews';
 
 const Container = styled.div`
+  color: #525252;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
 `;
 
 export default function App() {
@@ -17,7 +17,7 @@ export default function App() {
     <Container>
       <Banner />
       <ProductOverview productID={65631} />
-      <ViewQuestionsAndAnswers />
+      <ViewQuestionsAndAnswers productId={65631} />
       <div id="reviews">
         <Reviews productId={65631} />
       </div>

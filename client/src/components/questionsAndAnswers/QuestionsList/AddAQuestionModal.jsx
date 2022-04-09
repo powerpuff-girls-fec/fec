@@ -1,9 +1,10 @@
 import React, { useState, useRef } from 'react';
+import ReactDom from 'react-dom';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import ReactDom from 'react-dom';
+import axios from 'axios';
 
-import useForm from './useForm';
+import useForm from '../useForm';
 
 const Background = styled.div`
   width: 100%;
@@ -13,17 +14,18 @@ const Background = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 9;
 `;
 
 const ModalWrapper = styled.div`
-  width: 800px;
-  height: 500px;
+  width: 600px;
+  height: 600px;
   box-shadow: 0 5px 16px rgba(0, 0, 0, 0.2);
   background: #fff;
   color: #000;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  position: relative
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
   z-index: 10;
   border-radius: 10px;
 `;
@@ -39,42 +41,53 @@ const ModalContent = styled.div`
 
 const FormContainer = styled.div`
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  line-height: 1.8;
+  color: #141414;
 `;
 
 const re = /^[^@]+@[^@]+\.[^@]+$/;
 
-export default function AddAQuestionModal({ showModal, setShowModal }) {
-  const [values, handleChange] = useForm({ question: '', nickname: '', email: '' });
+export default function AddAQuestionModal({ showModal, setShowModal, productId }) {
+  const [values, handleChange, resetValues] = useForm({ question: '', nickname: '', email: '' });
   const [alert, setAlert] = useState(false);
   const modalRef = useRef();
+
   const closeModal = (e) => {
     if (modalRef.current === e.target) {
       setShowModal(false);
     }
   };
+
+  const submitForm = (e) => {
+    e.preventDefault();
+    if (values.question === '' || values.nickname === '' || values.email === '' || !re.test(values.email)
+    ) {
+      setAlert(true);
+    } else {
+      axios.post(`/api/questions/${productId}`, values)
+        .then(() => setShowModal(false))
+        .then(() => resetValues())
+        .catch((err) => console.log(err));
+    }
+  };
+
   if (!showModal) {
     return null;
   }
+
   return ReactDom.createPortal(
     <Background ref={modalRef} onClick={closeModal}>
-      <ModalWrapper showModal={showModal}>
+      <ModalWrapper showModal={showModal} data-testid="AddAQuestionModal">
         <ModalContent>
           <div>
             Ask Your Question
             About the [Product Name Here]
           </div>
           <FormContainer>
-            <form onSubmit={(e) => {
-              e.preventDefault();
-              if (values.question === '' || values.nickname === '' || values.email === '' || !re.test(values.email)
-              ) {
-                setAlert(true);
-              } else {
-                // POST /qa/questions, then close modla
-                setShowModal(false);
-              }
-            }}
-            >
+            <form onSubmit={submitForm}>
               <div>*Question</div>
               <textarea
                 name="question"
@@ -115,11 +128,12 @@ export default function AddAQuestionModal({ showModal, setShowModal }) {
         </ModalContent>
       </ModalWrapper>
     </Background>,
-    document.getElementById('AddAQuestionPortal'),
+    document.getElementById('portal'),
   );
 }
 
 AddAQuestionModal.propTypes = {
   showModal: PropTypes.bool.isRequired,
   setShowModal: PropTypes.func.isRequired,
+  productId: PropTypes.number,
 };

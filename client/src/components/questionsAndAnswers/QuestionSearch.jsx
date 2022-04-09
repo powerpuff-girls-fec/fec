@@ -1,23 +1,31 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
+
+const SearchBar = styled.input`
+  height: 25px;
+  width: 980px;
+  margin: 5px;
+  align-self: center;
+  font-family: "HelveticaNeue-Light", Arial;
+`;
 
 export default function QuestionSearch({ setQuestionData, originalData }) {
   return (
-    <input
+    <SearchBar
       placeholder="Have a question? Search for Answers"
       onChange={(e) => {
         e.preventDefault();
         if (e.target.value.length >= 3) {
-          setQuestionData(
-            (data) => (data.filter(
-              (obj) => obj.question_body.toLowerCase().includes(e.target.value.toLowerCase()),
-            )),
-          );
+          setQuestionData(originalData.filter(
+            (obj) => obj.question_body.toLowerCase().includes(e.target.value.toLowerCase()),
+          ));
         }
         if (e.target.value.length < 3) {
           setQuestionData(originalData);
         }
       }}
+      data-testid="QuestionSearch"
     />
   );
 }
