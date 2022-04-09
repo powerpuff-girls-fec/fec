@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const Button = styled.button`
+  color: inherit;
+  border-color: #525252;
   padding: 2em;
   margin: 0.5em;
   border-radius: 0;

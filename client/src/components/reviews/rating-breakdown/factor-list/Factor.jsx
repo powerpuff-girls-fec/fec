@@ -26,7 +26,7 @@ const Arrow = styled.div`
   left: ${({ pos }) => (pos / 5) * 100}%;
   border-left: 0.5em solid transparent;
   border-right: 0.5em solid transparent;
-  border-top: 0.75em solid #333333;
+  border-top: 0.75em solid #525252;
   transform: translateX(-50%);
 `;
 

@@ -19,6 +19,7 @@ const Select = styled.select`
   border-bottom: solid 1px black;
   font-size: 1em;
   font-weight: inherit;
+  color: inherit;
 `;
 
 const SelectWrapper = styled.div`
