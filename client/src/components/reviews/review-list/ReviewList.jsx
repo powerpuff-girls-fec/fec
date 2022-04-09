@@ -22,6 +22,7 @@ const Select = styled.select`
 `;
 
 const SelectWrapper = styled.div`
+  font-size: 1.5em;
   font-weight: bold;
 `;
 

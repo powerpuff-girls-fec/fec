@@ -67,7 +67,7 @@ export default function Reviews({ productId }) {
         addReviewhandler={() => console.log('uwu')}
         sortChangeHandler={(e) => setSort(e.target.value)}
         reviewsRemaining={displayed <= reviews.length}
-        totalReviews={total}
+        totalReviews={reviews.length}
       />
     </Container>
   );
