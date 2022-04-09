@@ -26,8 +26,6 @@ function characteristicsToArray(characteristics) {
 }
 
 export default function RatingBreakdown({ metadata, average, total }) {
-  console.log(characteristicsToArray(metadata.characteristics));
-
   return (
     <Container>
       <BreakdownOverview
