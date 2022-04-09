@@ -69,7 +69,7 @@ export default function Review({ review }) {
     if (!reported) {
       report(true);
 
-      // axios.put(`/api/reviews/${review.review_id}/report`);
+      axios.put(`/api/reviews/${review.review_id}/report`);
     }
   };
 
@@ -111,7 +111,7 @@ export default function Review({ review }) {
         &nbsp;&nbsp;|&nbsp;&nbsp;
 
         <HelpfulnessReportButton onClick={reportOnClick}>
-          Report
+          {(reported) ? 'Reported!' : 'Report'}
         </HelpfulnessReportButton>
 
       </HelpfulnessReportWrapper>
