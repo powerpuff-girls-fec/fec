@@ -52,7 +52,7 @@ test('renders correct number of black stars with 3/4 stars', () => {
 
   expect(stars[0]).toHaveStyle({ width: '100%' });
   expect(stars[1]).toHaveStyle({ width: '100%' });
-  expect(stars[2]).toHaveStyle({ width: '75%' });
+  expect(stars[2]).toHaveStyle({ width: '60%' });
   expect(stars[3]).toHaveStyle({ width: '0%' });
   expect(stars[4]).toHaveStyle({ width: '0%' });
 });
@@ -68,5 +68,5 @@ test('renders correct number of black stars with 1/4 stars', () => {
   expect(stars[1]).toHaveStyle({ width: '100%' });
   expect(stars[2]).toHaveStyle({ width: '100%' });
   expect(stars[3]).toHaveStyle({ width: '100%' });
-  expect(stars[4]).toHaveStyle({ width: '25%' });
+  expect(stars[4]).toHaveStyle({ width: '40%' });
 });

@@ -2,7 +2,9 @@ const handlers = require('./handlers');
 
 // GET /api/reviews
 module.exports.getReviews = (req, res) => {
-  handlers.getReviews(65631)
+  req.params.product_id = req.params.product_id || 65631;
+
+  handlers.getReviews(req.params.product_id)
     .then((result) => res.send(result.data))
     .catch((err) => res.send(`Error: ${err.message}`));
 };
@@ -14,6 +16,7 @@ module.exports.getQuestions = (req, res) => {
     .catch((err) => res.send(`Error: ${err.message}`));
 };
 
+// GET /api/reviews/meta/:product_id
 module.exports.getReviewsMeta = (req, res) => {
   handlers.getReviewsMeta(req.params.product_id)
     .then((result) => {
