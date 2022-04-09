@@ -2,10 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
-// import DisplayCarousel from './displayCarousel';
-
-// import Carousel from './carousel';
-// import CurrentModal from './currentModal';
+import ImageModal from './imageModal';
 
 const ImageComponent = styled.div`
   background-color: #D3D3D3;
@@ -20,6 +17,12 @@ const DisplayCarousel = styled.img`
   width:100%;
   max-width:600px;
   height: 800px;
+
+  transition-duration: 0.2s;
+  &:hover {
+    cursor: pointer;
+    opacity: 0.8;
+  }
 `;
 
 const LeftArrow = styled.img`
@@ -44,6 +47,7 @@ const LeftButton = styled.button`
   position: relative;
   left: 20px;
   top: 10%;
+  z-index: 1;
 
   border-radius: 50%;
   border-width: 1px;
@@ -61,6 +65,7 @@ const RightButton = styled.button`
   position: relative;
   right: 20px;
   top: 10%;
+  z-index: 1;
 
   border-radius: 50%;
   border-width: 1px;
@@ -86,6 +91,7 @@ export default function ImageGallery({ index, styles }) {
   const compiledImageList = compileImageList(styles.results[index].photos);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [length, setLength] = useState(compiledImageList.length);
+  const [displayModal, setDisplayModal] = useState(false);
 
   const rightArrow = 'https://cdn-icons-png.flaticon.com/512/467/467282.png';
   const leftArrow = 'https://cdn-icons-png.flaticon.com/512/467/467274.png';
@@ -106,20 +112,51 @@ export default function ImageGallery({ index, styles }) {
     }
   };
 
-  console.log(compiledImageList);
-  console.log(length);
+  const openModal = () => {
+    setDisplayModal(true);
+  };
+
+  const closeModal = () => {
+    setDisplayModal(false);
+  };
+
+  if (!displayModal) {
+    return (
+      <ImageComponent>
+        <LeftButton type="button" onClick={() => previous()}>
+          <LeftArrow src={leftArrow} />
+        </LeftButton>
+        <DisplayCarousel src={compiledImageList[currentImageIndex]} onClick={() => openModal()} />
+        <RightButton type="button" onClick={() => next()}>
+          <RightArrow src={rightArrow} />
+        </RightButton>
+      </ImageComponent>
+    );
+  }
 
   return (
-    <ImageComponent>
-      <LeftButton type="button" onClick={() => previous()}>
-        <LeftArrow src={leftArrow} />
-      </LeftButton>
-      <DisplayCarousel src={compiledImageList[currentImageIndex]} />
-      <RightButton type="button" onClick={() => next()}>
-        <RightArrow src={rightArrow} />
-      </RightButton>
-    </ImageComponent>
+    <div>
+      <ImageComponent>
+        <LeftButton type="button" onClick={() => previous()}>
+          <LeftArrow src={leftArrow} />
+        </LeftButton>
+        <DisplayCarousel src={compiledImageList[currentImageIndex]} onClick={() => openModal()} />
+        <RightButton type="button" onClick={() => next()}>
+          <RightArrow src={rightArrow} />
+        </RightButton>
+      </ImageComponent>
+      <ImageModal image={compiledImageList[currentImageIndex]} closeModal={closeModal} />
+    </div>
   );
+
+  // return ReactDom.createPortal(
+  //   <Background onClick={() => closeModal()}>
+  //     <ModalWrapper>
+  //       <ModalContent src={compiledImageList[currentImageIndex]} />
+  //     </ModalWrapper>
+  //   </Background>,
+  //   document.getElementById('ImageModal'),
+  // );
 }
 
 ImageGallery.propTypes = {
