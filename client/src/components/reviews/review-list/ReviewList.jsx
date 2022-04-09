@@ -37,6 +37,10 @@ export default function ReviewList({
     setShowModal((prevState) => !prevState);
   };
 
+  const postReview = (e) => {
+    console.log(e);
+  };
+
   return (
     <div>
       <SelectWrapper>
@@ -60,6 +64,7 @@ export default function ReviewList({
         openModal={openModal}
         setShowModal={setShowModal}
         characteristics={characteristics}
+        onSubmit={postReview}
       />
     </div>
   );

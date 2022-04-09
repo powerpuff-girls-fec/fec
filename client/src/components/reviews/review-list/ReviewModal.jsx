@@ -18,7 +18,7 @@ const Background = styled.div`
 
 const ModalWrapper = styled.div`
   width: 800px;
-  height: 500px;
+  height: 600px;
   box-shadow: 0 5px 16px rgba(0, 0, 0, 0.2);
   background: #fff;
   color: #000;
@@ -58,7 +58,15 @@ const CharUnderText = styled.div`
   margin-left: 25%;
 `;
 
-export default function ReviewModal({ showModal, setShowModal, characteristics }) {
+const Alert = styled.div`
+  font-size: 2em;
+  color: red;
+  text-align: center;
+`;
+
+export default function ReviewModal({
+  showModal, setShowModal, characteristics, onSubmit,
+}) {
   const [values, setValues] = useState({
     rating: -1,
     summary: '',
@@ -69,6 +77,7 @@ export default function ReviewModal({ showModal, setShowModal, characteristics }
     photos: [],
     characteristics: {},
   });
+  const [alert, setAlert] = useState(false);
 
   useEffect(() => {
     const characteristicsCopy = {};
@@ -104,6 +113,22 @@ export default function ReviewModal({ showModal, setShowModal, characteristics }
       }));
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if (values.rating !== -1
+       && values.summary !== ''
+       && values.body.length >= 50
+       && values.name !== ''
+       && values.email !== '') {
+      onSubmit(values);
+      setAlert(false);
+      setShowModal(false);
+    } else {
+      setAlert(true);
+    }
+  };
+
   const modalRef = useRef();
 
   const closeModal = (e) => {
@@ -118,11 +143,12 @@ export default function ReviewModal({ showModal, setShowModal, characteristics }
   return ReactDom.createPortal(
     <Background ref={modalRef} onClick={closeModal}>
       <ModalWrapper showModal={showModal}>
-        <Form onSubmit={() => console.log(values)}>
+        <Form onSubmit={handleSubmit}>
           <FormEntry key="rating">
             <FormLabel htmlFor="rating">
               Rating:&nbsp;
               <select
+                style={{ borderColor: (alert && values.rating === -1) ? 'red' : 'black' }}
                 name="rating"
                 id="rating"
                 value={values.rating}
@@ -142,8 +168,10 @@ export default function ReviewModal({ showModal, setShowModal, characteristics }
             <FormLabel htmlFor="summary">
               Summary:&nbsp;
               <textarea
+                style={{ borderColor: (alert && values.summary === '') ? 'red' : 'black' }}
                 name="summary"
                 id="summary"
+                maxLength="50"
                 value={values.summary}
                 onChange={updateValue}
               />
@@ -154,11 +182,17 @@ export default function ReviewModal({ showModal, setShowModal, characteristics }
             <FormLabel htmlFor="body">
               Body:&nbsp;
               <textarea
+                style={{ borderColor: (alert && values.body.length < 50) ? 'red' : 'black' }}
                 name="body"
                 id="body"
+                type="text"
+                minLength="50"
+                maxLength="1000"
                 value={values.body}
                 onChange={updateValue}
-              />
+              >
+                test
+              </textarea>
             </FormLabel>
           </FormEntry>
 
@@ -166,6 +200,7 @@ export default function ReviewModal({ showModal, setShowModal, characteristics }
             <FormLabel htmlFor="name">
               Name:&nbsp;
               <input
+                style={{ borderWidth: '1px', borderColor: (alert && values.name === '') ? 'red' : 'black' }}
                 name="name"
                 id="name"
                 value={values.name}
@@ -178,6 +213,7 @@ export default function ReviewModal({ showModal, setShowModal, characteristics }
             <FormLabel htmlFor="email">
               Email:&nbsp;
               <input
+                style={{ borderWidth: '1px', borderColor: (alert && values.email === '') ? 'red' : 'black' }}
                 name="email"
                 id="email"
                 type="email"
@@ -205,7 +241,7 @@ export default function ReviewModal({ showModal, setShowModal, characteristics }
                   name="recommend"
                   id="no"
                   type="radio"
-                  value={values.recommend}
+                  value={!values.recommend}
                   onChange={updateValue}
                 />
                 No
@@ -244,15 +280,17 @@ export default function ReviewModal({ showModal, setShowModal, characteristics }
               </FormLabel>
               <CharUnderText>
                 {underText[values.characteristics[key].name].map(
-                  (text) => (<div>{text}</div>),
+                  (text) => (<div key={text}>{text}</div>),
                 )}
               </CharUnderText>
             </FormEntry>
           ))}
 
-          <FormEntry>
+          <FormEntry key="submit">
             <button type="submit">Submit</button>
           </FormEntry>
+
+          {alert ? <Alert>Please fill out all fields</Alert> : null}
         </Form>
       </ModalWrapper>
     </Background>,
