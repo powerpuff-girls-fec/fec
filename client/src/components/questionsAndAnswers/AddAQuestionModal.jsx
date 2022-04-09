@@ -115,7 +115,7 @@ export default function AddAQuestionModal({ showModal, setShowModal }) {
         </ModalContent>
       </ModalWrapper>
     </Background>,
-    document.getElementById('AddAQuestionPortal'),
+    document.getElementById('portal'),
   );
 }
 
