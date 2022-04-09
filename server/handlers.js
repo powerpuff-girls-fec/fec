@@ -21,6 +21,7 @@ module.exports = {
   ),
   reportReview: (id) => axios.put(`https://${path.join(apiPath, `reviews/${id}/report`)}`),
   markReviewHelpful: (id) => axios.put(`https://${path.join(apiPath, `reviews/${id}/helpful`)}`),
+  postReview: (body) => axios.post(`https://${path.join(apiPath, 'reviews')}`, body),
   getReviewsMeta: (id) => axios.get(`https://${path.join(apiPath, 'reviews/meta')}`, { params: { product_id: id } }),
   getProductInfo: (id) => axios.get(`https://${path.join(apiPath, `products/${id}`)}`),
   getProductStyles: (id) => axios.get(`https://${path.join(apiPath, `products/${id}/styles`)}`),
