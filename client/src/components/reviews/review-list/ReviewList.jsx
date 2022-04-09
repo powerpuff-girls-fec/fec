@@ -51,6 +51,7 @@ export default function ReviewList({
       product_id: productId,
       characteristics: Object.keys(e.characteristics).reduce((acc, key) => (
         { ...acc, [key]: e.characteristics[key].value }), {}),
+      rating: Number(e.rating),
     });
   };
 

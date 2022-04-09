@@ -31,7 +31,8 @@ const Container = styled.div`
   display: grid;
   grid-template-columns: 1fr 2fr;
   padding-top: 1em;
-  margin: auto;
+  margin-left: auto;
+  margin-right: auto;
 `;
 
 export default function Reviews({ productId }) {
