@@ -8,6 +8,7 @@ const Background = styled.div`
   background: rgba(0, 0, 0, 0.8);
   position: fixed;
   display: flex;
+  z-index: 100;
   justify-content: center;
   align-items: center;
 `;
@@ -39,6 +40,6 @@ export default function ImageModal({ image, closeModal }) {
         <ModalContent src={image} />
       </ModalWrapper>
     </Background>,
-    document.getElementById('ImageModal'),
+    document.getElementById('portal'),
   );
 }

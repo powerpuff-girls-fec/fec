@@ -2,8 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
+import Stars from 'common/Stars';
 import Price from './prices';
-import Stars from './Stars';
 
 const Container = styled.div`
   display: flex;
@@ -91,7 +91,7 @@ export default function ProductInformation({
         <Stars stars={averageRating} />
         <ReviewLink>
           <a href="#reviews">
-            Read all &nbsp;
+            Read all&nbsp;
             {ratingCount}
             &nbsp;reviews
           </a>
