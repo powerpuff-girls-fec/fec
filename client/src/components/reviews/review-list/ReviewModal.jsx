@@ -60,10 +60,19 @@ export default function ReviewModal({ showModal, setShowModal, characteristics }
   });
 
   useEffect(() => {
+    const characteristicsCopy = {};
+
+    Object.keys(characteristics).forEach((key) => {
+      characteristicsCopy[characteristics[key].id] = {
+        id: characteristics[key].id,
+        name: key,
+        value: 3,
+      };
+    });
+
     setValues({
       ...values,
-      characteristics: Object.keys(characteristics)
-        .map((key) => ({ name: key, value: -1, id: characteristics[key].id })),
+      characteristics: characteristicsCopy,
     });
   }, [characteristics]);
 
@@ -75,7 +84,13 @@ export default function ReviewModal({ showModal, setShowModal, characteristics }
   // eslint-disable-next-line no-unused-vars
   const updateCharacteristic = ({ target, target: { id, value } }) => {
     setValues((prevState) => (
-      { ...prevState, characteristics: { ...prevState.characteristics, [id]: value } }));
+      {
+        ...prevState,
+        characteristics: {
+          ...prevState.characteristics,
+          [id]: { ...prevState.characteristics[id], value: Number(value) },
+        },
+      }));
   };
 
   const modalRef = useRef();
@@ -93,7 +108,7 @@ export default function ReviewModal({ showModal, setShowModal, characteristics }
     <Background ref={modalRef} onClick={closeModal}>
       <ModalWrapper showModal={showModal}>
         <Form onSubmit={() => console.log(values)}>
-          <FormEntry>
+          <FormEntry key="rating">
             <FormLabel htmlFor="rating">
               Rating:&nbsp;
               <select
@@ -112,7 +127,7 @@ export default function ReviewModal({ showModal, setShowModal, characteristics }
             </FormLabel>
           </FormEntry>
 
-          <FormEntry>
+          <FormEntry key="summary">
             <FormLabel htmlFor="summary">
               Summary:&nbsp;
               <textarea
@@ -124,7 +139,7 @@ export default function ReviewModal({ showModal, setShowModal, characteristics }
             </FormLabel>
           </FormEntry>
 
-          <FormEntry>
+          <FormEntry key="body">
             <FormLabel htmlFor="body">
               Body:&nbsp;
               <textarea
@@ -136,7 +151,7 @@ export default function ReviewModal({ showModal, setShowModal, characteristics }
             </FormLabel>
           </FormEntry>
 
-          <FormEntry>
+          <FormEntry key="name">
             <FormLabel htmlFor="name">
               Name:&nbsp;
               <input
@@ -148,7 +163,7 @@ export default function ReviewModal({ showModal, setShowModal, characteristics }
             </FormLabel>
           </FormEntry>
 
-          <FormEntry>
+          <FormEntry key="email">
             <FormLabel htmlFor="email">
               Email:&nbsp;
               <input
@@ -160,7 +175,8 @@ export default function ReviewModal({ showModal, setShowModal, characteristics }
             </FormLabel>
           </FormEntry>
 
-          <FormEntry>
+          <FormEntry key="recommend">
+            Recommend:&nbsp;
             <FormLabel htmlFor="recommend">
               <label htmlFor="yes">
                 <input
@@ -198,18 +214,24 @@ export default function ReviewModal({ showModal, setShowModal, characteristics }
             </FormEntry>
           </FormEntry> */}
 
-          <FormEntry>
-            <FormLabel htmlFor="characteristics">
-              Characteristics:&nbsp;
-              <input
-                name="characteristics"
-                id="characteristics"
-                type="checkbox"
-                value={values.characteristics}
-                onChange={updateValue}
-              />
-            </FormLabel>
-          </FormEntry>
+          {Object.keys(values.characteristics).map((key) => (
+            <FormEntry key={key}>
+              <FormLabel htmlFor={key}>
+                {values.characteristics[key].name}
+                :&nbsp;
+                <input
+                  key={key}
+                  name={values.characteristics[key].name}
+                  id={key}
+                  type="range"
+                  min="1"
+                  max="5"
+                  value={values.characteristics[key].value}
+                  onChange={updateCharacteristic}
+                />
+              </FormLabel>
+            </FormEntry>
+          ))}
 
           <FormEntry>
             <button type="submit">Submit</button>
