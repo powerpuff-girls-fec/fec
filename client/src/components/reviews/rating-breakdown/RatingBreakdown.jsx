@@ -5,6 +5,7 @@ import styled from 'styled-components';
 
 import BreakdownOverview from './BreakdownOverview';
 import BreakdownList from './breakdown-list/BreakdownList';
+import FactorList from './factor-list/FactorList';
 
 const Container = styled.div`
   display: flex;
@@ -16,7 +17,17 @@ function getRecPercentage(recommended) {
   return (recommended.true / (recommended.true + recommended.false)) * 100;
 }
 
+function characteristicsToArray(characteristics) {
+  return Object.keys(characteristics).map((key) => ({
+    id: Number(characteristics[key].id),
+    title: key,
+    rating: Number(characteristics[key].value),
+  }));
+}
+
 export default function RatingBreakdown({ metadata, average, total }) {
+  console.log(characteristicsToArray(metadata.characteristics));
+
   return (
     <Container>
       <BreakdownOverview
@@ -24,6 +35,7 @@ export default function RatingBreakdown({ metadata, average, total }) {
         percentage={getRecPercentage(metadata.recommended)}
       />
       <BreakdownList ratings={{ ...metadata.ratings, total }} />
+      <FactorList factors={characteristicsToArray(metadata.characteristics)} />
     </Container>
   );
 }

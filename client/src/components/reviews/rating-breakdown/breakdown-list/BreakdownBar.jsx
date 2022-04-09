@@ -17,6 +17,7 @@ const BarContainer = styled.div`
   position: relative;
   display: flex;
   flex-grow: 1;
+  height: 1em;
   margin: 0.1em 0 0.1em 0;
   border-radius: 10px;
   overflow: hidden;

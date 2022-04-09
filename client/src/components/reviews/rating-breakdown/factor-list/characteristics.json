@@ -1,0 +1,8 @@
+{
+  "Size": ["A size too small", "Perfect", "A size too large"],
+  "Width": ["Too narrow", "Perfect", "Too wide"],
+  "Comfort": ["Uncomfortable", "Perfect"],
+  "Quality": ["Poor", "Perfect"],
+  "Length": ["Runs short", "Perfect", "Runs long"],
+  "Fit": ["Runs tight", "Perfect", "Runs loose"]
+}
