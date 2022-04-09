@@ -14,21 +14,25 @@ const Container = styled.div`
 export default function FactorList({ factors }) {
   return (
     <Container>
-      {factors.map(({ id, title, rating }) => (
+      {(factors.length > 0) ? factors.map(({ id, title, rating }) => (
         <Factor
           key={id}
           title={title}
           rating={rating}
         />
-      ))}
+      )) : null}
     </Container>
   );
 }
 
 FactorList.propTypes = {
   factors: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    title: PropTypes.string.isRequired,
-    value: PropTypes.number.isRequired,
-  })).isRequired,
+    id: PropTypes.number,
+    title: PropTypes.string,
+    value: PropTypes.number,
+  })),
+};
+
+FactorList.defaultProps = {
+  factors: [],
 };
