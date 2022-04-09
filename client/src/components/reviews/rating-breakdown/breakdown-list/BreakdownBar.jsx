@@ -6,6 +6,11 @@ import styled from 'styled-components';
 const Container = styled.div`
   display: flex;
   align-items: center;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #dbdbdb;
+  }
 `;
 
 const Text = styled.div`

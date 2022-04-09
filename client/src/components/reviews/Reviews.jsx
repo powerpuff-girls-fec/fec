@@ -68,6 +68,7 @@ export default function Reviews({ productId }) {
         sortChangeHandler={(e) => setSort(e.target.value)}
         reviewsRemaining={displayed <= reviews.length}
         totalReviews={reviews.length}
+        characteristics={(reviewMetadata) ? reviewMetadata.characteristics : {}}
       />
     </Container>
   );

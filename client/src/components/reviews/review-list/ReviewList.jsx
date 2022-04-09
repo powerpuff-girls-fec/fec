@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
 import styled from 'styled-components';
 
 import Review from './Review';
 import ReviewMenu from './ReviewMenu';
+import ReviewModal from './ReviewModal';
 
 const ListWrapper = styled.div`
   width: 100%;
@@ -28,8 +29,14 @@ const SelectWrapper = styled.div`
 `;
 
 export default function ReviewList({
-  reviews, addReviewhandler, moreReviewsHandler, reviewsRemaining, totalReviews, sortChangeHandler,
+  reviews, moreReviewsHandler, reviewsRemaining, totalReviews, sortChangeHandler, characteristics,
 }) {
+  const [showModal, setShowModal] = useState(false);
+
+  const openModal = () => {
+    setShowModal((prevState) => !prevState);
+  };
+
   return (
     <div>
       <SelectWrapper>
@@ -45,8 +52,14 @@ export default function ReviewList({
       </ListWrapper>
       <ReviewMenu
         moreReviewsHandler={moreReviewsHandler}
-        addReviewhandler={addReviewhandler}
+        addReviewhandler={() => { openModal(); }}
         reviewsRemaining={reviewsRemaining}
+      />
+      <ReviewModal
+        showModal={showModal}
+        openModal={openModal}
+        setShowModal={setShowModal}
+        characteristics={characteristics}
       />
     </div>
   );
@@ -69,10 +82,10 @@ ReviewList.propTypes = {
     reviewer_name: PropTypes.string,
   })),
   moreReviewsHandler: PropTypes.func.isRequired,
-  addReviewhandler: PropTypes.func.isRequired,
   sortChangeHandler: PropTypes.func.isRequired,
   reviewsRemaining: PropTypes.bool.isRequired,
   totalReviews: PropTypes.number.isRequired,
+  characteristics: PropTypes.object.isRequired,
 };
 
 ReviewList.defaultProps = {
