@@ -14,11 +14,7 @@ module.exports.getReviews = (req, res) => {
 
 // GET /api/questions
 module.exports.getQuestions = (req, res) => {
-<<<<<<< HEAD
-  handlers.getQuestions(65631)
-=======
   handlers.getQuestions(req.params.product_id)
->>>>>>> main
     .then((result) => res.send(result.data))
     .catch((err) => res.send(`Error: ${err.message}`));
 };
