@@ -9,7 +9,7 @@ afterEach(cleanup);
 
 describe('ProductOverview', () => {
   it('renders the product overview', () => {
-    const { getByTestId } = render(<ProductOverview productID={65632} />);
+    const { getByTestId } = render(<ProductOverview productID={65631} />);
 
     expect(getByTestId('ProductOverview')).toBeInTheDocument();
   });

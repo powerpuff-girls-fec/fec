@@ -86,8 +86,8 @@ export default function ProductInformation({
   const ratingCount = ratingInfo[1];
 
   return (
-    <Container>
-      <Review>
+    <Container data-testid="ProductInformation">
+      <Review data-testid="Reviews">
         <Stars stars={averageRating} />
         <ReviewLink>
           <a href="#reviews">
@@ -101,7 +101,7 @@ export default function ProductInformation({
       <Title>{product.name}</Title>
       <Price styles={styles.results[index]} />
       <div>{product.description}</div>
-      <ShareButtons>
+      <ShareButtons data-testid="ShareButtons">
         <FacebookShare src="https://favpng.com/img/share_facebook.png" onClick={() => onFacebookClick()} />
         <TwitterShare src="https://favpng.com/img/share_twitter.png" onClick={() => onTwitterClick()} />
         <PinterestShare src="https://favpng.com/img/share_pinterest.png" onClick={() => onPinterestClick()} />

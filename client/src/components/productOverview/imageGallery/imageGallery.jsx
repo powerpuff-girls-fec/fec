@@ -122,7 +122,7 @@ export default function ImageGallery({ index, styles }) {
 
   if (!displayModal) {
     return (
-      <ImageComponent>
+      <ImageComponent data-testid="ImageComponent">
         <LeftButton type="button" onClick={() => previous()}>
           <LeftArrow src={leftArrow} />
         </LeftButton>
@@ -136,7 +136,7 @@ export default function ImageGallery({ index, styles }) {
 
   return (
     <div>
-      <ImageComponent>
+      <ImageComponent data-testid="ImageComponent">
         <LeftButton type="button" onClick={() => previous()}>
           <LeftArrow src={leftArrow} />
         </LeftButton>

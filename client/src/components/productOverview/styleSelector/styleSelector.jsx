@@ -51,11 +51,11 @@ export default function StyleSelector({ styles, handleIndexChange }) {
   };
 
   return (
-    <Container>
+    <Container data-testid="StyleComponent">
       <StyleName>
         {stylesNames[currentStyleIndex]}
       </StyleName>
-      <ThumbnailWrapper>
+      <ThumbnailWrapper data-testid="Thumbnails">
         {stylesList.map((url, key) => (
           <Thumbnail
             url={url}
