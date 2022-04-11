@@ -61,7 +61,8 @@ export default function Review({ review }) {
     if (!markedHelpful) {
       markHelpful(true);
 
-      axios.put(`/api/reviews/${review.review_id}/helpful`);
+      axios.put(`/api/reviews/${review.review_id}/helpful`)
+        .catch(() => {});
     }
   };
 
@@ -69,7 +70,8 @@ export default function Review({ review }) {
     if (!reported) {
       report(true);
 
-      axios.put(`/api/reviews/${review.review_id}/report`);
+      axios.put(`/api/reviews/${review.review_id}/report`)
+        .catch(() => {});
     }
   };
 

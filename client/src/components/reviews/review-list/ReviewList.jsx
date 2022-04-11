@@ -52,7 +52,8 @@ export default function ReviewList({
       characteristics: Object.keys(e.characteristics).reduce((acc, key) => (
         { ...acc, [key]: e.characteristics[key].value }), {}),
       rating: Number(e.rating),
-    });
+    })
+      .catch(() => {});
   };
 
   return (
