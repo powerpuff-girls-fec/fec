@@ -59,7 +59,7 @@ export default function ProductOverview({ productID }) {
   };
 
   return (
-    <Container>
+    <Container data-testid="ProductOverview">
       <ImageGallery styles={productStylesList} index={index} />
       <RightColumn>
         <ProductInformation
