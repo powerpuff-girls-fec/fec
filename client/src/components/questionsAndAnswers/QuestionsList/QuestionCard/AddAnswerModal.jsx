@@ -197,7 +197,7 @@ export default function AddAnswerModal({
         </ModalContent>
       </ModalWrapper>
     </Background>,
-    document.getElementById('AddAQuestionPortal'),
+    document.getElementById('portal'),
   );
 }
 

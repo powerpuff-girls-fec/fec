@@ -8,7 +8,7 @@ afterEach(cleanup);
 describe('<AddAQuestionModal />', () => {
   const AddAQuestionPortal = document.createElement('div');
   // UPDATE THIS RENDER ID IF WE CHANGE THE NAME OF WHERE PORTALS RENDER!
-  AddAQuestionPortal.setAttribute('id', 'AddAQuestionPortal');
+  AddAQuestionPortal.setAttribute('id', 'portal');
 
   beforeEach(() => {
     document.body.appendChild(AddAQuestionPortal);
