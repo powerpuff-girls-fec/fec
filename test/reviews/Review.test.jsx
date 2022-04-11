@@ -21,7 +21,7 @@ const testReview = {
   reviewer_name: 'testy test',
 };
 
-test('renders a review', () => {
+it('renders a review', () => {
   render(<Review review={testReview} />);
 
   expect(screen.getAllByText('☆')).toHaveLength(5);
@@ -30,7 +30,7 @@ test('renders a review', () => {
   expect(screen.getByText('I recommend this product')).toBeInTheDocument();
 });
 
-test('doesn\'t render checkmark if not recommended', () => {
+it('doesn\'t render checkmark if not recommended', () => {
   render(<Review review={{ ...testReview, recommend: false }} />);
 
   expect(screen.getAllByText('☆')).toHaveLength(5);
@@ -39,7 +39,7 @@ test('doesn\'t render checkmark if not recommended', () => {
   expect(screen.queryByText('I recommend this product')).toBeNull();
 });
 
-test('doesn\'t render response if no response', () => {
+it('doesn\'t render response if no response', () => {
   render(<Review review={{ ...testReview, response: '' }} />);
 
   expect(screen.getAllByText('☆')).toHaveLength(5);

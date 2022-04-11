@@ -33,7 +33,7 @@ const testReviews = [{
   reviewer_name: 'testy testerson',
 }];
 
-test('renders a review', () => {
+it('renders a review', () => {
   render(<ReviewList reviews={testReviews} />);
 
   expect(screen.getAllByText('☆')).toHaveLength(10);

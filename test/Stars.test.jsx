@@ -8,14 +8,14 @@ import '@testing-library/jest-dom';
 
 afterEach(cleanup);
 
-test('renders a stars element with 5 of each star', () => {
+it('renders a stars element with 5 of each star', () => {
   render(<Stars stars={3} />);
 
   expect(screen.getAllByText('☆')).toHaveLength(5);
   expect(screen.getAllByText('★')).toHaveLength(5);
 });
 
-test('renders correct number of black stars', () => {
+it('renders correct number of black stars', () => {
   render(<Stars stars={3} />);
 
   const stars = screen.getAllByText('★');
@@ -29,7 +29,7 @@ test('renders correct number of black stars', () => {
   expect(stars[4]).toHaveStyle({ width: '0%' });
 });
 
-test('renders correct number of black stars with half stars', () => {
+it('renders correct number of black stars with half stars', () => {
   render(<Stars stars={3.5} />);
 
   const stars = screen.getAllByText('★');
@@ -43,7 +43,7 @@ test('renders correct number of black stars with half stars', () => {
   expect(stars[4]).toHaveStyle({ width: '0%' });
 });
 
-test('renders correct number of black stars with 3/4 stars', () => {
+it('renders correct number of black stars with 3/4 stars', () => {
   render(<Stars stars={2.8} />);
 
   const stars = screen.getAllByText('★');
@@ -57,7 +57,7 @@ test('renders correct number of black stars with 3/4 stars', () => {
   expect(stars[4]).toHaveStyle({ width: '0%' });
 });
 
-test('renders correct number of black stars with 1/4 stars', () => {
+it('renders correct number of black stars with 1/4 stars', () => {
   render(<Stars stars={4.2} />);
 
   const stars = screen.getAllByText('★');
