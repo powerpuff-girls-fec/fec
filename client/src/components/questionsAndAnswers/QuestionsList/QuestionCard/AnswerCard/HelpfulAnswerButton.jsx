@@ -21,12 +21,14 @@ const Button = styled.button`
 
 export default function HelpfulAnswerButton({ answerId, helpfulness }) {
   const [clicked, setClicked] = useState(false);
+  const testId = `HelpfulAnswerButton_${answerId}`;
+
   if (clicked) {
     return (
       <>
         Helpful?
         {' '}
-        <Button>
+        <Button data-testid={testId}>
           Yes(
           {helpfulness + 1}
           )
@@ -38,7 +40,10 @@ export default function HelpfulAnswerButton({ answerId, helpfulness }) {
     <>
       Helpful?
       {' '}
-      <Button onClick={() => axios.put(`/api/answers/${answerId}/helpful`).then(() => setClicked(true)).catch((err) => console.log(err))}>
+      <Button
+        onClick={() => axios.put(`/api/answers/${answerId}/helpful`).then(() => setClicked(true)).catch((err) => console.log(err))}
+        data-testid={testId}
+      >
         Yes(
         {helpfulness}
         )

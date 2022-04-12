@@ -21,15 +21,22 @@ const Button = styled.button`
 
 export default function ReportAnswerButton({ answerId }) {
   const [clicked, setClicked] = useState(false);
+  const testId = `ReportAnswerButton_${answerId}`;
+
   if (clicked) {
     return (
-      <Button>
+      <Button
+        data-testid={testId}
+      >
         Reported
       </Button>
     );
   }
   return (
-    <Button onClick={() => axios.put(`/api/answers/${answerId}/report`).then(() => setClicked(true)).catch((err) => console.log(err))}>
+    <Button
+      onClick={() => axios.put(`/api/answers/${answerId}/report`).then(() => setClicked(true)).catch((err) => console.log(err))}
+      data-testid={testId}
+    >
       Report
     </Button>
   );
