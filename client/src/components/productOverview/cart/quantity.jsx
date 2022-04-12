@@ -16,13 +16,13 @@ const QuantityContainer = styled.select`
 export default function Quantity({ selectHandler, quantity }) {
   if (quantity[0] === -1) {
     return (
-      <QuantityContainer name="quantity" disabled>
+      <QuantityContainer data-testid="Quantity" name="quantity" disabled>
         <option>-</option>
       </QuantityContainer>
     );
   }
   return (
-    <QuantityContainer name="quantity" onChange={(event) => { selectHandler(event); }}>
+    <QuantityContainer data-testid="Quantity" name="quantity" onChange={(event) => { selectHandler(event); }}>
       {quantity.map((number, key) => <option value={number} key={key}>{number}</option>)}
     </QuantityContainer>
   );

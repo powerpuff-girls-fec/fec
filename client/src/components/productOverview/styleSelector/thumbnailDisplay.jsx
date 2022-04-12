@@ -42,14 +42,14 @@ export default function Thumbnail({
 
   if (id === checkIndex) {
     return (
-      <ThumbnailContainer onClick={() => { clickHandler(url); }}>
+      <ThumbnailContainer data-testid="Checkmark" onClick={() => { clickHandler(url); }}>
         <Checkmark src={checkmarkUrl} />
         <ThumbnailBubble src={url} />
       </ThumbnailContainer>
     );
   }
   return (
-    <ThumbnailContainer onClick={() => { clickHandler(url); }}>
+    <ThumbnailContainer data-testid="noCkeck" onClick={() => { clickHandler(url); }}>
       <ThumbnailBubble src={url} />
     </ThumbnailContainer>
   );
