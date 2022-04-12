@@ -123,11 +123,11 @@ export default function ImageGallery({ index, styles }) {
   if (!displayModal) {
     return (
       <ImageComponent data-testid="ImageComponent">
-        <LeftButton type="button" onClick={() => previous()}>
+        <LeftButton data-testid="leftbutton" type="button" onClick={() => previous()}>
           <LeftArrow src={leftArrow} />
         </LeftButton>
-        <DisplayCarousel src={compiledImageList[currentImageIndex]} onClick={() => openModal()} />
-        <RightButton type="button" onClick={() => next()}>
+        <DisplayCarousel data-testid="mainImage" src={compiledImageList[currentImageIndex]} onClick={() => openModal()} />
+        <RightButton data-testid="rightbutton" type="button" onClick={() => next()}>
           <RightArrow src={rightArrow} />
         </RightButton>
       </ImageComponent>
@@ -136,27 +136,18 @@ export default function ImageGallery({ index, styles }) {
 
   return (
     <div>
-      <ImageComponent data-testid="ImageComponent">
+      <ImageComponent>
         <LeftButton type="button" onClick={() => previous()}>
           <LeftArrow src={leftArrow} />
         </LeftButton>
         <DisplayCarousel src={compiledImageList[currentImageIndex]} onClick={() => openModal()} />
-        <RightButton type="button" onClick={() => next()}>
+        <RightButton data-testid="rightbutton" type="button" onClick={() => next()}>
           <RightArrow src={rightArrow} />
         </RightButton>
       </ImageComponent>
-      <ImageModal image={compiledImageList[currentImageIndex]} closeModal={closeModal} />
+      <ImageModal data-testid="ImageModal" image={compiledImageList[currentImageIndex]} closeModal={closeModal} />
     </div>
   );
-
-  // return ReactDom.createPortal(
-  //   <Background onClick={() => closeModal()}>
-  //     <ModalWrapper>
-  //       <ModalContent src={compiledImageList[currentImageIndex]} />
-  //     </ModalWrapper>
-  //   </Background>,
-  //   document.getElementById('ImageModal'),
-  // );
 }
 
 ImageGallery.propTypes = {

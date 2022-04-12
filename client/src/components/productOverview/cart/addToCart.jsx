@@ -89,12 +89,12 @@ export default function AddToCart({ index, styles, createCartTicket }) {
   };
 
   return (
-    <Container>
+    <Container data-testid="Cart">
       <DropdownsContainer>
-        <Size sizes={styleSizes} selectHandler={trackSizeSelection} />
-        <Quantity quantity={quantityRange} selectHandler={trackQuantitySelection} />
+        <Size data-testid="Size" sizes={styleSizes} selectHandler={trackSizeSelection} />
+        <Quantity data-testid="Quantity" quantity={quantityRange} selectHandler={trackQuantitySelection} />
       </DropdownsContainer>
-      <AddButton selectedSize={selectedSize} handleSubmit={handleSubmit} />
+      <AddButton data-testid="AddButton" selectedSize={selectedSize} handleSubmit={handleSubmit} />
     </Container>
   );
 }

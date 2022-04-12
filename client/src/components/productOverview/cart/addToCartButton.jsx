@@ -22,15 +22,15 @@ const DisabledButton = styled.button`
 export default function AddButton({ selectedSize, handleSubmit }) {
   if (selectedSize === '-') {
     return (
-      <form data-testid="AddToCartButton">
-        <DisabledButton type="submit" disabled>Add to Cart</DisabledButton>
+      <form>
+        <DisabledButton disabled data-testid="DisabledCartButton" type="submit">Add to Cart</DisabledButton>
       </form>
     );
   }
   return (
     <div>
-      <form onSubmit={(event) => { handleSubmit(event); }} data-testid="AddToCartButton">
-        <Button type="submit">Add to Cart</Button>
+      <form onSubmit={(event) => { handleSubmit(event); }}>
+        <Button data-testid="EnabledCartButton" type="submit">Add to Cart</Button>
       </form>
     </div>
   );

@@ -14,7 +14,7 @@ const Container = styled.div`
 
 export default function App() {
   return (
-    <Container>
+    <Container data-testid="App">
       <Banner />
       <ProductOverview productID={65631} />
       <ViewQuestionsAndAnswers productId={65631} />

@@ -4,6 +4,8 @@ import '@testing-library/jest-dom';
 
 // eslint-disable-next-line import/no-unresolved
 import AddToCart from 'components/productOverview/cart/addToCart';
+// eslint-disable-next-line import/no-unresolved
+// import AddButton from 'components/productOverview/cart/addToCartButton';
 
 afterEach(cleanup);
 
@@ -46,16 +48,22 @@ afterEach(cleanup);
 
 describe('AddToCart', () => {
   it('renders the cart elements', () => {
-    const { getByTestId } = render(
-      <AddToCart />,
-      // index={0}
-      // styles={{ testStyles.results }}
-      // createCartTicket={() => {}}
-      // />,
-    );
+    const { getByTestId } = render(<AddToCart />);
 
-    expect(getByTestId('AddToCartButton')).toBeInTheDocument();
+    expect(getByTestId('Cart')).toBeInTheDocument();
+
+    // expect(getByTestId('AddButton')).toBeInTheDocument();
     expect(getByTestId('Quantity')).toBeInTheDocument();
     expect(getByTestId('Size')).toBeInTheDocument();
   });
+
+  // it('renders add to cart button', () => {
+  //   const { getByTestId } = render(<AddButton />);
+
+  //   expect(getByTestId('DisabledCartButton')).toBeInTheDocument();
+  //   expect(getByTestId('DisabledCartButton')).toBeDisabled();
+
+  //   expect(getByTestId('EnabledCartButton')).toBeInTheDocument();
+  //   expect(getByTestId('EnabledCartButton')).not.toHaveAttribute('disabled');
+  // });
 });
