@@ -6,6 +6,24 @@ import AnswerCard from './AnswerCard/AnswerCard';
 
 const AnswersListContainer = styled.div`
   overflow-y: scroll;
+  max-height: 350px;
+  width: 80%;
+`;
+
+const LoadMoreAnswersButton = styled.button`
+  color: inherit;
+  border: none;
+  margin: 0.5em 0 0.5em 0;
+  font-family: "HelveticaNeue", Arial;
+  font-family : inherit;
+  font-size: 10px;
+  font-weight: bold;
+  background: white;
+
+  &:hover {
+    cursor: pointer;
+    filter: brightness(0.75);
+  }
 `;
 
 export default function AnswersList({ answers }) {
@@ -28,9 +46,9 @@ export default function AnswersList({ answers }) {
         {answers.slice(0, renderLength).map((answer) => (
           <AnswerCard key={answer.id} answer={answer} />
         ))}
-        <button onClick={() => setRenderLength((len) => len + 2)} type="button">
-          See more answers
-        </button>
+        <LoadMoreAnswersButton onClick={() => setRenderLength((len) => len + 2)} type="button">
+          LOAD MORE ANSWERS
+        </LoadMoreAnswersButton>
       </AnswersListContainer>
     );
   }
@@ -41,9 +59,9 @@ export default function AnswersList({ answers }) {
         {answers.slice(0, renderLength).map((answer) => (
           <AnswerCard key={answer.id} answer={answer} />
         ))}
-        <button onClick={() => setRenderLength(2)} type="button">
-          Collapse answers
-        </button>
+        <LoadMoreAnswersButton onClick={() => setRenderLength(2)} type="button">
+          COLLAPSE ANSWERS
+        </LoadMoreAnswersButton>
       </AnswersListContainer>
     );
   }

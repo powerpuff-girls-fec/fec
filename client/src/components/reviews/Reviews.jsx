@@ -48,13 +48,15 @@ export default function Reviews({ productId }) {
   useEffect(() => {
     axios.get(`api/reviews/meta/${productId}`)
       .then((res) => res.data)
-      .then((data) => setReviewMetadata(data));
+      .then((data) => setReviewMetadata(data))
+      .catch(() => {});
   }, [productId]);
 
   useEffect(() => {
     axios.get(`api/reviews/${productId}`, { params: { count: 9999, sort } })
       .then((res) => res.data.results)
-      .then((data) => setReviews(data));
+      .then((data) => setReviews(data))
+      .catch(() => {});
   }, [productId, sort]);
 
   const { average, total } = getRatingsStats((reviewMetadata) ? reviewMetadata.ratings : {});

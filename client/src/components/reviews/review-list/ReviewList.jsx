@@ -48,11 +48,12 @@ export default function ReviewList({
   const postReview = (e) => {
     axios.post('/api/reviews', {
       ...e,
-      product_id: productId,
+      product_id: Number(productId),
       characteristics: Object.keys(e.characteristics).reduce((acc, key) => (
         { ...acc, [key]: e.characteristics[key].value }), {}),
       rating: Number(e.rating),
-    });
+    })
+      .catch(() => {});
   };
 
   return (

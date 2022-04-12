@@ -10,6 +10,7 @@ import AddAQuestionModal from './AddAQuestionModal';
 const QuestionsListContainer = styled.div`
   max-height: 500px;
   overflow-y: scroll;
+  margin: 5px 0 5px 0;
 `;
 
 export default function QuestionsList({ results, productId }) {

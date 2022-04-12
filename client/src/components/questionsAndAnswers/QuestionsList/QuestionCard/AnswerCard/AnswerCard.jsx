@@ -5,8 +5,30 @@ import styled from 'styled-components';
 import HelpfulAnswerButton from './HelpfulAnswerButton';
 import ReportAnswerButton from './ReportAnswerButton';
 
+const AnswerCardContainer = styled.div`
+  margin-left: 0.45em;
+  margin-bottom: 1.2em;
+`;
+
 const AnswerCardPhotoContainer = styled.div`
   display: flex;
+`;
+
+const AnswerCardImg = styled.img`
+  border-radius: 10px;
+  border: #aaaaaa;
+  border-width: thin;
+  border-style: solid;
+  margin: 5px;
+`;
+
+const AnswerCardSubcontainer = styled.div`
+  margin-bottom: 5px;
+`;
+
+const AnsweredBySubcontainer = styled.div`
+  font-size: 12px;
+  margin-bottom: 5px 0 10px 0;
 `;
 
 export default function AnswerCard({ answer }) {
@@ -15,14 +37,16 @@ export default function AnswerCard({ answer }) {
   const dateString = dateObj.toLocaleDateString('en-US', dateOptions);
 
   return (
-    <div>
-      {answer.body}
+    <AnswerCardContainer>
+      <AnswerCardSubcontainer>
+        {answer.body}
+      </AnswerCardSubcontainer>
       {answer.photos.length > 0 ? (
         <AnswerCardPhotoContainer>
-          {answer.photos.map((image) => (<img key={image} src={image} alt="dummy" width="40" height="40" />))}
+          {answer.photos.map((image) => (<AnswerCardImg key={image} src={image} alt="dummy" width="100" height="75" />))}
         </AnswerCardPhotoContainer>
       ) : null}
-      <div>
+      <AnsweredBySubcontainer>
         by
         {' '}
         {answer.answerer_name === 'Seller' ? <b>Seller</b> : answer.answerer_name}
@@ -33,8 +57,8 @@ export default function AnswerCard({ answer }) {
         <HelpfulAnswerButton helpfulness={answer.helpfulness} answerId={answer.id} />
         {'  |  '}
         <ReportAnswerButton answerId={answer.id} />
-      </div>
-    </div>
+      </AnsweredBySubcontainer>
+    </AnswerCardContainer>
   );
 }
 
