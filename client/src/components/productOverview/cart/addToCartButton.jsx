@@ -23,14 +23,14 @@ export default function AddButton({ selectedSize, handleSubmit }) {
   if (selectedSize === '-') {
     return (
       <form>
-        <DisabledButton type="submit" disabled>Add to Cart</DisabledButton>
+        <DisabledButton disabled data-testid="DisabledCartButton" type="submit">Add to Cart</DisabledButton>
       </form>
     );
   }
   return (
     <div>
       <form onSubmit={(event) => { handleSubmit(event); }}>
-        <Button type="submit">Add to Cart</Button>
+        <Button data-testid="EnabledCartButton" type="submit">Add to Cart</Button>
       </form>
     </div>
   );

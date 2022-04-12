@@ -15,7 +15,7 @@ const SizeContainer = styled.select`
 
 export default function Size({ selectHandler, sizes }) {
   return (
-    <SizeContainer name="sizes" onChange={(event) => { selectHandler(event); }}>
+    <SizeContainer data-testid="Size" name="sizes" onChange={(event) => { selectHandler(event); }}>
       <option>Select Size</option>
       {sizes.map((size, key) => <option value={key} key={key}>{size}</option>)}
     </SizeContainer>
