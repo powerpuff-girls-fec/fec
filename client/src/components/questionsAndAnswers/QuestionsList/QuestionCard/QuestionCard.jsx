@@ -10,6 +10,7 @@ import AddAnswerModal from './AddAnswerModal';
 const Container = styled.div`
   height: 100%;
   display: flex;
+  margin: 5px;
 `;
 
 const Question = styled.div`
@@ -19,6 +20,14 @@ const Question = styled.div`
 
 const QuestionLevelButtons = styled.div`
   min-height: 10px;
+  font-size: 12px;
+`;
+
+const BoldQAText = styled.span`
+  font-family: "HelveticaNeue", Arial;
+  font-size: 16px;
+  font-weight: bold;
+  background: white;
 `;
 
 const compare = function compare(a, b) {
@@ -47,8 +56,9 @@ export default function QuestionsCard({ questionObj, testid }) {
     <div data-testid={testid}>
       <Container>
         <Question>
-          Q:
-          {questionObj.question_body}
+          <BoldQAText>Q:</BoldQAText>
+          {'  '}
+          <BoldQAText>{questionObj.question_body}</BoldQAText>
         </Question>
         <QuestionLevelButtons>
           <HelpfulQuestionButton
@@ -56,7 +66,9 @@ export default function QuestionsCard({ questionObj, testid }) {
             questionId={questionObj.question_id}
           />
           {' | '}
-          <AddAnswer openModal={openModal} />
+          <AddAnswer
+            openModal={openModal}
+          />
           <AddAnswerModal
             showModal={showModal}
             setShowModal={setShowModal}
@@ -66,7 +78,7 @@ export default function QuestionsCard({ questionObj, testid }) {
         </QuestionLevelButtons>
       </Container>
       <Container>
-        A:
+        <BoldQAText>A:</BoldQAText>
         <AnswersList answers={answersArray} />
       </Container>
     </div>

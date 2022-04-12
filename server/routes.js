@@ -46,25 +46,12 @@ module.exports.postReview = (req, res) => {
 
 module.exports.getProductInfo = (req, res) => {
   handlers.getProductInfo(req.params.product_id)
-<<<<<<< HEAD
-    .then((result) => {
-      res.send(result.data);
-    })
-    .catch((err) => console.log(err.message));
-=======
     .then((result) => res.send(result.data))
     .catch((err) => console.log(`Error: ${err.message}`));
->>>>>>> main
 };
 
 module.exports.getProductStyles = (req, res) => {
   handlers.getProductStyles(req.params.product_id)
-<<<<<<< HEAD
-    .then((result) => {
-      res.send(result.data);
-    })
-    .catch((err) => console.log(err.message));
-=======
     .then((result) => res.send(result.data))
     .catch((err) => console.log(`Error: ${err.message}`));
 };
@@ -118,7 +105,6 @@ module.exports.postCloudinary = (req, res) => {
     }
     res.send(response);
   });
->>>>>>> main
 };
 
 module.exports.postCart = (req, res) => {

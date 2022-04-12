@@ -9,6 +9,14 @@ const Button = styled.button`
   padding: 0!important;
   text-decoration: underline;
   cursor: pointer;
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+
+  &:hover {
+    cursor: pointer;
+    filter: brightness(0.75);
+  }
 `;
 
 export default function ReportAnswerButton({ answerId }) {
