@@ -275,7 +275,6 @@ describe('<ViewQuestionsAndAnswers />', () => {
     await waitForElementToBeRemoved(() => screen.getByText(/by , invalid date \| helpful\? \|/i));
     const QuestionCard1 = screen.getByTestId('QuestionCard1');
     expect(QuestionCard1).toBeInTheDocument();
-    screen.logTestingPlaygroundURL();
   });
 
   it('renders the correct question cards when the search bar is used', async () => {
@@ -399,6 +398,5 @@ describe('<ViewQuestionsAndAnswers />', () => {
     await user.click(helpful);
     await user.click(report);
     await user.click(helpful);
-    screen.logTestingPlaygroundURL();
   });
 });
