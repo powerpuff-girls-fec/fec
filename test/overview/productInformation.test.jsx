@@ -9,11 +9,7 @@ afterEach(cleanup);
 
 describe('ProductInformation', () => {
   it('renders the product info elements', () => {
-    const { getByTestId } = render(
-      <ProductInformation />,
-      // input={here}
-      // />,
-    );
+    const { getByTestId } = render(<ProductInformation />);
 
     expect(getByTestId('ProductInformation')).toBeInTheDocument();
     expect(getByTestId('ShareButtons')).toBeInTheDocument();

@@ -72,20 +72,3 @@ describe('Image Gallery', () => {
     expect(getByTestId('mainImage')).toHaveAttribute('src', 'urlplaceholder/style_0_photo_number.jpg');
   });
 });
-
-// describe('Image Modal', () => {
-//   it('renders the image modal', () => {
-//     const { getByTestId } = render(
-//       <ImageGallery
-//         image="urlplaceholder/style_1_photo_number.jpg"
-//         closeModal={() => {}}
-//       />,
-//     );
-
-//     // expect it to be there
-//     fireEvent.click(getByTestId('mainImage'));
-//     expect(getByTestId('ImageModal')).toBeInTheDocument();
-//     // fire click
-//     // expect it to not be there
-//   });
-// });
