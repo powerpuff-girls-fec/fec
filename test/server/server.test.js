@@ -11,8 +11,5 @@ describe('Server', () => {
 
         return done();
       });
-
-    // expect(response.status).toBe(200);
-    // done();
   });
 });
