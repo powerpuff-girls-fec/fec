@@ -39,6 +39,6 @@ export default function ImageModal({ image, closeModal }) {
         <ModalContent src={image} />
       </ModalWrapper>
     </Background>,
-    document.getElementById('ImageModal'),
+    document.getElementById('portal'),
   );
 }
