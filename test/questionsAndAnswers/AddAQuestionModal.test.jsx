@@ -1,13 +1,16 @@
 import React from 'react';
 import { render, cleanup, screen } from '@testing-library/react';
-import AddAQuestionModal from '../client/src/components/questionsAndAnswers/QuestionsList/AddAQuestionModal';
+import AddAQuestionModal from '../../client/src/components/questionsAndAnswers/QuestionsList/AddAQuestionModal';
 import '@testing-library/jest-dom';
 
 afterEach(cleanup);
 
 describe('<AddAQuestionModal />', () => {
   const AddAQuestionPortal = document.createElement('div');
+<<<<<<< HEAD:test/AddAQuestionModal.test.jsx
   // UPDATE THIS RENDER ID IF WE CHANGE THE NAME OF WHERE PORTALS RENDER!
+=======
+>>>>>>> main:test/questionsAndAnswers/AddAQuestionModal.test.jsx
   AddAQuestionPortal.setAttribute('id', 'portal');
 
   beforeEach(() => {

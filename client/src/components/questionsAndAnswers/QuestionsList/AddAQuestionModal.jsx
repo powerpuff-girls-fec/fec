@@ -34,18 +34,62 @@ const ModalContent = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
   line-height: 1.8;
   color: #141414;
 `;
 
-const FormContainer = styled.div`
+const FormContainer = styled.form`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   line-height: 1.8;
-  color: #141414;
+  height: 100%;
+`;
+
+const FormLabel = styled.label`
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  width: 500px;
+  margin: 10px;
+  font-family: inherit;
+`;
+
+const FormLabelTextArea = styled.label`
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  width: 500px;
+  margin: 10px;
+  height: 150px;
+  font-family: inherit;
+`;
+
+const FormEntry = styled.div`
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+
+const FormText = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: inherit;
+`;
+
+const FormTextDisclaimer = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+  font-style: italic;
+  font-family: inherit;
 `;
 
 const re = /^[^@]+@[^@]+\.[^@]+$/;
@@ -82,48 +126,68 @@ export default function AddAQuestionModal({ showModal, setShowModal, productId }
     <Background ref={modalRef} onClick={closeModal}>
       <ModalWrapper showModal={showModal} data-testid="AddAQuestionModal">
         <ModalContent>
-          <div>
+          <FormText>
             Ask Your Question
             About the [Product Name Here]
-          </div>
-          <FormContainer>
-            <form onSubmit={submitForm}>
-              <div>*Question</div>
-              <textarea
-                name="question"
-                placeholder="Why did you like the product or not?"
-                maxLength="1000"
-                value={values.question}
-                onChange={handleChange}
-              />
-              <div>*Nickname</div>
-              <input
-                name="nickname"
-                maxLength="60"
-                placeholder="Example: jackson11!"
-                value={values.nickname}
-                onChange={handleChange}
-              />
-              <div>For privacy reasons, do not use your full name or email address</div>
-              <div>*Email</div>
-              <input
-                name="email"
-                maxLength="60"
-                placeholder="name@example.com"
-                value={values.email}
-                onChange={handleChange}
-              />
-              <div>For authentication reasons, you will not be emailed</div>
-              <input type="submit" value="Submit" />
-              {alert ? (
-                <div>
-                  You must enter the following:
-                  {values.question === '' ? 'Question' : null}
-                  {values.nickname === '' ? 'Nickname' : null}
-                  {(values.email === '' || !re.test(values.email)) ? 'Email' : null}
-                </div>
-              ) : null}
-            </form>
+          </FormText>
+          <FormContainer onSubmit={submitForm}>
+
+            <FormEntry key="question">
+              <FormLabelTextArea htmlFor="question">
+                *Question:&nbsp;
+                <textarea
+                  name="question"
+                  placeholder="Why did you like the product or not?"
+                  maxLength="1000"
+                  value={values.question}
+                  onChange={handleChange}
+                />
+              </FormLabelTextArea>
+            </FormEntry>
+
+            <FormEntry key="nickname">
+              <FormLabel htmlFor="nickname">
+                *Nickname:&nbsp;
+                <input
+                  name="nickname"
+                  maxLength="60"
+                  placeholder="Example: jackson11!"
+                  value={values.nickname}
+                  onChange={handleChange}
+                />
+              </FormLabel>
+            </FormEntry>
+
+            <FormTextDisclaimer>
+              For privacy reasons, do not use your full name or email address
+            </FormTextDisclaimer>
+
+            <FormEntry key="email">
+              <FormLabel htmlFor="email">
+                *Email:&nbsp;
+                <input
+                  name="email"
+                  maxLength="60"
+                  placeholder="name@example.com"
+                  value={values.email}
+                  onChange={handleChange}
+                />
+              </FormLabel>
+            </FormEntry>
+
+            <FormTextDisclaimer>
+              For authentication reasons, you will not be emailed
+            </FormTextDisclaimer>
+
+            <input type="submit" value="Submit" />
+            {alert ? (
+              <FormTextDisclaimer>
+                You must enter the following:
+                {values.question === '' ? 'Question' : null}
+                {values.nickname === '' ? 'Nickname' : null}
+                {(values.email === '' || !re.test(values.email)) ? 'Email' : null}
+              </FormTextDisclaimer>
+            ) : null}
           </FormContainer>
         </ModalContent>
       </ModalWrapper>

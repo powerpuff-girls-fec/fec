@@ -8,11 +8,19 @@ const Button = styled.button`
   padding: 0!important;
   text-decoration: underline;
   cursor: pointer;
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
 `;
 
 export default function AddAnswer({ openModal }) {
   return (
-    <Button type="button" onClick={openModal}>Add Answer</Button>
+    <Button
+      type="button"
+      onClick={openModal}
+    >
+      Add Answer
+    </Button>
   );
 }
 

@@ -18,8 +18,8 @@ const Background = styled.div`
 `;
 
 const ModalWrapper = styled.div`
-  width: 800px;
-  height: 800px;
+  width: 600px;
+  height: 600px;
   box-shadow: 0 5px 16px rgba(0, 0, 0, 0.2);
   background: #fff;
   color: #000;
@@ -34,24 +34,76 @@ const ModalContent = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
   line-height: 1.8;
   color: #141414;
 `;
 
-const FormContainer = styled.div`
+const FormContainer = styled.form`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   line-height: 1.8;
-  color: #141414;
+  height: 100%;
+`;
+
+const FormLabel = styled.label`
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  width: 500px;
+  margin: 10px;
+  font-family: inherit;
+`;
+
+const FormLabelTextArea = styled.label`
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  width: 500px;
+  margin: 10px;
+  height: 150px;
+  font-family: inherit;
+`;
+
+const FormEntry = styled.div`
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+
+const FormText = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: inherit;
+`;
+
+const FormTextDisclaimer = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+  font-style: italic;
+  font-family: inherit;
 `;
 
 const PreviewContainer = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
+`;
+
+const AnswerCardImg = styled.img`
+  border-radius: 10px;
+  border: #aaaaaa;
+  border-width: thin;
+  border-style: solid;
+  margin: 5px;
 `;
 
 const re = /^[^@]+@[^@]+\.[^@]+$/;
@@ -130,69 +182,93 @@ export default function AddAnswerModal({
   if (!showModal) {
     return null;
   }
+
   return ReactDom.createPortal(
     <Background ref={modalRef} onClick={closeModal}>
       <ModalWrapper showModal={showModal} data-testid="AddAnswerModal">
         <ModalContent>
-          <div>
+          <FormText>
             Submit your Answer
             [Product Name Here] :
             {questionBody}
-          </div>
-          <FormContainer>
-            <form onSubmit={submitForm}>
-              <div>*Answer</div>
-              <textarea
-                name="answer"
-                placeholder="Place your answer to the question here"
-                maxLength="1000"
-                value={values.answer}
-                onChange={handleChange}
-                data-testid="AddAnswerModal-answer"
-              />
-              <div>*Nickname</div>
-              <input
-                name="nickname"
-                maxLength="60"
-                placeholder="Example: jack543!"
-                value={values.nickname}
-                onChange={handleChange}
-                data-testid="AddAnswerModal-nickname"
-              />
-              <div>For privacy reasons, do not use your full name or email address</div>
-              <div>*Email</div>
-              <input
-                name="email"
-                maxLength="60"
-                placeholder="Example: jack@email.com"
-                value={values.email}
-                onChange={handleChange}
-                data-testid="AddAnswerModal-email"
-              />
-              <div>For authentication reasons, you will not be emailed</div>
-              <div>Upload Up to 5 Photos</div>
-              {imgURLs.length < 5 ? (
-                <input
-                  name="images"
-                  type="file"
-                  accept="image/*"
-                  onChange={onImageChange}
+          </FormText>
+          <FormContainer onSubmit={submitForm}>
+            <FormEntry key="answer">
+              <FormLabelTextArea htmlFor="answer">
+                *Answer:&nbsp;
+                <textarea
+                  name="answer"
+                  placeholder="Place your answer to the question here"
+                  maxLength="1000"
+                  value={values.answer}
+                  onChange={handleChange}
+                  data-testid="AddAnswerModal-answer"
                 />
-              ) : null}
-              <div>Image Preivew</div>
-              <PreviewContainer>
-                {imgURLs.map((imageSrc) => <img key={imageSrc} src={imageSrc} alt="preview" height="30" width="30" />)}
-              </PreviewContainer>
-              <input type="submit" value="Submit" />
-              {alert ? (
-                <div>
-                  You must enter the following:
-                  {values.question === '' ? 'Question' : null}
-                  {values.nickname === '' ? 'Nickname' : null}
-                  {(values.email === '' || !re.test(values.email)) ? 'Email' : null}
-                </div>
-              ) : null}
-            </form>
+              </FormLabelTextArea>
+            </FormEntry>
+
+            <FormEntry key="nickname">
+              <FormLabel htmlFor="nickname">
+                *Nickname:&nbsp;
+                <input
+                  name="nickname"
+                  maxLength="60"
+                  placeholder="Example: jack543!"
+                  value={values.nickname}
+                  onChange={handleChange}
+                  data-testid="AddAnswerModal-nickname"
+                />
+              </FormLabel>
+            </FormEntry>
+
+            <FormTextDisclaimer>
+              For privacy reasons, do not use your full name or email address
+            </FormTextDisclaimer>
+
+            <FormEntry key="email">
+              <FormLabel htmlFor="email">
+                *Email:&nbsp;
+                <input
+                  name="email"
+                  maxLength="60"
+                  placeholder="Example: jack@email.com"
+                  value={values.email}
+                  onChange={handleChange}
+                  data-testid="AddAnswerModal-email"
+                />
+              </FormLabel>
+            </FormEntry>
+
+            <FormTextDisclaimer>
+              For authentication reasons, you will not be emailed
+            </FormTextDisclaimer>
+
+            <FormText>
+              Upload Up to 5 Photos
+            </FormText>
+
+            {imgURLs.length < 5 ? (
+              <input
+                name="images"
+                type="file"
+                accept="image/*"
+                onChange={onImageChange}
+                data-testid="AddAnswerModal-image"
+              />
+            ) : null}
+
+            <PreviewContainer>
+              {imgURLs.map((imageSrc) => <AnswerCardImg key={imageSrc} src={imageSrc} alt="preview" height="50" width="75" />)}
+            </PreviewContainer>
+            <input type="submit" value="Submit" />
+            {alert ? (
+              <FormTextDisclaimer>
+                You must enter the following:
+                {values.question === '' ? 'Question' : null}
+                {values.nickname === '' ? 'Nickname' : null}
+                {(values.email === '' || !re.test(values.email)) ? 'Email' : null}
+              </FormTextDisclaimer>
+            ) : null}
           </FormContainer>
         </ModalContent>
       </ModalWrapper>

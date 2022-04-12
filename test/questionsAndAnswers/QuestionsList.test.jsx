@@ -1,7 +1,8 @@
 import React from 'react';
 import { render, cleanup, screen } from '@testing-library/react';
-import QuestionsList from '../client/src/components/questionsAndAnswers/QuestionsList/QuestionsList';
 import '@testing-library/jest-dom';
+import user from '@testing-library/user-event';
+import QuestionsList from '../../client/src/components/questionsAndAnswers/QuestionsList/QuestionsList';
 
 afterEach(cleanup);
 
@@ -253,6 +254,26 @@ describe('<QuestionsList />', () => {
     expect(QuestionCard2).toBeInTheDocument();
     expect(QuestionCard3).toBeInTheDocument();
     expect(() => screen.getByTestId('QuestionCard4')).toThrow();
+  });
+
+  it('renders two more QuestionCards when MoreAnsweredQuestionsButton is clicked', async () => {
+    render(<QuestionsList results={testData} productId={65632} />);
+    const QuestionCard0 = screen.getByTestId('QuestionCard0');
+    const QuestionCard1 = screen.getByTestId('QuestionCard1');
+    const QuestionCard2 = screen.getByTestId('QuestionCard2');
+    const QuestionCard3 = screen.getByTestId('QuestionCard3');
+    const MoreAnsweredQuestionsButton = screen.getByTestId('moreAnsweredQuestionsButton');
+    await user.click(MoreAnsweredQuestionsButton);
+    const QuestionCard4 = screen.getByTestId('QuestionCard4');
+    const QuestionCard5 = screen.getByTestId('QuestionCard5');
+
+    expect(QuestionCard0).toBeInTheDocument();
+    expect(QuestionCard1).toBeInTheDocument();
+    expect(QuestionCard2).toBeInTheDocument();
+    expect(QuestionCard3).toBeInTheDocument();
+    expect(QuestionCard4).toBeInTheDocument();
+    expect(QuestionCard5).toBeInTheDocument();
+    expect(() => screen.getByTestId('QuestionCard6')).toThrow();
   });
 
   it('does not render a QuestionCard if there are no questions', () => {
