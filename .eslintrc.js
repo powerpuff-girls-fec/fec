@@ -30,6 +30,7 @@ module.exports = {
     'no-console': 0,
     'react/no-array-index-key': 0,
     'react/forbid-prop-types': [2, { forbid: ['any'] }],
+    'react/jsx-boolean-value': 0,
   },
   settings: {
     'import/resolver': {

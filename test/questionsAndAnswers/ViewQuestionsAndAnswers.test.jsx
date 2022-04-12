@@ -379,6 +379,5 @@ describe('<ViewQuestionsAndAnswers />', () => {
 
     const ViewQuestionsAndAnswersElement = screen.getByTestId('qa');
     expect(ViewQuestionsAndAnswersElement).toBeInTheDocument();
-    screen.logTestingPlaygroundURL();
   });
 });

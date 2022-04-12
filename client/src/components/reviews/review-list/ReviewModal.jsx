@@ -141,7 +141,7 @@ export default function ReviewModal({
   }
 
   return ReactDom.createPortal(
-    <Background ref={modalRef} onClick={closeModal}>
+    <Background ref={modalRef} onClick={closeModal} data-testid="background">
       <ModalWrapper showModal={showModal}>
         <Form onSubmit={handleSubmit}>
           <FormEntry key="rating">
