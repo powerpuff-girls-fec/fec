@@ -246,8 +246,12 @@ const testData = {
 const questionGetResponse = rest.get('http://localhost/api/questions/12345', (req, res, ctx) => res(ctx.json(testData)));
 const addAQuestionSubmit = rest.post('http://localhost/api/questions/12345', (req, res, ctx) => res(ctx.status(200)));
 const addAnswerSubmit = rest.post('http://localhost/api/answers/573878', (req, res, ctx) => res(ctx.status(200)));
+const reportAnswer = rest.put('http://localhost/api/answers/5538451/report', (req, res, ctx) => res(ctx.status(200)));
+const helpfulAnswer = rest.put('http://localhost/api/answers/5538451/helpful', (req, res, ctx) => res(ctx.status(200)));
 
-const handlers = [questionGetResponse, addAQuestionSubmit, addAnswerSubmit];
+const handlers = [
+  questionGetResponse, addAQuestionSubmit, addAnswerSubmit, reportAnswer, helpfulAnswer,
+];
 
 const server = new setupServer(...handlers);
 
@@ -379,5 +383,20 @@ describe('<ViewQuestionsAndAnswers />', () => {
 
     const ViewQuestionsAndAnswersElement = screen.getByTestId('qa');
     expect(ViewQuestionsAndAnswersElement).toBeInTheDocument();
+  });
+
+  it('helpful and report answer button function correctly', async () => {
+    render(<ViewQuestionsAndAnswers productId={12345} />);
+    await waitForElementToBeRemoved(() => screen.getByText(/by , invalid date \| helpful\? \|/i));
+    const QuestionCard1 = screen.getByTestId('QuestionCard1');
+    expect(QuestionCard1).toBeInTheDocument();
+    const report = screen.getByTestId('ReportAnswerButton_5538451');
+    const helpful = screen.getByTestId('HelpfulAnswerButton_5538451');
+    expect(report).toBeInTheDocument();
+    expect(helpful).toBeInTheDocument();
+    await user.click(report);
+    await user.click(helpful);
+    await user.click(report);
+    await user.click(helpful);
   });
 });
