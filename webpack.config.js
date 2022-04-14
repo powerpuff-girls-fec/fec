@@ -1,7 +1,7 @@
 const path = require('path');
 
-module.exports = {
-  mode: 'development',
+module.exports = (env, argv) => ({
+  mode: 'production',
   entry: path.join(__dirname, '/client/src/index.jsx'),
   output: {
     path: path.join(__dirname, '/client/dist'),
@@ -15,6 +15,9 @@ module.exports = {
         exclude: /nodeModules/,
         use: {
           loader: 'babel-loader',
+          options: {
+            envName: argv.mode,
+          },
         },
       },
     ],
@@ -25,4 +28,4 @@ module.exports = {
       common: path.resolve(__dirname, 'client/src/components/common'),
     },
   },
-};
+});

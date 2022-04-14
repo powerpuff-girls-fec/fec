@@ -9,7 +9,23 @@
     ]
   ],
   "plugins": [
-    "babel-plugin-styled-components",
     "@babel/plugin-transform-runtime"
-  ]
+  ],
+  "env": {
+    "development": {
+      "plugins": [
+        "babel-plugin-styled-components"
+      ]
+    }, 
+    "production": {
+      "plugins": [
+        ["babel-plugin-styled-components",
+        {
+          "fileName": false,
+          "displayName": false,
+          "pure": true
+        }]
+      ]
+    }
+  }
 }
