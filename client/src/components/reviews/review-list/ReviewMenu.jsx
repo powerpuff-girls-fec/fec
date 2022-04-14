@@ -6,9 +6,13 @@ import styled from 'styled-components';
 const Button = styled.button`
   color: inherit;
   border-color: #525252;
-  padding: 2em;
+  border-width: thin;
+  padding: 0.5em;
   margin: 0.5em;
-  border-radius: 0;
+  font-family: "HelveticaNeue", Arial;
+  font-size: 14px;
+  font-weight: bold;
+  background: white;
 
   &:hover {
     cursor: pointer;

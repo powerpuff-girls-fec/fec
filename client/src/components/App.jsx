@@ -9,6 +9,7 @@ import Reviews from './reviews/Reviews';
 const Container = styled.div`
   font-family: 'Nunito Sans', sans-serif;
   color: #161316;
+  background-color: #FFFCF9;
   display: flex;
   flex-direction: column;
 `;

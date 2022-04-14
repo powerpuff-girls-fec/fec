@@ -7,6 +7,7 @@ import Thumbnail from './thumbnailDisplay';
 const Container = styled.div`
   height: 100%;
   width: 100%;
+  padding: 2em;
 `;
 
 const StyleName = styled.div`
@@ -14,6 +15,7 @@ const StyleName = styled.div`
 `;
 
 const ThumbnailWrapper = styled.div`
+  margin-top: 1em;
   display: grid;
   grid-template-columns: 25% 25% 25% 25%;
 `;
