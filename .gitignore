@@ -4,3 +4,4 @@ coverage/
 *.map
 
 .env
+st-fec.pem

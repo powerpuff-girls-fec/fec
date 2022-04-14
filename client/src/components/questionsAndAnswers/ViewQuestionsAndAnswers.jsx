@@ -19,6 +19,7 @@ const Header = styled.h1`
   font-family: "HelveticaNeue", Arial;
   font-size: 16px;
   margin: 5px;
+  margin-bottom: 15px;
 `;
 
 let originalData;

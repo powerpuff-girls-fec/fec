@@ -40,6 +40,8 @@ const compare = function compare(a, b) {
   return b.helpfulness - a.helpfulness;
 };
 
+const createMarkup = (html) => ({ __html: html });
+
 export default function QuestionsCard({ questionObj, testid }) {
   const answersArray = [];
   for (let i = 0; i < Object.keys(questionObj.answers).length; i += 1) {
@@ -58,7 +60,7 @@ export default function QuestionsCard({ questionObj, testid }) {
         <Question>
           <BoldQAText>Q:</BoldQAText>
           {'  '}
-          <BoldQAText>{questionObj.question_body}</BoldQAText>
+          <BoldQAText dangerouslySetInnerHTML={createMarkup(questionObj.question_body)} />
         </Question>
         <QuestionLevelButtons>
           <HelpfulQuestionButton
