@@ -17,7 +17,7 @@ const FlexContainer = styled.div`
 
 const Header = styled.h1`
   font-family: inherit;
-  font-size: 16px;
+  font-size: 1.3em;
   margin: 5px;
   margin-bottom: 15px;
 `;

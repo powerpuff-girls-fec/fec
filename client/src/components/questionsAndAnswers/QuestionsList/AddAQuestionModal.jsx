@@ -28,6 +28,7 @@ const ModalWrapper = styled.div`
   justify-content: space-around;
   z-index: 10;
   border-radius: 10px;
+  font-family: 'Nunito Sans', sans-serif;
 `;
 
 const ModalContent = styled.div`
@@ -128,7 +129,6 @@ export default function AddAQuestionModal({ showModal, setShowModal, productId }
         <ModalContent>
           <FormText>
             Ask Your Question
-            About the [Product Name Here]
           </FormText>
           <FormContainer onSubmit={submitForm}>
 

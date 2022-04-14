@@ -11,7 +11,7 @@ const Button = styled.button`
   font-family: inherit;
   font-size: 14px;
   font-weight: bold;
-  background: white;
+  background: #ebebeb;
 
   &:hover {
     cursor: pointer;

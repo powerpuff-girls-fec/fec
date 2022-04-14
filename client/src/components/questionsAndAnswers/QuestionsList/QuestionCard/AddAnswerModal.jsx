@@ -28,6 +28,7 @@ const ModalWrapper = styled.div`
   justify-content: space-around;
   z-index: 10;
   border-radius: 10px;
+  font-family: 'Nunito Sans', sans-serif;
 `;
 
 const ModalContent = styled.div`
@@ -188,8 +189,8 @@ export default function AddAnswerModal({
       <ModalWrapper showModal={showModal} data-testid="AddAnswerModal">
         <ModalContent>
           <FormText>
-            Submit your Answer
-            [Product Name Here] :
+            Submit your Answer :
+            {'  '}
             {questionBody}
           </FormText>
           <FormContainer onSubmit={submitForm}>
