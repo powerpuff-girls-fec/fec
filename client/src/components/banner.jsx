@@ -1,17 +1,27 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const BannerBar = styled.h1`
+const BannerBar = styled.div`
   height: 100px;
-  background-color: lightblue;
-  text-align: center;
-  font-size: 40px;
+  display: flex;
+  background-color: #8B85C1;
+  align-items: center;
+`;
+
+const Title = styled.h1`
+  text-align: left;
+  font-size: 2em;
   font-weight: bold;
-  font-family: "Comic Sans MS", "Comic Sans", cursive;;
+  padding-left: 1em;
+  font-family: 'Nunito Sans', sans-serif;
 `;
 
 export default function Banner() {
   return (
-    <BannerBar>Come up with some fun name, put it here</BannerBar>
+    <BannerBar>
+      <Title>
+        Atelier
+      </Title>
+    </BannerBar>
   );
 }
