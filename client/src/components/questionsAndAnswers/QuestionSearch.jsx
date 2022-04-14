@@ -29,6 +29,7 @@ const SearchBar = styled.input`
   align-self: center;
   font-family: inherit;
   border: none;
+  background: inherit;
 
   &:focus {
     outline: none;

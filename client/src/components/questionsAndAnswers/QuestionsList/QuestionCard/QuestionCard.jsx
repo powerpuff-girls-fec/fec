@@ -15,7 +15,7 @@ const Container = styled.div`
 
 const Question = styled.div`
   min-height: 10px;
-  width: 825px;
+  width: 810px;
 `;
 
 const QuestionLevelButtons = styled.div`
@@ -26,7 +26,6 @@ const QuestionLevelButtons = styled.div`
 const BoldQAText = styled.span`
   font-size: 16px;
   font-weight: bold;
-  background: white;
 `;
 
 const compare = function compare(a, b) {
