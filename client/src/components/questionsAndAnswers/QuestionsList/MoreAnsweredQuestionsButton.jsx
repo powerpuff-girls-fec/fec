@@ -26,7 +26,7 @@ export default function MoreAnsweredQuestionsButton({ setRenderLength }) {
       onClick={() => setRenderLength((len) => len + 2)}
       data-testid="moreAnsweredQuestionsButton"
     >
-      MORE ANSWERED QUESTIONS
+      MORE QUESTIONS
     </Button>
   );
 }
