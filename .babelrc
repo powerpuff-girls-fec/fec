@@ -24,7 +24,8 @@
           "fileName": false,
           "displayName": false,
           "pure": true
-        }]
+        }],
+        ["babel-plugin-react-remove-properties", {"properties": ["data-testid"]}]
       ]
     }
   }
