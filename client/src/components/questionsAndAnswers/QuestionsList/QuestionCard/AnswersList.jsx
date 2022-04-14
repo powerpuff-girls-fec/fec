@@ -5,20 +5,33 @@ import styled from 'styled-components';
 import AnswerCard from './AnswerCard/AnswerCard';
 
 const AnswersListContainer = styled.div`
-  overflow-y: scroll;
+  overflow-y: auto;
   max-height: 350px;
   width: 80%;
+
+  ::-webkit-scrollbar {
+    width: 5px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #888;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
 `;
 
 const LoadMoreAnswersButton = styled.button`
   color: inherit;
   border: none;
   margin: 0.5em 0 0.5em 0;
-  font-family: "HelveticaNeue", Arial;
+  padding: 0.5em;
   font-family : inherit;
   font-size: 10px;
   font-weight: bold;
-  background: white;
+  background: #ebebeb;
 
   &:hover {
     cursor: pointer;

@@ -3,5 +3,6 @@ coverage/
 *bundle.js
 *.map
 
+.DS_Store
 .env
 st-fec.pem

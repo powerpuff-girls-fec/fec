@@ -15,7 +15,7 @@ const Container = styled.div`
 
 const Question = styled.div`
   min-height: 10px;
-  flex-grow: 1;
+  width: 825px;
 `;
 
 const QuestionLevelButtons = styled.div`
@@ -24,7 +24,6 @@ const QuestionLevelButtons = styled.div`
 `;
 
 const BoldQAText = styled.span`
-  font-family: "HelveticaNeue", Arial;
   font-size: 16px;
   font-weight: bold;
   background: white;

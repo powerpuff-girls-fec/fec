@@ -27,7 +27,7 @@ const SearchBar = styled.input`
   width: 940px;
   margin: 5px;
   align-self: center;
-  font-family: "HelveticaNeue-Light", Arial;
+  font-family: inherit;
   border: none;
 
   &:focus {
