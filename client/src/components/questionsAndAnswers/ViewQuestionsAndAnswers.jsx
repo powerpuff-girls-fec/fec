@@ -11,14 +11,15 @@ const FlexContainer = styled.div`
   display: flex;
   flex-direction: column;
   margin: auto;
-  font-family: "HelveticaNeue", Arial;
+  font-family: inherit;
   font-size: 14px;
 `;
 
 const Header = styled.h1`
-  font-family: "HelveticaNeue", Arial;
-  font-size: 16px;
+  font-family: inherit;
+  font-size: 1.3em;
   margin: 5px;
+  margin-bottom: 15px;
 `;
 
 let originalData;
