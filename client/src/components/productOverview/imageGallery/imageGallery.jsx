@@ -50,10 +50,11 @@ const LeftButton = styled.button`
   z-index: 1;
   cursor: pointer;
 
+  border-radius: 1em;
   border-width: 0;
   width: 5em;
   height: 30em;
-  background-color: #B3A8B3;
+  background-color:  #D8D6EA  ;
   opacity: 0.5;
 
   transition-duration: 0.2s;
