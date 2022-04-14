@@ -2,6 +2,7 @@ require('dotenv').config();
 
 const express = require('express');
 const path = require('path');
+const shrinkRay = require('shrink-ray-current');
 
 const routes = require('./routes');
 
@@ -9,6 +10,7 @@ const app = express();
 
 // Middleware
 app.use(express.json());
+app.use(shrinkRay());
 
 // Access either env or default port
 const port = process.env.PORT || 3000;
