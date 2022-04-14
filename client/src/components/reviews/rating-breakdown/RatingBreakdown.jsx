@@ -13,8 +13,8 @@ const Container = styled.div`
   padding: 0 40px 0 0;
 `;
 
-function getRecPercentage(recommended) {
-  return (recommended.true / (recommended.true + recommended.false)) * 100;
+function getRecPercentage(r) {
+  return (Number(r.true) / (Number(r.true) + Number(r.false))) * 100;
 }
 
 function characteristicsToArray(characteristics) {
