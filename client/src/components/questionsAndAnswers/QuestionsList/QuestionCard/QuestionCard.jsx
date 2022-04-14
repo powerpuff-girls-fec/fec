@@ -15,7 +15,7 @@ const Container = styled.div`
 
 const Question = styled.div`
   min-height: 10px;
-  flex-grow: 1;
+  width: 810px;
 `;
 
 const QuestionLevelButtons = styled.div`
@@ -24,10 +24,8 @@ const QuestionLevelButtons = styled.div`
 `;
 
 const BoldQAText = styled.span`
-  font-family: "HelveticaNeue", Arial;
   font-size: 16px;
   font-weight: bold;
-  background: white;
 `;
 
 const compare = function compare(a, b) {
@@ -39,6 +37,8 @@ const compare = function compare(a, b) {
   }
   return b.helpfulness - a.helpfulness;
 };
+
+const createMarkup = (html) => ({ __html: html });
 
 export default function QuestionsCard({ questionObj, testid }) {
   const answersArray = [];
@@ -58,7 +58,7 @@ export default function QuestionsCard({ questionObj, testid }) {
         <Question>
           <BoldQAText>Q:</BoldQAText>
           {'  '}
-          <BoldQAText>{questionObj.question_body}</BoldQAText>
+          <BoldQAText dangerouslySetInnerHTML={createMarkup(questionObj.question_body)} />
         </Question>
         <QuestionLevelButtons>
           <HelpfulQuestionButton

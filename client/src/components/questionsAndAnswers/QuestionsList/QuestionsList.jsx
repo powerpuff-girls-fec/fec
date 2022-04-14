@@ -9,8 +9,21 @@ import AddAQuestionModal from './AddAQuestionModal';
 
 const QuestionsListContainer = styled.div`
   max-height: 500px;
-  overflow-y: scroll;
+  overflow-y: auto;
   margin: 5px 0 5px 0;
+
+  ::-webkit-scrollbar {
+    width: 5px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #888;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
 `;
 
 export default function QuestionsList({ results, productId }) {
