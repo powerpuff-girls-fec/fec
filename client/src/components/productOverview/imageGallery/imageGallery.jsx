@@ -8,6 +8,7 @@ const ImageComponent = styled.div`
   background-color: #D3D3D3;
   flex-basis: 65%;
   display: flex;
+  position: relative;
   flex-direction: row;
   justify-content: center;
   align-items: center;
@@ -44,39 +45,26 @@ const RightArrow = styled.img`
 `;
 
 const LeftButton = styled.button`
-  position: relative;
-  left: 20px;
-  top: 10%;
+  position: absolute;
+  left: 2%;
   z-index: 1;
+  cursor: pointer;
 
-  border-radius: 50%;
-  border-width: 1px;
-  width: 10px;
-  height: 15px;
-  background-color: white;
+  border-width: 0;
+  width: 5em;
+  height: 30em;
+  background-color: #B3A8B3;
+  opacity: 0.5;
 
   transition-duration: 0.2s;
   &:hover {
-    background-color: lightgray;
+    opacity: 1;
   }
 `;
 
-const RightButton = styled.button`
-  position: relative;
-  right: 20px;
-  top: 10%;
-  z-index: 1;
-
-  border-radius: 50%;
-  border-width: 1px;
-  width: 10px;
-  height: 15px;
-  background-color: white;
-
-  transition-duration: 0.2s;
-  &:hover {
-    background-color: lightgray;
-  }
+const RightButton = styled(LeftButton)`
+  left: auto;  
+  right: 2%;
 `;
 
 const compileImageList = (photos) => {

@@ -12,7 +12,9 @@ const Container = styled.div`
   display: flex;
   flex-direction: row;
   height: 30%;
-  width: 100%;
+  width: 1000px;
+  margin: auto;
+  margin-bottom: 2em;
 `;
 
 const RightColumn = styled.div`

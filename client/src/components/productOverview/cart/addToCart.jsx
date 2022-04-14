@@ -6,9 +6,10 @@ import Quantity from './quantity';
 import AddButton from './addToCartButton';
 
 const Container = styled.div`
+  padding-left: 2em;
   display: flex;
   flex-direction: column;
-  padding-top: 05px;
+  padding-top: 5px;
 `;
 
 const DropdownsContainer = styled.div`

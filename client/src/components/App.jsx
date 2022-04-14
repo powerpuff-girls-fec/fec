@@ -7,7 +7,9 @@ import ViewQuestionsAndAnswers from './questionsAndAnswers/ViewQuestionsAndAnswe
 import Reviews from './reviews/Reviews';
 
 const Container = styled.div`
-  color: #525252;
+  font-family: 'Nunito Sans', sans-serif;
+  color: #161316;
+  background-color: #FFFCF9;
   display: flex;
   flex-direction: column;
 `;
