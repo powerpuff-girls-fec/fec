@@ -27,12 +27,13 @@ function getRatingsStats(ratings) {
 
 const Container = styled.div`
   width: 1000px;
-  height: 10em;
+  height: fit-content;
   display: grid;
   grid-template-columns: 1fr 2fr;
   padding-top: 1em;
   margin-left: auto;
   margin-right: auto;
+  margin-bottom: 2em;
 `;
 
 export default function Reviews({ productId }) {
