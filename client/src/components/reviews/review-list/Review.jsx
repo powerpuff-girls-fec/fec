@@ -53,11 +53,11 @@ const HelpfulnessReportButton = styled.button`
   }
 `;
 
-const AnswerCardPhotoContainer = styled.div`
+const PhotoContainer = styled.div`
   display: flex;
 `;
 
-const AnswerCardImg = styled.img`
+const ImgCard = styled.img`
   border-radius: 10px;
   border: #aaaaaa;
   border-width: thin;
@@ -119,10 +119,10 @@ export default function Review({ review }) {
       {/* eslint-enable react/jsx-one-expression-per-line */}
 
       {review.photos.length > 0 ? (
-        <AnswerCardPhotoContainer>
+        <PhotoContainer>
           {review.photos.map((image) => (
-            <AnswerCardImg key={image.url} src={image.url} alt="dummy" width="100" height="75" />))}
-        </AnswerCardPhotoContainer>
+            <ImgCard key={image.url} src={image.url} alt="Img not found" width="100" height="75" />))}
+        </PhotoContainer>
       ) : null}
 
       <HelpfulnessReportWrapper>
