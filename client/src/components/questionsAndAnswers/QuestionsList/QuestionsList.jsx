@@ -35,6 +35,13 @@ export default function QuestionsList({ results, productId }) {
     setShowModal((prevState) => !prevState);
   };
 
+  const handleScroll = (e) => {
+    const bottom = e.target.scrollHeight - e.target.scrollTop === e.target.clientHeight;
+    if (bottom) {
+      setRenderLength((len) => len + 2);
+    }
+  };
+
   if (questionsAsked === 0) {
     return (
       <>
@@ -55,7 +62,10 @@ export default function QuestionsList({ results, productId }) {
         setShowModal={setShowModal}
         productId={productId}
       />
-      <QuestionsListContainer data-testid="QuestionsList">
+      <QuestionsListContainer
+        onScroll={handleScroll}
+        data-testid="QuestionsList"
+      >
         {results.slice(0, renderLength).map((questionObj, i) => (
           <QuestionCard
             key={questionObj.question_id}
