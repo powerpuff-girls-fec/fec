@@ -110,7 +110,7 @@ const AnswerCardImg = styled.img`
 const re = /^[^@]+@[^@]+\.[^@]+$/;
 
 export default function AddAnswerModal({
-  showModal, setShowModal, questionId, questionBody,
+  showModal, setShowModal, questionId,
 }) {
   const [values, handleChange, resetValues] = useForm({ answer: '', nickname: '', email: '' });
   const [alert, setAlert] = useState(false);
@@ -189,9 +189,7 @@ export default function AddAnswerModal({
       <ModalWrapper showModal={showModal} data-testid="AddAnswerModal">
         <ModalContent>
           <FormText>
-            Submit your Answer :
-            {'  '}
-            {questionBody}
+            Submit your Answer
           </FormText>
           <FormContainer onSubmit={submitForm}>
             <FormEntry key="answer">
@@ -282,5 +280,4 @@ AddAnswerModal.propTypes = {
   showModal: PropTypes.bool.isRequired,
   setShowModal: PropTypes.func.isRequired,
   questionId: PropTypes.number.isRequired,
-  questionBody: PropTypes.string.isRequired,
 };
