@@ -53,6 +53,20 @@ const HelpfulnessReportButton = styled.button`
   }
 `;
 
+const PhotoContainer = styled.div`
+  display: flex;
+`;
+
+const ImgCard = styled.img`
+  border-radius: 10px;
+  border: #aaaaaa;
+  border-width: thin;
+  border-style: solid;
+  margin: 5px;
+  margin-top: 1.5em;
+  object-fit: cover;  
+`;
+
 export default function Review({ review }) {
   const [markedHelpful, markHelpful] = useState(false);
   const [reported, report] = useState(false);
@@ -103,6 +117,13 @@ export default function Review({ review }) {
         </Response>
       ) : null}
       {/* eslint-enable react/jsx-one-expression-per-line */}
+
+      {review.photos.length > 0 ? (
+        <PhotoContainer>
+          {review.photos.map((image) => (
+            <ImgCard key={image.url} src={image.url} alt="Img not found" width="100" height="75" />))}
+        </PhotoContainer>
+      ) : null}
 
       <HelpfulnessReportWrapper>
         Helpful?&nbsp;&nbsp;

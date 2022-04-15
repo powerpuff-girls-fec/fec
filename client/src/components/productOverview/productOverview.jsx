@@ -11,6 +11,7 @@ import AddToCart from './cart/addToCart';
 const Container = styled.div`
   display: flex;
   flex-direction: row;
+  justify-content: center;
   height: 30%;
   width: 1000px;
   margin: auto;

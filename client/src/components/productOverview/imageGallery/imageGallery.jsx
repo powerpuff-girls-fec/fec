@@ -2,11 +2,11 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
-import ImageModal from './imageModal';
+import ImageModal from 'common/imageModal';
 
 const ImageComponent = styled.div`
   background-color: #D3D3D3;
-  flex-basis: 65%;
+  /* flex-basis: 65%; */
   display: flex;
   position: relative;
   flex-direction: row;
@@ -15,6 +15,7 @@ const ImageComponent = styled.div`
 `;
 
 const DisplayCarousel = styled.img`
+  object-fit: contain;
   width:100%;
   max-width:600px;
   height: 800px;

@@ -68,7 +68,6 @@ export default function Reviews({ productId }) {
       <ReviewList
         reviews={reviews.slice(0, displayed)}
         moreReviewsHandler={displayMoreReviews}
-        addReviewhandler={() => console.log('uwu')}
         sortChangeHandler={(e) => setSort(e.target.value)}
         reviewsRemaining={displayed <= reviews.length}
         totalReviews={reviews.length}

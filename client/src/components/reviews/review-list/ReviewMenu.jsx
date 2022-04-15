@@ -9,10 +9,10 @@ const Button = styled.button`
   border-width: thin;
   padding: 0.5em;
   margin: 0.5em;
-  font-family: "HelveticaNeue", Arial;
+  font-family: inherit;
   font-size: 14px;
   font-weight: bold;
-  background: white;
+  background: #ebebeb;
 
   &:hover {
     cursor: pointer;
