@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
-import ImageModal from './imageModal';
+import ImageModal from 'common/imageModal';
 
 const ImageComponent = styled.div`
   background-color: #D3D3D3;
