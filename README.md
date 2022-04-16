@@ -24,6 +24,8 @@ This storefront was created without external NPM modules or libraries to impleme
 
 Our team divided responsibilities as follows:
 
+<br>
+
 **Benjamin Cope**\
 *Product Overview*\
 Files Responsible for can be found in:\
