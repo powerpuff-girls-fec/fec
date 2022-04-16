@@ -38,7 +38,9 @@ export default function HelpfulQuestionButton({ questionHelpfulness, questionId 
     <>
       Helpful?
       {' '}
-      <Button onClick={() => axios.put(`/api/questions/${questionId}/helpful`).then(() => setClicked(true)).catch((err) => console.log(err))}>
+      <Button onClick={() => axios.put(`/api/questions/${questionId}/helpful`)
+        .then(() => setClicked(true))
+        .catch((err) => console.log(err))}>
         Yes(
         {questionHelpfulness}
         )
