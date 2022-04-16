@@ -2,10 +2,10 @@ import React from 'react';
 import { render, cleanup, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 
-// eslint-disable-next-line import/no-unresolved
+/* eslint-disable import/no-unresolved */
 import StyleSelector from 'components/productOverview/styleSelector/styleSelector';
-// eslint-disable-next-line import/no-unresolved
 import Thumbnail from 'components/productOverview/styleSelector/thumbnailDisplay';
+/* eslint-enable import/no-unresolved */
 
 afterEach(cleanup);
 

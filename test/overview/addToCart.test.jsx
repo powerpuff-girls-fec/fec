@@ -4,8 +4,6 @@ import '@testing-library/jest-dom';
 
 // eslint-disable-next-line import/no-unresolved
 import AddToCart from 'components/productOverview/cart/addToCart';
-// eslint-disable-next-line import/no-unresolved
-// import AddButton from 'components/productOverview/cart/addToCartButton';
 
 afterEach(cleanup);
 
