@@ -40,8 +40,10 @@ Files Responsible for can be found in:\
 
 **Zynh Ludwig**\
 *Ratings and Reviews*\
+Files Responsible for can be found in:\
 --client/src/components/reviews
 
+<br>
 
 ## Technologies Used
 - Setup: NPM, Webpack, Babel
