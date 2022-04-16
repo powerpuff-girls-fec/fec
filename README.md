@@ -20,7 +20,7 @@
 
 The Atellier Storefront is a production ready product page that is able to show all products from an existing database. We were provided with an API that supported HTTP requests for product, question, and review data. From there, we started this repo from the ground up - everything from client, server, testing, and final design was up to us. 
 
-This storefront was created without external NPM modules or libraries to implement elements. Features such as image carousels, text highlighting upon search, and form validation were built using React native. 
+This storefront was created without external NPM modules or libraries to implement elements. Features such as image carousels, text highlighting upon search, and form validation were built from scratch using React. 
 
 Our team divided responsibilities as follows:
 
@@ -28,21 +28,21 @@ Our team divided responsibilities as follows:
 
 **Benjamin Cope**\
 *Product Overview*\
-Files Responsible for can be found in:\
+Files Responsible for this component can be found in:\
 --client/src/components/productOverview
 
 <br>
 
 **Sean Trinh**\
 *Questions and Answers*\
-Files Responsible for can be found in:\
+Files Responsible for this component can be found in:\
 --client/src/components/questionsAndAnswers
 
 <br>
 
 **Zynh Ludwig**\
 *Ratings and Reviews*\
-Files Responsible for can be found in:\
+Files Responsible for this component can be found in:\
 --client/src/components/reviews
 
 <br>
