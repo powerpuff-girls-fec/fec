@@ -41,7 +41,7 @@ Files Responsible for this component can be found in:\
 <br>
 
 **[Zynh Ludwig](https://github.com/Zynh0722)**\
-[*Ratings and Reviews*](https://github.com/powerpuff-girls-fec/fec/blob/main/client/src/components/reviews/README.md)\
+[*Ratings and Reviews*](https://github.com/powerpuff-girls-fec/fec/tree/main/client/src/components/reviews)\
 Files Responsible for this component can be found in:\
 --client/src/components/reviews
 
