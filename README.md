@@ -40,8 +40,8 @@ Files Responsible for this component can be found in:\
 
 <br>
 
-**Zynh Ludwig**\
-*Ratings and Reviews*\
+**[Zynh Ludwig](https://github.com/Zynh0722)**\
+[*Ratings and Reviews*](https://github.com/powerpuff-girls-fec/fec/blob/main/client/src/components/reviews/README.md)\
 Files Responsible for this component can be found in:\
 --client/src/components/reviews
 
