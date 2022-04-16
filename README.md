@@ -33,8 +33,8 @@ Files Responsible for this component can be found in:\
 
 <br>
 
-**Sean Trinh**\
-*Questions and Answers*\
+**[Sean Trinh](https://github.com/seanatrinh)**\
+[*Questions and Answers*](https://github.com/powerpuff-girls-fec/fec/tree/main/client/src/components/questionsAndAnswers)\
 Files Responsible for this component can be found in:\
 --client/src/components/questionsAndAnswers
 
