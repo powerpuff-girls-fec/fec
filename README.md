@@ -3,7 +3,7 @@
 </h1>
 
 <h4 align="center">
-  A Project for Hack Reactor RFP2202 by <a href="https://github.com/Alphose" target="_blank">Benjamin Cope</a>, <a   href="https://github.com/seanatrinh" target="_blank">Sean Trinh</a>, and <a href="https://github.com/Zynh0722"    target="_blank">Zynh Ludwig</a>.
+  A Project for Hack Reactor RFP2202 by <a href="https://github.com/BenjaminRCope" target="_blank">Benjamin Cope</a>, <a   href="https://github.com/seanatrinh" target="_blank">Sean Trinh</a>, and <a href="https://github.com/Zynh0722"    target="_blank">Zynh Ludwig</a>.
 </h4>
 
 <p align="center">
