@@ -26,7 +26,7 @@ Our team divided responsibilities as follows:
 
 <br>
 
-**[Benjamin Cope](https://github.com/Alphose)**\
+**[Benjamin Cope](https://github.com/BenjaminRCope)**\
 [*Product Overview*](https://github.com/powerpuff-girls-fec/fec/tree/main/client/src/components/productOverview)\
 Files Responsible for this component can be found in:\
 --client/src/components/productOverview
