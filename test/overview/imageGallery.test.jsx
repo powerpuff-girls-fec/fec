@@ -4,8 +4,6 @@ import '@testing-library/jest-dom';
 
 // eslint-disable-next-line import/no-unresolved
 import ImageGallery from 'components/productOverview/imageGallery/imageGallery';
-// eslint-disable-next-line import/no-unresolved
-// import ImageModal from 'components/productOverview/imageGallery/imageModal';
 
 afterEach(cleanup);
 
